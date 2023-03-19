@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2021.05.14
-" Version       :   v2.1
+" Last update   :   2022.04.30
+" Version       :   v3.0
 "
 "----------------------------------------
 
@@ -18,16 +18,41 @@ set copyindent      " copy indent from the previous line
 set incsearch "Search as char entered
 set hlsearch " Highlight matches
 
+"---Autoclose delimiters
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+
 "---Other
-syntax on
+filetype plugin indent on
+syntax enable
 set background=dark
 
-filetype on
 set nu "Line numbers
 set ruler "Show things at bottom right
 set mouse=r
-set nolist
+set nolist "Don't show '$' at the end of lines
 
 nnoremap j gj
 nnoremap k gk
 
+"---Plugins
+call plug#begin('~/.config/nvim/plugged')
+
+"-UltiSnips snippets
+Plug 'sirver/ultisnips'
+    let g:UltiSnipsExpandTrigger = '<tab>'
+    let g:UltiSnipsJumpForwardTrigger = '<tab>'
+    let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+    "let g:UltiSnipsSnippetDirectories = '~/.config/nvim/my_snippets/UltiSnips'
+    let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
+
+"-Vimtex
+Plug 'lervag/vimtex'
+    let g:vimtex_view_method = 'zathura'
+    let maplocalleader = ","
+
+call plug#end()
