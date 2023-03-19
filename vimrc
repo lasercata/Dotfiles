@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2022.10.31
-" Version       :   v3.2
+" Last update   :   2023.03.07
+" Version       :   v3.3
 "
 "----------------------------------------
 
@@ -50,6 +50,10 @@ nnoremap <C-up> <C-y>
 " nnoremap j gj
 " nnoremap k gk
 
+"-Remap for plugins
+nnoremap <C-t> :NERDTreeToggle<CR>
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+
 
 "---Plugins
 call plug#begin('~/.config/nvim/plugged')
@@ -71,5 +75,9 @@ Plug 'lervag/vimtex'
 "Plug 'jpalardy/vim-slime'
     "let g:slime_target = "tmux"
     "let g:slime_paste_file = "$HOME/.slime_paste"
+
+"-Nerd tree
+Plug 'scrooloose/nerdtree'
+    "let NERDTreeShowHidden=1
 
 call plug#end()
