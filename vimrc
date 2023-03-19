@@ -1,13 +1,13 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.03.07
-" Version       :   v3.3
+" Last update   :   2023.03.19
+" Version       :   v3.4
 "
 "----------------------------------------
 
 "---Tabulations
-set tabstop=4       " number of visual spaces per TAB
+set tabstop=4       " number of visual spaces per tab
 set softtabstop=4   " number of spaces in tab when editing
 set shiftwidth=4    " number of spaces to use for auto indent
 set expandtab       " tabs are space
@@ -42,17 +42,20 @@ set mouse=r
 set nolist "Don't show '$' at the end of lines
 
 "---Remapping
-"-Scrolling remap
-nnoremap <C-down> <C-e>
-nnoremap <C-up> <C-y>
+"-Escape from insert mode
+inoremap jk <esc>
+inoremap kj <esc>
 
-"-Various
-" nnoremap j gj
-" nnoremap k gk
+"-Shift + tab in insert mode does the opposite of tab.
+inoremap <S-Tab> <C-d>
+
+"-In visual mode, i indents selection, I remove one indentation, and both reselct the selection
+vnoremap i >gv
+vnoremap I <gv
 
 "-Remap for plugins
 nnoremap <C-t> :NERDTreeToggle<CR>
-autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+"autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
 
 "---Plugins
