@@ -2,7 +2,7 @@
 "
 " Author        :   Lasercata
 " Last update   :   2023.03.19
-" Version       :   v3.4
+" Version       :   v3.5
 "
 "----------------------------------------
 
@@ -82,5 +82,11 @@ Plug 'lervag/vimtex'
 "-Nerd tree
 Plug 'scrooloose/nerdtree'
     "let NERDTreeShowHidden=1
+
+"-Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline_powerline_fonts = 1
 
 call plug#end()
