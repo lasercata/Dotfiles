@@ -2,7 +2,7 @@
 
 This repository contain my neovim vimrc (Vim configuration file).
 
-## Installation
+## Neovim configuration file
 The default configuration file for NeoVim is `~/.config/nvim/init.vim` (on Linux). You can add to the end of this file the command
 ```vim
 source ~/.vimrc
@@ -18,6 +18,8 @@ See [https://github.com/equalsraf/neovim-qt](https://github.com/equalsraf/neovim
 
 ## Snippets
 There is currently two snippets, `all.snippets` that contain definition for auto closing parenthesis, braces, ..., and `tex.snippet` that contain LaTeX snippets (some need to use [this](https://github.com/lasercata/LaTeX_Templates) template).
+
+Add the folder `my_snippets` to `~/.config/nvim/my_snippets`.
 
 See [https://github.com/sirver/ultisnips/](https://github.com/sirver/ultisnips/).
 
