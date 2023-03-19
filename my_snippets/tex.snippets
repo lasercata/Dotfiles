@@ -1,0 +1,166 @@
+#------------------------------------------------
+#
+# Author            :   Lasercata
+# Last modification :   2022.11.02
+# Version           :   v1.5
+#
+# Contain definition of snippets for LaTex.
+# Some of them need my LaTeX template.
+# (https://github.com/lasercata/LaTeX_Templates)
+#
+#------------------------------------------------
+
+extends tex, latex
+
+#------Definition of different modes
+global !p
+def math():
+    return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+
+def comment(): 
+    return vim.eval('vimtex#syntax#in_comment()') == '1'
+
+def env(name):
+    [x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
+    return x != '0' and x != '0'
+
+endglobal
+
+
+#------Text mode
+#---Env
+snippet beg "begin{} / end{}" bA
+\begin{$1}
+	${VISUAL}$0
+\end{$1}
+endsnippet
+
+snippet Beg "begin{}{} / end{}" bA
+\begin{$1}{$2}
+	${VISUAL}$0
+\end{$1}
+endsnippet
+
+#-Sections with indt environnement
+snippet sec "Section with indt env" bA
+\begin{indt}{\section{$1}}
+	${VISUAL}$0
+\end{indt}
+endsnippet
+
+snippet sub "Subsection with indt env" bA
+\begin{indt}{\subsection{$1}}
+	${VISUAL}$0
+\end{indt}
+endsnippet
+
+snippet ssub "Subsubsection with indt env" bA
+\begin{indt}{\subsubsection{$1}}
+	${VISUAL}$0
+\end{indt}
+endsnippet
+
+#-indt
+snippet indt "indt env" bA
+\begin{indt}{${VISUAL}$1}
+	$0
+\end{indt}
+endsnippet
+
+#-Tikz
+snippet tikz "centered tikzpicture env" bA
+\begin{center}
+	\begin{tikzpicture}
+		$0;
+	\end{tikzpicture}
+\end{center}
+endsnippet
+
+#-Proof
+snippet proof "proof env" bA
+\begin{proof}
+	$0
+\end{proof}
+endsnippet
+
+#-emphBox
+snippet embox "emphBox env" bA
+\begin{emphBox}
+	$0
+\end{emphBox}
+endsnippet
+
+#-lstlistings
+snippet clst "C listings" bA
+\begin{lstlisting}[language=C, xleftmargin=$1pt]
+$0
+\end{lstlisting}
+endsnippet
+
+snippet mllst "OCaml listings" bA
+\begin{lstlisting}[language=Caml, xleftmargin=$1pt]
+$0
+\end{lstlisting}
+endsnippet
+
+snippet lstl "listings" bA
+\begin{lstlisting}[language=$1, xleftmargin=$2pt]
+$0
+\end{lstlisting}
+endsnippet
+
+snippet algo "Algorithm" bA
+\begin{indalgo}{$1}
+	$0
+\end{indalgo}
+endsnippet
+
+#-\vspace
+snippet vs "vspace" wbA
+\vspace{$1pt}
+
+$0
+endsnippet
+
+#-\bullet
+snippet .b "bullet" bA
+$\bullet$ $0
+endsnippet
+
+#---Open math mode
+snippet $ "Autoclose $$" A
+$${VISUAL}$1$$0
+endsnippet
+
+snippet md "Display maths" wbA
+\[
+	${VISUAL}${1}
+\]$0
+endsnippet
+
+
+#------Math mode
+context "math()"
+snippet // "dfrac" A
+\dfrac{$1}{$2}$0
+endsnippet
+
+context "math()"
+snippet lr "Left right" w
+\left$1 $3 \right$2 $0
+endsnippet
+
+context "math()"
+snippet oo "infty" wA
+\infty
+endsnippet
+
+context "math()"
+snippet dps "\displaystyle" wA
+\displaystyle
+endsnippet
+
+context "math()"
+snippet empty "\varnothing" wA
+\varnothing
+endsnippet
