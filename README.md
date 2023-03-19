@@ -20,3 +20,9 @@ See [https://github.com/equalsraf/neovim-qt](https://github.com/equalsraf/neovim
 There is currently two snippets, `all.snippets` that contain definition for auto closing parenthesis, braces, ..., and `tex.snippet` that contain LaTeX snippets (some need to use [this](https://github.com/lasercata/LaTeX_Templates) template).
 
 See [https://github.com/sirver/ultisnips/](https://github.com/sirver/ultisnips/).
+
+## Tmux
+[Tmux](https://github.com/tmux/tmux/wiki) is a terminal multiplexer.
+
+
+The file `tmux.conf` from this repository is a configuration file for tmux (should be located at `~/.tmux.conf`) that define vim-like commands.
