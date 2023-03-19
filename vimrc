@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2022.05.01
-" Version       :   v3.1
+" Last update   :   2022.10.31
+" Version       :   v3.2
 "
 "----------------------------------------
 
@@ -47,8 +47,8 @@ nnoremap <C-down> <C-e>
 nnoremap <C-up> <C-y>
 
 "-Various
-nnoremap j gj
-nnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
 
 
 "---Plugins
