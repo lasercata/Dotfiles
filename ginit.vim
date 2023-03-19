@@ -1,13 +1,13 @@
 "--------------------------------
 "
 " Author            : Lasercata
-" Last modification : 2022.10.09
-" Version           : v1.0
+" Last modification : 2023.03.19
+" Version           : v1.1
 "
 "--------------------------------
 
 
-" Enable Mouse
+" Enable Mouse for scrolling
 set mouse=n
 
 " Set Editor Font
@@ -44,3 +44,6 @@ hi Comment guifg=#16a085
 hi Special guifg=#fdd5d5
 hi Normal guifg=#1c1e1f guifg=#ffffff
 hi LineNr guifg=#f9b94a
+
+" File tree
+nnoremap <C-t> :GuiTreeviewToggle<CR>
