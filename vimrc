@@ -2,7 +2,7 @@
 "
 " Author        :   Lasercata
 " Last update   :   2023.03.19
-" Version       :   v3.5
+" Version       :   v3.6
 "
 "----------------------------------------
 
@@ -88,5 +88,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline_powerline_fonts = 1
+
+"-Tmuxline
+Plug 'edkolev/tmuxline.vim'
+    let g:airline#extensions#tmuxline#enabled = 1
+    let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
 
 call plug#end()
