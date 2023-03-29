@@ -9,6 +9,8 @@ source ~/.vimrc
 ```
 and download the `vimrc` file from this repository and put it in the file `~/.vimrc`.
 
+To install the plugins, run `:PlugInstall` in nvim.
+
 
 ## neovim-qt template
 The file `ginit.vim` is the configuration file for `neovim-qt` and should be at `~/.config/nvim/ginit.vim` (for Linux).
