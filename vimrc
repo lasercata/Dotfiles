@@ -27,11 +27,16 @@ set hlsearch " Highlight matches
 "inoremap { {}<left>
 "inoremap {<CR> {<CR>}<ESC>O
 
-"vnoremap ( c()<ESC>P "But do not works in V mode (select lines.) So does the
-"followings ones :
-vnoremap ( <ESC>`>a)<ESC>`<i(<ESC>
-vnoremap [ <ESC>`>a]<ESC>`<i[<ESC>
-vnoremap { <ESC>`>a}<ESC>`<i{<ESC>
+"---Wrap selection with a delimiter (in visual mode)
+"vnoremap ( c()<ESC>P "But do not works in V mode (select lines).
+vnoremap ( <ESC>`>a)<ESC>`<i(<ESC>%
+vnoremap [ <ESC>`>a]<ESC>`<i[<ESC>%
+vnoremap { <ESC>`>a}<ESC>`<i{<ESC>%
+
+"Deleting surrounding delimiter (any that is detected with %) in normal mode.
+"The cursor can be anywhere inside the delimiter pair.
+nnoremap <SPACE>ds %v%<ESC>x`<x`>
+
 
 "---Spelling
 setlocal spell
