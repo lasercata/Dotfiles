@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.03.19
-" Version       :   v3.6
+" Last update   :   2023.03.31
+" Version       :   v3.7
 "
 "----------------------------------------
 
@@ -18,13 +18,20 @@ set copyindent      " copy indent from the previous line
 set incsearch "Search as char entered
 set hlsearch " Highlight matches
 
-"---Auto close delimiters (done with snippets, see all.snippets)
+"---Auto close delimiters (done with snippets, see all.snippets. Now using
+"pear-tree)
 "inoremap " ""<left>
 "inoremap ' ''<left>
 "inoremap ( ()<left>
 "inoremap [ []<left>
 "inoremap { {}<left>
 "inoremap {<CR> {<CR>}<ESC>O
+
+"vnoremap ( c()<ESC>P "But do not works in V mode (select lines.) So does the
+"followings ones :
+vnoremap ( <ESC>`>a)<ESC>`<i(<ESC>
+vnoremap [ <ESC>`>a]<ESC>`<i[<ESC>
+vnoremap { <ESC>`>a}<ESC>`<i{<ESC>
 
 "---Spelling
 setlocal spell
@@ -93,5 +100,12 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
     let g:airline#extensions#tmuxline#enabled = 1
     let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
+
+"-Pear-tree
+Plug 'tmsvg/pear-tree'
+    let g:pear_tree_smart_openers = 1
+    let g:pear_tree_smart_closers = 1
+    let g:pear_tree_smart_backspace = 1
+    let g:pear_tree_repeatable_expand = 0
 
 call plug#end()
