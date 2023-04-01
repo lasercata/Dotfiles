@@ -2,7 +2,7 @@
 "
 " Author        :   Lasercata
 " Last update   :   2023.03.31
-" Version       :   v3.7
+" Version       :   v3.8
 "
 "----------------------------------------
 
@@ -14,12 +14,38 @@ set expandtab       " tabs are space
 set autoindent
 set copyindent      " copy indent from the previous line
 
-"---Search
-set incsearch "Search as char entered
-set hlsearch " Highlight matches
+"---Syntax
+filetype plugin indent on "Enable file type detection, indent for the detected file type, and use the plugin for it.
+syntax enable             "Enable syntax highlighting
+set background=dark
 
-"---Auto close delimiters (done with snippets, see all.snippets. Now using
-"pear-tree)
+"---Appearance
+set nu     "Line numbers
+set ruler  "Show things at bottom right
+set mouse=r
+set nolist "Don't show '$' at the end of lines
+
+"---Search
+set incsearch  "Search as char entered
+set hlsearch   "Highlight matches
+set ignorecase "Ignore the case of normal letters in search
+set smartcase  "Overwrite ignorecase if there is an uppercase character in the searched text
+
+"---Spelling
+setlocal spell
+set spelllang=en_us,fr
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+"---Mappings
+"-Leader key
+let mapleader = " "
+let maplocalleader = ","
+
+"-Escape from insert mode
+inoremap jk <esc>
+inoremap kj <esc>
+
+"-Auto close delimiters (now using pear-tree extension)
 "inoremap " ""<left>
 "inoremap ' ''<left>
 "inoremap ( ()<left>
@@ -27,43 +53,24 @@ set hlsearch " Highlight matches
 "inoremap { {}<left>
 "inoremap {<CR> {<CR>}<ESC>O
 
-"---Wrap selection with a delimiter (in visual mode)
-"vnoremap ( c()<ESC>P "But do not works in V mode (select lines).
+"-Wrap selection with a delimiter (in visual mode)
 vnoremap ( <ESC>`>a)<ESC>`<i(<ESC>%
 vnoremap [ <ESC>`>a]<ESC>`<i[<ESC>%
 vnoremap { <ESC>`>a}<ESC>`<i{<ESC>%
 
-"Deleting surrounding delimiter (any that is detected with %) in normal mode.
+"-Deleting surrounding delimiter (any that is detected with %) in normal mode.
 "The cursor can be anywhere inside the delimiter pair.
-nnoremap <SPACE>ds %v%<ESC>x`<x`>
+nnoremap <leader>ds %v%<ESC>x`<x`>
 
+"-Change window
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
 
-"---Spelling
-setlocal spell
-set spelllang=en_us,fr
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
-
-"---Other
-filetype plugin indent on
-syntax enable
-set background=dark
-
-set nu "Line numbers
-set ruler "Show things at bottom right
-set mouse=r
-set nolist "Don't show '$' at the end of lines
-
-"---Remapping
-"-Escape from insert mode
-inoremap jk <esc>
-inoremap kj <esc>
-
-"-Shift + tab in insert mode does the opposite of tab.
-inoremap <S-Tab> <C-d>
-
-"-In visual mode, i indents selection, I remove one indentation, and both reselct the selection
-vnoremap i >gv
-vnoremap I <gv
+"-In visual mode, <leader>i indents selection, <leader>I decrease indentation, and both reselect the selection
+vnoremap <leader>i >gv
+vnoremap <leader>I <gv
 
 "-Remap for plugins
 nnoremap <C-t> :NERDTreeToggle<CR>
@@ -84,7 +91,6 @@ Plug 'sirver/ultisnips'
 "-Vimtex
 Plug 'lervag/vimtex'
     let g:vimtex_view_method = 'zathura'
-    let maplocalleader = ","
 
 "-Vim-Slime (for ocaml)
 "Plug 'jpalardy/vim-slime'
