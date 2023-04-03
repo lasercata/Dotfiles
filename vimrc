@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.03.31
-" Version       :   v3.8
+" Last update   :   2023.04.03
+" Version       :   v3.9
 "
 "----------------------------------------
 
@@ -22,8 +22,9 @@ set background=dark
 "---Appearance
 set nu     "Line numbers
 set ruler  "Show things at bottom right
-set mouse=r
 set nolist "Don't show '$' at the end of lines
+set mouse=r
+set scrolloff=3
 
 "---Search
 set incsearch  "Search as char entered
