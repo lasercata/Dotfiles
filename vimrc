@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.04.03
-" Version       :   v3.9
+" Last update   :   2023.04.07
+" Version       :   v3.10
 "
 "----------------------------------------
 
@@ -35,7 +35,12 @@ set smartcase  "Overwrite ignorecase if there is an uppercase character in the s
 "---Spelling
 setlocal spell
 set spelllang=en_us,fr
+
+" Correct the closer error behind cursor in insert mode.
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+" Toggle spell in normal mode
+nnoremap <C-s> :set invspell<CR>
 
 "---Mappings
 "-Leader key
