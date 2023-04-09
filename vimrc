@@ -2,7 +2,7 @@
 "
 " Author        :   Lasercata
 " Last update   :   2023.04.09
-" Version       :   v3.11
+" Version       :   v3.12
 "
 "----------------------------------------
 
@@ -50,6 +50,9 @@ let maplocalleader = ","
 "-Escape from insert mode
 inoremap jk <esc>
 inoremap kj <esc>
+
+"-Deleting in insert mode (with C-h) starts a new undo sequence
+inoremap <C-h> <C-g>u<C-h>
 
 "-Auto close delimiters (now using pear-tree extension)
 "inoremap " ""<left>
