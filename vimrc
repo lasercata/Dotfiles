@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.04.07
-" Version       :   v3.10
+" Last update   :   2023.04.09
+" Version       :   v3.11
 "
 "----------------------------------------
 
@@ -73,6 +73,15 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
+
+"-Move cursor in insert mode
+inoremap <M-j> <Down>
+inoremap <M-k> <Up>
+inoremap <M-l> <Right>
+inoremap <M-h> <Left>
+
+inoremap <M-$> <End>
+inoremap <M-_> <Home>
 
 "-In visual mode, <leader>i indents selection, <leader>I decrease indentation, and both reselect the selection
 vnoremap <leader>i >gv
