@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.04.09
-" Version       :   v3.12
+" Last update   :   2023.04.10
+" Version       :   v3.13
 "
 "----------------------------------------
 
@@ -51,8 +51,13 @@ let maplocalleader = ","
 inoremap jk <esc>
 inoremap kj <esc>
 
-"-Deleting in insert mode (with C-h) starts a new undo sequence
+"-Also from terminal
+tnoremap jk <C-\><C-n>
+tnoremap kj <C-\><C-n>
+
+"-Deleting in insert mode (with C-h, C-w) starts a new undo sequence
 inoremap <C-h> <C-g>u<C-h>
+inoremap <C-w> <C-g>u<C-w>
 
 "-Auto close delimiters (now using pear-tree extension)
 "inoremap " ""<left>
@@ -77,14 +82,30 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
-"-Move cursor in insert mode
+"Also from terminal
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+tnoremap <C-h> <C-\><C-n><C-w>h
+
+"-Change buffer faster
+nnoremap <C-n> :bn<CR>
+nnoremap <C-p> :bp<CR>
+
+"-Move cursor in insert and command mode : Alt + [hjkl$_]
 inoremap <M-j> <Down>
 inoremap <M-k> <Up>
 inoremap <M-l> <Right>
 inoremap <M-h> <Left>
-
 inoremap <M-$> <End>
 inoremap <M-_> <Home>
+
+cnoremap <M-j> <Down>
+cnoremap <M-k> <Up>
+cnoremap <M-l> <Right>
+cnoremap <M-h> <Left>
+cnoremap <M-$> <End>
+cnoremap <M-_> <Home>
 
 "-In visual mode, <leader>i indents selection, <leader>I decrease indentation, and both reselect the selection
 vnoremap <leader>i >gv
@@ -137,4 +158,13 @@ Plug 'tmsvg/pear-tree'
     let g:pear_tree_smart_backspace = 1
     let g:pear_tree_repeatable_expand = 0
 
+"-Catppuccin colorscheme
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+
+"-Nightfly colorscheme
+Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
+
 call plug#end()
+
+"---Apply theme
+colorscheme nightfly
