@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.04.10
-" Version       :   v3.13
+" Last update   :   2023.04.11
+" Version       :   v3.13.1
 "
 "----------------------------------------
 
@@ -43,7 +43,7 @@ inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 nnoremap <C-s> :set invspell<CR>
 
 "---Mappings
-"-Leader key
+"-Leader keys
 let mapleader = " "
 let maplocalleader = ","
 
@@ -52,8 +52,9 @@ inoremap jk <esc>
 inoremap kj <esc>
 
 "-Also from terminal
-tnoremap jk <C-\><C-n>
-tnoremap kj <C-\><C-n>
+"tnoremap jk <C-\><C-n>
+"tnoremap kj <C-\><C-n>
+tnoremap <ESC> <C-\><C-n>
 
 "-Deleting in insert mode (with C-h, C-w) starts a new undo sequence
 inoremap <C-h> <C-g>u<C-h>
@@ -163,6 +164,10 @@ Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 "-Nightfly colorscheme
 Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
+    let g:nightflyTransparent= v:true
+
+"-Moonfly
+Plug 'bluz71/vim-moonfly-colors', { 'as': 'moonfly' }
 
 call plug#end()
 
