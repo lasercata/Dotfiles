@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.04.11
-" Version       :   v3.13.1
+" Last update   :   2023.04.13
+" Version       :   v3.13.2
 "
 "----------------------------------------
 
@@ -111,6 +111,10 @@ cnoremap <M-_> <Home>
 "-In visual mode, <leader>i indents selection, <leader>I decrease indentation, and both reselect the selection
 vnoremap <leader>i >gv
 vnoremap <leader>I <gv
+
+"Also from normal mode
+nnoremap <leader>i >>
+nnoremap <leader>I <<
 
 "-Remap for plugins
 nnoremap <C-t> :NERDTreeToggle<CR>
