@@ -1,8 +1,8 @@
 "--------------------------------
 "
 " Author            : Lasercata
-" Last modification : 2023.03.19
-" Version           : v1.1
+" Last modification : 2023.04.12
+" Version           : v1.2
 "
 "--------------------------------
 
@@ -38,12 +38,14 @@ xnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>gv
 snoremap <silent><RightMouse> <C-G>:call GuiShowContextMenu()<CR>gv
 
 " Colors
-hi Statement guifg=#fdbc4b gui=none
-hi PreProc guifg=#5fd7ff
-hi Comment guifg=#16a085
-hi Special guifg=#fdd5d5
-hi Normal guifg=#1c1e1f guifg=#ffffff
-hi LineNr guifg=#f9b94a
+"hi Statement guifg=#fdbc4b gui=none
+"hi PreProc guifg=#5fd7ff
+"hi Comment guifg=#16a085
+"hi Special guifg=#fdd5d5
+"hi Normal guifg=#1c1e1f guifg=#ffffff
+"hi LineNr guifg=#f9b94a
+"
+"Now using the colorscheme 'nightfly'.
 
 " File tree
 nnoremap <C-t> :GuiTreeviewToggle<CR>
