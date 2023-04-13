@@ -2,7 +2,7 @@
 "
 " Author        :   Lasercata
 " Last update   :   2023.04.13
-" Version       :   v3.13.2
+" Version       :   v3.13.3
 "
 "----------------------------------------
 
@@ -116,10 +116,6 @@ vnoremap <leader>I <gv
 nnoremap <leader>i >>
 nnoremap <leader>I <<
 
-"-Remap for plugins
-nnoremap <C-t> :NERDTreeToggle<CR>
-"autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
-
 
 "---Plugins
 call plug#begin('~/.config/nvim/plugged')
@@ -144,6 +140,9 @@ Plug 'lervag/vimtex'
 "-Nerd tree
 Plug 'scrooloose/nerdtree'
     "let NERDTreeShowHidden=1
+    nnoremap <C-t> :NERDTreeToggle<CR>
+    "autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+
 
 "-Airline
 Plug 'vim-airline/vim-airline'
@@ -162,6 +161,10 @@ Plug 'tmsvg/pear-tree'
     let g:pear_tree_smart_closers = 1
     let g:pear_tree_smart_backspace = 1
     let g:pear_tree_repeatable_expand = 0
+
+"-Tagbar: a class outline viewer for Vim
+Plug 'preservim/tagbar'
+    nnoremap <leader>o :TagbarToggle<CR>
 
 "-Catppuccin colorscheme
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
