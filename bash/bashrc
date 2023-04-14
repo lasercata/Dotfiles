@@ -2,7 +2,7 @@
 #
 # Author            : Parrot OS, then Lasercata
 # Last modification : 2023.04.14
-# Version           : v1.4
+# Version           : v1.5
 #
 #-----------------------------------------------
 
@@ -156,6 +156,7 @@ fi
 
 #------Vi mode
 set -o vi
+EDITOR=nvim #The editor used for visual mode (when hitting v in normal mode in command line, open the line in an editor)
 
 
 #------Cap locks
