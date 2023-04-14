@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.04.13
-" Version       :   v3.13.3
+" Last update   :   2023.04.14
+" Version       :   v3.13.4
 "
 "----------------------------------------
 
@@ -13,6 +13,8 @@ set shiftwidth=4    " number of spaces to use for auto indent
 set expandtab       " tabs are space
 set autoindent
 set copyindent      " copy indent from the previous line
+
+set breakindent     "Add indentation to wrapped lines.
 
 "---Syntax
 filetype plugin indent on "Enable file type detection, indent for the detected file type, and use the plugin for it.
