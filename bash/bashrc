@@ -1,8 +1,8 @@
 #-----------------------------------------------
 #
-# Author            : Parrot OS, then lasercata
-# Last modification : 2023.04.12
-# Version           : v1.3
+# Author            : Parrot OS, then Lasercata
+# Last modification : 2023.04.14
+# Version           : v1.4
 #
 #-----------------------------------------------
 
@@ -16,8 +16,10 @@ case $- in
       *) return;;
 esac
 
+
 #------Path
 export PATH=~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH
+
 
 #------History
 # don't put duplicate lines or lines starting with space in the history.
@@ -26,10 +28,6 @@ HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-export HISTSIZE=10000
-export HISTFILESIZE=10000
 
 # Add date and timestamps to bash history
 export HISTTIMEFORMAT='%F, %T | '
@@ -40,22 +38,28 @@ PROMPT_COMMAND='history -a'
 #Ignore some commands
 export HISTIGNORE="history:ls:ll"
 
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTSIZE=10000
+export HISTFILESIZE=20000 #For some reason, this does not works : echo $HISTSIZE shows the right number, but only last 1000 commands are kept ...
+
+
+#------Other
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-#------Other
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
-#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
+
 
 #------Colors
 # set a fancy prompt (non-color, unless we know we "want" color)
@@ -130,25 +134,12 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+
 #------Aliases
-# some more ls aliases
-alias ll='ls -lh'
-alias la='ls -lha'
-alias l='ls -CF'
-alias em='emacs -nw'
-alias dd='dd status=progress'
-alias _='sudo'
-alias _i='sudo -i'
-alias please='sudo'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
 
 #------Completion
 # enable programmable completion features (you don't need to enable
@@ -162,8 +153,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
 #------Vi mode
 set -o vi
+
 
 #------Cap locks
 # Disable the cap locks key
