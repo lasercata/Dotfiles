@@ -2,20 +2,21 @@
 "
 " Author        :   Lasercata
 " Last update   :   2023.04.17
-" Version       :   v3.13.5
+" Version       :   v3.13.6
 "
 "----------------------------------------
 
 
 "---Tabulations
-set tabstop=4       " number of visual spaces per tab
-set softtabstop=4   " number of spaces in tab when editing
-set shiftwidth=4    " number of spaces to use for auto indent
-set expandtab       " tabs are space
+set tabstop=4              " number of visual spaces per tab
+set softtabstop=4          " number of spaces in tab when editing
+set shiftwidth=4           " number of spaces to use for auto indent
+set expandtab              " tabs are space
 set autoindent
-set copyindent      " copy indent from the previous line
+set copyindent             " copy indent from the previous line
 
-set breakindent     "Add indentation to wrapped lines.
+set breakindent            "Add indentation to wrapped lines.
+set breakindentopt=shift:1 "Wrapped lines will have one more space.
 
 
 "---Syntax
@@ -179,17 +180,15 @@ Plug 'tmsvg/pear-tree'
 Plug 'preservim/tagbar'
     nnoremap <leader>o :TagbarToggle<CR>
 
-"-Catppuccin colorscheme
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-
 "-Nightfly colorscheme
 Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
     let g:nightflyTransparent= v:true
 
-"-Moonfly
-Plug 'bluz71/vim-moonfly-colors', { 'as': 'moonfly' }
+"-Monokai colorscheme
+Plug 'tanvirtin/monokai.nvim'
 
 call plug#end()
 
 "---Apply theme
 colorscheme nightfly
+
