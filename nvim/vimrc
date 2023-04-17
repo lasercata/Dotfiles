@@ -1,10 +1,11 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.04.14
-" Version       :   v3.13.4
+" Last update   :   2023.04.17
+" Version       :   v3.13.5
 "
 "----------------------------------------
+
 
 "---Tabulations
 set tabstop=4       " number of visual spaces per tab
@@ -16,23 +17,28 @@ set copyindent      " copy indent from the previous line
 
 set breakindent     "Add indentation to wrapped lines.
 
+
 "---Syntax
 filetype plugin indent on "Enable file type detection, indent for the detected file type, and use the plugin for it.
 syntax enable             "Enable syntax highlighting
-set background=dark
+
 
 "---Appearance
-set nu     "Line numbers
-set ruler  "Show things at bottom right
-set nolist "Don't show '$' at the end of lines
+set background=dark
+set nu             "Line numbers
+set relativenumber "Relative line number to current position
+set ruler          "Show things at bottom right
+set nolist         "Don't show '$' at the end of lines
 set mouse=r
 set scrolloff=3
+
 
 "---Search
 set incsearch  "Search as char entered
 set hlsearch   "Highlight matches
 set ignorecase "Ignore the case of normal letters in search
 set smartcase  "Overwrite ignorecase if there is an uppercase character in the searched text
+
 
 "---Spelling
 setlocal spell
@@ -43,6 +49,7 @@ inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Toggle spell in normal mode
 nnoremap <C-s> :set invspell<CR>
+
 
 "---Mappings
 "-Leader keys
@@ -118,6 +125,9 @@ vnoremap <leader>I <gv
 nnoremap <leader>i >>
 nnoremap <leader>I <<
 
+"-Toggle relative line
+nnoremap <leader>n :set invrelativenumber<CR>
+
 
 "---Plugins
 call plug#begin('~/.config/nvim/plugged')
@@ -142,7 +152,8 @@ Plug 'lervag/vimtex'
 "-Nerd tree
 Plug 'scrooloose/nerdtree'
     "let NERDTreeShowHidden=1
-    nnoremap <C-t> :NERDTreeToggle<CR>
+    "nnoremap <C-t> :NERDTreeToggle<CR>
+    nnoremap <leader>e :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>
     "autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
 
