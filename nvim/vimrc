@@ -2,12 +2,12 @@
 "
 " Author        :   Lasercata
 " Last update   :   2023.04.17
-" Version       :   v3.13.6
+" Version       :   v3.14.0
 "
 "----------------------------------------
 
 
-"---Tabulations
+"------Tabulations
 set tabstop=4              " number of visual spaces per tab
 set softtabstop=4          " number of spaces in tab when editing
 set shiftwidth=4           " number of spaces to use for auto indent
@@ -19,12 +19,12 @@ set breakindent            "Add indentation to wrapped lines.
 set breakindentopt=shift:1 "Wrapped lines will have one more space.
 
 
-"---Syntax
+"------Syntax
 filetype plugin indent on "Enable file type detection, indent for the detected file type, and use the plugin for it.
 syntax enable             "Enable syntax highlighting
 
 
-"---Appearance
+"------Appearance
 set background=dark
 set nu             "Line numbers
 set relativenumber "Relative line number to current position
@@ -34,14 +34,14 @@ set mouse=r
 set scrolloff=3
 
 
-"---Search
+"------Search
 set incsearch  "Search as char entered
 set hlsearch   "Highlight matches
 set ignorecase "Ignore the case of normal letters in search
 set smartcase  "Overwrite ignorecase if there is an uppercase character in the searched text
 
 
-"---Spelling
+"------Spelling
 setlocal spell
 set spelllang=en_us,fr
 
@@ -52,25 +52,23 @@ inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 nnoremap <C-s> :set invspell<CR>
 
 
-"---Mappings
-"-Leader keys
+"------Mappings
+"---Leader keys
 let mapleader = " "
 let maplocalleader = ","
 
-"-Escape from insert mode
+"---Escape from insert mode
 inoremap jk <esc>
 inoremap kj <esc>
 
-"-Also from terminal
-"tnoremap jk <C-\><C-n>
-"tnoremap kj <C-\><C-n>
+"---Also from terminal
 tnoremap <ESC> <C-\><C-n>
 
-"-Deleting in insert mode (with C-h, C-w) starts a new undo sequence
+"---Deleting in insert mode (with C-h, C-w) starts a new undo sequence
 inoremap <C-h> <C-g>u<C-h>
 inoremap <C-w> <C-g>u<C-w>
 
-"-Auto close delimiters (now using pear-tree extension)
+"---Auto close delimiters (now using pear-tree extension)
 "inoremap " ""<left>
 "inoremap ' ''<left>
 "inoremap ( ()<left>
@@ -78,16 +76,16 @@ inoremap <C-w> <C-g>u<C-w>
 "inoremap { {}<left>
 "inoremap {<CR> {<CR>}<ESC>O
 
-"-Wrap selection with a delimiter (in visual mode)
+"---Wrap selection with a delimiter (in visual mode)
 vnoremap ( <ESC>`>a)<ESC>`<i(<ESC>%
 vnoremap [ <ESC>`>a]<ESC>`<i[<ESC>%
 vnoremap { <ESC>`>a}<ESC>`<i{<ESC>%
 
-"-Deleting surrounding delimiter (any that is detected with %) in normal mode.
+"---Deleting surrounding delimiter (any that is detected with %) in normal mode.
 "The cursor can be anywhere inside the delimiter pair.
 nnoremap <leader>ds %v%<ESC>x`<x`>
 
-"-Change window
+"---Change window
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
@@ -99,11 +97,11 @@ tnoremap <C-k> <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
 tnoremap <C-h> <C-\><C-n><C-w>h
 
-"-Change buffer faster
+"---Change buffer faster
 nnoremap <C-n> :bn<CR>
 nnoremap <C-p> :bp<CR>
 
-"-Move cursor in insert and command mode : Alt + [hjkl$_]
+"---Move cursor in insert and command mode : Alt + [hjkl$_]
 inoremap <M-j> <Down>
 inoremap <M-k> <Up>
 inoremap <M-l> <Right>
@@ -118,7 +116,7 @@ cnoremap <M-h> <Left>
 cnoremap <M-$> <End>
 cnoremap <M-_> <Home>
 
-"-In visual mode, <leader>i indents selection, <leader>I decrease indentation, and both reselect the selection
+"---In visual mode, <leader>i indents selection, <leader>I decrease indentation, and both reselect the selection
 vnoremap <leader>i >gv
 vnoremap <leader>I <gv
 
@@ -126,13 +124,14 @@ vnoremap <leader>I <gv
 nnoremap <leader>i >>
 nnoremap <leader>I <<
 
-"-Toggle relative line
+"---Toggle relative line
 nnoremap <leader>n :set invrelativenumber<CR>
 
 
-"---Plugins
+"------Plugins
 call plug#begin('~/.config/nvim/plugged')
 
+"---Prog
 "-UltiSnips snippets
 Plug 'sirver/ultisnips'
     let g:UltiSnipsExpandTrigger = '<tab>'
@@ -150,14 +149,34 @@ Plug 'lervag/vimtex'
     "let g:slime_target = "tmux"
     "let g:slime_paste_file = "$HOME/.slime_paste"
 
-"-Nerd tree
+
+"---Utilities
+"-Nerd tree : a file explorer in a side bar
 Plug 'scrooloose/nerdtree'
     "let NERDTreeShowHidden=1
     "nnoremap <C-t> :NERDTreeToggle<CR>
     nnoremap <leader>e :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>
     "autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
+"-Pear-tree : auto close some delimiters
+Plug 'tmsvg/pear-tree'
+    let g:pear_tree_smart_openers = 1
+    let g:pear_tree_smart_closers = 1
+    let g:pear_tree_smart_backspace = 1
+    let g:pear_tree_repeatable_expand = 0
 
+"-Tagbar : a class outline viewer for Vim
+Plug 'preservim/tagbar'
+    nnoremap <leader>o :TagbarToggle<CR>
+
+"-Telescope : a fuzzy finder
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+    nnoremap <leader>f :Telescope find_files<CR>
+    nnoremap <leader>b :Telescope buffers<CR>
+
+
+"---Style
 "-Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -169,26 +188,17 @@ Plug 'edkolev/tmuxline.vim'
     let g:airline#extensions#tmuxline#enabled = 1
     let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
 
-"-Pear-tree
-Plug 'tmsvg/pear-tree'
-    let g:pear_tree_smart_openers = 1
-    let g:pear_tree_smart_closers = 1
-    let g:pear_tree_smart_backspace = 1
-    let g:pear_tree_repeatable_expand = 0
-
-"-Tagbar: a class outline viewer for Vim
-Plug 'preservim/tagbar'
-    nnoremap <leader>o :TagbarToggle<CR>
-
 "-Nightfly colorscheme
 Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
-    let g:nightflyTransparent= v:true
+    "let g:nightflyTransparent= v:true
 
 "-Monokai colorscheme
 Plug 'tanvirtin/monokai.nvim'
+    "To keep transparency after changing the colorscheme :
+    au ColorScheme * hi Normal ctermbg=none guibg=none
 
 call plug#end()
 
-"---Apply theme
+"-----Apply theme
 colorscheme nightfly
 
