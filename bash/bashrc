@@ -1,8 +1,8 @@
 #-----------------------------------------------
 #
 # Author            : Parrot OS, then Lasercata
-# Last modification : 2023.04.14
-# Version           : v1.5
+# Last modification : 2023.04.17
+# Version           : v1.6
 #
 #-----------------------------------------------
 
@@ -50,7 +50,7 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -166,3 +166,6 @@ EDITOR=nvim #The editor used for visual mode (when hitting v in normal mode in c
 #setxkbmap -option
 # Done in system settings.
 
+#------fzf bindings and autocompletion
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/doc/fzf/examples/completion.bash
