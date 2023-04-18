@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.04.17
-" Version       :   v3.14.0
+" Last update   :   2023.04.18
+" Version       :   v3.14.1
 "
 "----------------------------------------
 
@@ -126,6 +126,9 @@ nnoremap <leader>I <<
 
 "---Toggle relative line
 nnoremap <leader>n :set invrelativenumber<CR>
+
+"---Make
+nnoremap <F5> :make<CR>
 
 
 "------Plugins
