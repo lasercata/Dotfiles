@@ -6,6 +6,8 @@ source ~/.vimrc
 ```
 and download the `vimrc` file from this repository and put it in the file `~/.vimrc`.
 
+I use [vim-plug](https://github.com/junegunn/vim-plug) as my plugin manager in the configuration file.
+
 To install the plugins, run `:PlugInstall` in nvim.
 
 
