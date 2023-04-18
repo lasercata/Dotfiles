@@ -1,8 +1,8 @@
 "--------------------------------
 "
 " Author            : Lasercata
-" Last modification : 2023.04.12
-" Version           : v1.2
+" Last modification : 2023.04.18
+" Version           : v1.3
 "
 "--------------------------------
 
@@ -13,12 +13,12 @@ set mouse=n
 " Set Editor Font
 if exists(':GuiFont')
     " Use GuiFont! to ignore font errors
-    GuiFont! Hack:h10
+    GuiFont! Hack Nerd Font:h10
 endif
 
-" Enable GUI Tabline
+" Disable GUI Tabline
 if exists(':GuiTabline')
-    GuiTabline 1
+    GuiTabline 0
 endif
 
 " Disable GUI Popupmenu
@@ -26,9 +26,9 @@ if exists(':GuiPopupmenu')
     GuiPopupmenu 0
 endif
 
-" Enable GUI ScrollBar
+" Disable GUI ScrollBar
 if exists(':GuiScrollBar')
-    GuiScrollBar 1
+    GuiScrollBar 0
 endif
 
 " Right Click Context Menu (Copy-Cut-Paste)
@@ -47,5 +47,5 @@ snoremap <silent><RightMouse> <C-G>:call GuiShowContextMenu()<CR>gv
 "
 "Now using the colorscheme 'nightfly'.
 
-" File tree
+" File tree (CHADTree is way better (leader + e))
 nnoremap <C-t> :GuiTreeviewToggle<CR>
