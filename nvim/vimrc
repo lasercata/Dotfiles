@@ -2,7 +2,7 @@
 "
 " Author        :   Lasercata
 " Last update   :   2023.04.18
-" Version       :   v3.14.1
+" Version       :   v3.14.2
 "
 "----------------------------------------
 
@@ -154,12 +154,9 @@ Plug 'lervag/vimtex'
 
 
 "---Utilities
-"-Nerd tree : a file explorer in a side bar
-Plug 'scrooloose/nerdtree'
-    "let NERDTreeShowHidden=1
-    "nnoremap <C-t> :NERDTreeToggle<CR>
-    nnoremap <leader>e :NERDTreeToggle<CR>:NERDTreeRefreshRoot<CR>
-    "autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+"-ChadTree : better than NerdTree (a file explorer in a side bar)
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+    nnoremap <leader>e :CHADopen<CR>
 
 "-Pear-tree : auto close some delimiters
 Plug 'tmsvg/pear-tree'
@@ -177,6 +174,13 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
     nnoremap <leader>f :Telescope find_files<CR>
     nnoremap <leader>b :Telescope buffers<CR>
+
+"-Comment.nvim : adding bindings to comment code
+Plug 'numToStr/Comment.nvim'
+
+"-CheatSheet : use telescope to find vim info
+Plug 'sudormrfbin/cheatsheet.nvim'
+    "The default binding is <leader>?
 
 
 "---Style
@@ -200,7 +204,14 @@ Plug 'tanvirtin/monokai.nvim'
     "To keep transparency after changing the colorscheme :
     au ColorScheme * hi Normal ctermbg=none guibg=none
 
+"-Neoscroll : smooth scrolling
+Plug 'karb94/neoscroll.nvim'
+
 call plug#end()
+
+"---Plugins require
+lua require('Comment').setup()
+lua require('neoscroll').setup()
 
 "-----Apply theme
 colorscheme nightfly
