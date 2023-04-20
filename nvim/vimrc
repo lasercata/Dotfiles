@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.04.18
-" Version       :   v3.14.2
+" Last update   :   2023.04.20
+" Version       :   v3.14.3
 "
 "----------------------------------------
 
@@ -49,7 +49,7 @@ set spelllang=en_us,fr
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Toggle spell in normal mode
-nnoremap <C-s> :set invspell<CR>
+nnoremap <C-s> <cmd>set invspell<CR>
 
 
 "------Mappings
@@ -79,7 +79,7 @@ inoremap <C-w> <C-g>u<C-w>
 "---Wrap selection with a delimiter (in visual mode)
 vnoremap ( <ESC>`>a)<ESC>`<i(<ESC>%
 vnoremap [ <ESC>`>a]<ESC>`<i[<ESC>%
-vnoremap { <ESC>`>a}<ESC>`<i{<ESC>%
+vnoremap { <ESC>`<i{<ESC>`>la}<ESC>%
 
 "---Deleting surrounding delimiter (any that is detected with %) in normal mode.
 "The cursor can be anywhere inside the delimiter pair.
@@ -98,8 +98,8 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 tnoremap <C-h> <C-\><C-n><C-w>h
 
 "---Change buffer faster
-nnoremap <C-n> :bn<CR>
-nnoremap <C-p> :bp<CR>
+nnoremap <C-n> <cmd>bn<CR>
+nnoremap <C-p> <cmd>bp<CR>
 
 "---Move cursor in insert and command mode : Alt + [hjkl$_]
 inoremap <M-j> <Down>
@@ -125,10 +125,10 @@ nnoremap <leader>i >>
 nnoremap <leader>I <<
 
 "---Toggle relative line
-nnoremap <leader>n :set invrelativenumber<CR>
+nnoremap <leader>n <cmd>set invrelativenumber<CR>
 
 "---Make
-nnoremap <F5> :make<CR>
+nnoremap <F5> <cmd>make<CR>
 
 
 "------Plugins
@@ -156,7 +156,7 @@ Plug 'lervag/vimtex'
 "---Utilities
 "-ChadTree : better than NerdTree (a file explorer in a side bar)
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
-    nnoremap <leader>e :CHADopen<CR>
+    nnoremap <leader>e <cmd>CHADopen<CR>
 
 "-Pear-tree : auto close some delimiters
 Plug 'tmsvg/pear-tree'
@@ -167,13 +167,13 @@ Plug 'tmsvg/pear-tree'
 
 "-Tagbar : a class outline viewer for Vim
 Plug 'preservim/tagbar'
-    nnoremap <leader>o :TagbarToggle<CR>
+    nnoremap <leader>o <cmd>TagbarToggle<CR>
 
 "-Telescope : a fuzzy finder
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
-    nnoremap <leader>f :Telescope find_files<CR>
-    nnoremap <leader>b :Telescope buffers<CR>
+    nnoremap <leader>f <cmd>Telescope find_files<CR>
+    nnoremap <leader>b <cmd>Telescope buffers<CR>
 
 "-Comment.nvim : adding bindings to comment code
 Plug 'numToStr/Comment.nvim'
