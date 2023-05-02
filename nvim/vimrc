@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.04.20
-" Version       :   v3.14.3
+" Last update   :   2023.05.02
+" Version       :   v3.14.4
 "
 "----------------------------------------
 
@@ -117,12 +117,12 @@ cnoremap <M-$> <End>
 cnoremap <M-_> <Home>
 
 "---In visual mode, <leader>i indents selection, <leader>I decrease indentation, and both reselect the selection
-vnoremap <leader>i >gv
-vnoremap <leader>I <gv
+vnoremap <leader>i >gv4l
+vnoremap <leader>I <gv4h
 
 "Also from normal mode
-nnoremap <leader>i >>
-nnoremap <leader>I <<
+nnoremap <leader>i >>4l
+nnoremap <leader>I <<4h
 
 "---Toggle relative line
 nnoremap <leader>n <cmd>set invrelativenumber<CR>
