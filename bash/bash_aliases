@@ -1,8 +1,8 @@
 #--------------------------------
 #
 # Author            : Lasercata
-# Last modification : 2023.04.17
-# Version           : v1.1
+# Last modification : 2023.05.06
+# Version           : v1.2
 #
 #--------------------------------
 
@@ -25,3 +25,5 @@ alias rg='. ranger'
 
 alias bat='batcat'
 alias f="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'"
+
+alias gits="git status"
