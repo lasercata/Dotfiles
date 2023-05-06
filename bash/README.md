@@ -1,4 +1,4 @@
-#Bash config
+# Bash config
 
 ## bashrc
 This is the main configuration file. It should be located in the home directory, at `~/.bashrc`.
