@@ -1,10 +1,8 @@
 # Neovim configuration files
 ## Neovim
-The default configuration file for NeoVim is `~/.config/nvim/init.vim` (on Linux). You can add to the end of this file the command
-```vim
-source ~/.vimrc
-```
-and download the `vimrc` file from this repository and put it in the file `~/.vimrc`.
+On Linux, Neovim configuration files are located at `~/.config/nvim/`.
+
+My configuration file is split in multiple files in the `nvim/config/` folder, and are sourced by the file `nvim/init.vim`.
 
 I use [vim-plug](https://github.com/junegunn/vim-plug) as my plugin manager in the configuration file.
 
@@ -18,6 +16,8 @@ See [https://github.com/equalsraf/neovim-qt](https://github.com/equalsraf/neovim
 
 
 ## Snippets
+I use [ulrisnips](https://github.com/sirver/ultisnips/) as a snippet engine.
+
 There is currently one snippet file, `tex.snippet` that contain LaTeX snippets, some of which are for macros defined in [my LaTeX template](https://github.com/lasercata/LaTeX_Templates).
 
 Add the folder `my_snippets` to `~/.config/nvim/my_snippets`.
