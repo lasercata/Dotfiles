@@ -7,9 +7,9 @@
 "----------------------------------------
 
 "---Source config files
-source config/general.vim
-source config/keybinds.vim
-source config/plugins.vim
+source ~/.config/nvim/config/general.vim
+source ~/.config/nvim/config/keybinds.vim
+source ~/.config/nvim/config/plugins.vim
 
 "---Apply theme
 colorscheme nightfly
