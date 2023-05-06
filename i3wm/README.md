@@ -2,7 +2,7 @@
 [i3wm](https://i3wm.org/) is a customizable keyboard focused window manager.
 
 ## Configuration location
-The configuration file is located at `~/.config/i3/`.
+The configuration folder is located at `~/.config/i3/`.
 
-## Files
+## File
 - `config` : the configuration file for i3wm.

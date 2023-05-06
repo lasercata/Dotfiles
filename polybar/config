@@ -20,7 +20,7 @@
 ;
 ; Last modification : 2023.05.06
 ; Author            : Polybar, then Lasercata
-; Version           : v1.0
+; Version           : v1.1
 ;
 ; This is used for i3 (window manager)
 ;
@@ -38,7 +38,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/parrot]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:}
 width = 100%
 height = 18
 ;offset-x = 0%
@@ -127,7 +127,7 @@ index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
