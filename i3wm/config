@@ -1,8 +1,8 @@
 #--------------------------------
 #
-# Last modification : 2023.05.06
+# Last modification : 2023.05.07
 # Author            : Lasercata
-# Version           : v1.0
+# Version           : v1.1
 #
 #--------------------------------
 
@@ -131,6 +131,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+
+#------Resize mode
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -157,6 +159,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
 
 #------Status bar
 # Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
@@ -189,6 +192,12 @@ bindsym XF86AudioPrev exec cmus-remote -k -5
 #---Touchpad
 bindsym XF86TouchpadToggle exec ~/.config/i3/toggle_touchpad.sh
 
+
+#------Lock screen
+bindsym $mod+o exec "i3lock -t -c 000000 -i /home/lasercata/Pictures/lasercata_logo_fly_parrot_bk/lasercata_logo_fly_on_parrot_bk_modif_9.png"
+
+# Auto lock the screen
+# exec "xautolock -detectsleep -time 20 -locker \"i3block -t -c 000000 -i /home/lasercata/Pictures/lasercata_logo_fly_parrot_bk/lasercata_logo_fly_on_parrot_bk_modif_9.png\""
 
 
 #------For integration in KDE plasma
