@@ -2,7 +2,7 @@
 #
 # Last modification : 2023.05.07
 # Author            : Lasercata
-# Version           : v1.1
+# Version           : v1.2
 #
 #--------------------------------
 
@@ -214,6 +214,11 @@ gaps inner 10
 #------Transparency
 # Using picom. See ~/.config/picom.conf for configuration.
 exec --no-startup-id picom
+
+
+#------numlock
+# activate the num lock. Need to download package `numlockx`.
+exec_always --no-startup-id numlockx on
 
 
 #------For integration in KDE plasma
