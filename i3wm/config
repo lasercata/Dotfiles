@@ -161,8 +161,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-#------Status bar
-# Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
+#------Status bar (polybar)
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id feh --bg-scale /home/lasercata/.local/share/wallpapers/Flow_5120x2880.jpg
 
@@ -172,7 +171,7 @@ exec_always --no-startup-id feh --bg-scale /home/lasercata/.local/share/wallpape
 # }
 
 
-#------Colors
+#------Windows colors
 # class                 border  backgr. text    indicator child_border
 client.focused          #ff4500 #000000 #ff4500 #ff4500   #ff4500
 client.unfocused        #0d1010 #212121 #808080 #424242   #0d1010
@@ -199,6 +198,11 @@ bindsym XF86AudioPrev exec cmus-remote -k -5
 bindsym XF86TouchpadToggle exec ~/.config/i3/toggle_touchpad.sh
 
 
+#------numlock
+# activate the num lock. Need to download package `numlockx`.
+exec_always --no-startup-id numlockx on
+
+
 #------Lock screen
 bindsym $mod+o exec "i3lock -t -c 000000 -i /home/lasercata/Pictures/lasercata_logo_fly_parrot_bk/lasercata_logo_fly_on_parrot_bk_modif_9.png"
 
@@ -216,9 +220,8 @@ gaps inner 10
 exec --no-startup-id picom
 
 
-#------numlock
-# activate the num lock. Need to download package `numlockx`.
-exec_always --no-startup-id numlockx on
+#------Remap caps lock to esc
+exec_always --no-startup-id setxkbmap -option caps:escape
 
 
 #------For integration in KDE plasma
