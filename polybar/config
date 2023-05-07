@@ -18,9 +18,9 @@
 
 ;---------------------------------------------
 ;
-; Last modification : 2023.05.06
+; Last modification : 2023.05.07
 ; Author            : Polybar, then Lasercata
-; Version           : v1.1
+; Version           : v1.2
 ;
 ; This is used for i3 (window manager)
 ;
@@ -196,7 +196,7 @@ label =  %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = net1
+interface = wlp3s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -218,7 +218,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = eth0
+interface = enp2s0
 interval = 3.0
 
 ;format-connected-underline = #55aa55
