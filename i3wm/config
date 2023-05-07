@@ -201,8 +201,13 @@ bindsym $mod+o exec "i3lock -t -c 000000 -i /home/lasercata/Pictures/lasercata_l
 
 
 #------Gaps
-default_border pixel 0
+# default_border pixel 0
 gaps inner 10
+
+
+#------Transparency
+# Using picom. See ~/.config/picom.conf for configuration.
+exec --no-startup-id picom
 
 
 #------For integration in KDE plasma
