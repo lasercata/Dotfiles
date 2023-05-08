@@ -15,6 +15,7 @@ There is currently a configuration for these softwares :
 - polybar (status bar) ;
 - qt5ct (fix KDE theme) ;
 - ranger (command line file explorer) ;
+- rofi (can be used as an application launcher) ;
 - tmux (terminal multiplexer).
 
 Other useful softwares :
@@ -23,4 +24,4 @@ Other useful softwares :
 - cmus (terminal music player, with vim-like keys) ;
 - w3m (another terminal web browser) ;
 - fim (simple image viewer, works in tty (with framebuffer), with vim-like keys)
-- mpv (video player, works in tty)
+- mpv (video player, works in tty).
