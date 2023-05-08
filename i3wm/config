@@ -1,8 +1,8 @@
 #--------------------------------
 #
-# Last modification : 2023.05.07
+# Last modification : 2023.05.08
 # Author            : Lasercata
-# Version           : v1.2
+# Version           : v1.3
 #
 #--------------------------------
 
@@ -225,7 +225,11 @@ exec --no-startup-id picom
 exec_always --no-startup-id setxkbmap -option caps:escape
 
 
-#------For integration in KDE plasma
+#------Integration of KDE apps in i3 (using qt5ct)
+exec_always --no-startup-id "export QT_QPA_PLATFORMTHEME=\"qt5ct\""
+
+
+#------For integration in KDE plasma (i3 as a window manager in KDE)
 # Used https://github.com/avivace/dotfiles
 
 # # Kill the wallpaper window set by Plasma*
