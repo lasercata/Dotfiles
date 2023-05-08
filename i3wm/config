@@ -1,8 +1,10 @@
+# vim:fileencoding=utf-8:ft=conf:foldmethod=marker
+
 #--------------------------------
 #
 # Last modification : 2023.05.08
 # Author            : Lasercata
-# Version           : v1.5
+# Version           : v1.6
 #
 #--------------------------------
 
@@ -11,34 +13,60 @@
 # Should you change your keyboard layout some time, delete this file and re-run i3-config-wizard(1).
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-#------Font
+#------Appearance
+#{{{
+#---Font
 # Font for window titles. Will also be used by the bar unless a different font is used in the bar {} block below.
 font pango:Hack 10
 
+#---Status bar (polybar)
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id feh --bg-scale /home/lasercata/.local/share/wallpapers/Flow_5120x2880.jpg
+
+# bar {
+#     i3bar_command i3bar --transparency
+#     status_command i3status
+# }
+
+#---Windows colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #ff4500 #000000 #ff4500 #ff4500   #ff4500
+client.unfocused        #0d1010 #212121 #808080 #424242   #0d1010
+client.focused_inactive #0d1010 #212121 #808080 #424242   #0d1010
+
+#------Gaps
+# default_border pixel 0
+gaps inner 10
+
+#------Transparency
+# Using picom. See ~/.config/picom.conf for configuration.
+exec --no-startup-id picom
+# }}}
 
 #------Bindings
+# {{{
 #---Main key (windows key)
 set $mod Mod4
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
+#---Start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec kitty
 
-# kill focused window
+#---Kill focused window
 bindsym $mod+Shift+q kill
 bindsym --release button2 kill
 
-# start a program launcher
+#---Program launcher
 # There also is the (new) i3-dmenu-desktop which only displays applications shipping a .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec "rofi -theme Monokai -modi drun,run -show run"
 # Use ctrl+tab to change mode
 
-# change focus
+#---Change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -50,7 +78,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
+#---Move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
@@ -62,21 +90,22 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+#---Change split direction
 # split in horizontal orientation
 bindsym $mod+g split h
 
 # split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
+#---Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
+#---Change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+#---Toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
@@ -88,6 +117,7 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+#---Workspaces
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -125,15 +155,50 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-# reload the configuration file
+#---Reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+#---Media controls
+#-Volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +1%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -1%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+#-Brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 1 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
+
+#-Media player
+bindsym XF86AudioPlay exec cmus-remote -u
+bindsym XF86AudioPause exec cmus-remote -u
+bindsym XF86AudioNext exec cmus-remote -k +5
+bindsym XF86AudioPrev exec cmus-remote -k -5
+
+#-Touchpad
+bindsym XF86TouchpadToggle exec ~/.config/i3/toggle_touchpad.sh
+
+#---Numlock
+# activate the num lock. Need to download package `numlockx`.
+exec_always --no-startup-id numlockx on
+
+#---Lock screen
+bindsym $mod+o exec "i3lock -t -c 000000 -i /home/lasercata/Pictures/lasercata_logo_fly_parrot_bk/lasercata_logo_fly_on_parrot_bk_modif_9.png"
+
+# Auto lock the screen
+# exec "xautolock -detectsleep -time 20 -locker \"i3block -t -c 000000 -i /home/lasercata/Pictures/lasercata_logo_fly_parrot_bk/lasercata_logo_fly_on_parrot_bk_modif_9.png\""
+
+#---Remap caps lock to esc
+exec_always --no-startup-id setxkbmap -option caps:escape
+# }}}
 
 #------Resize mode
+# {{{
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -160,81 +225,21 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-
-#------Status bar (polybar)
-exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id feh --bg-scale /home/lasercata/.local/share/wallpapers/Flow_5120x2880.jpg
-
-# bar {
-#     i3bar_command i3bar --transparency
-#     status_command i3status
-# }
-
-
-#------Windows colors
-# class                 border  backgr. text    indicator child_border
-client.focused          #ff4500 #000000 #ff4500 #ff4500   #ff4500
-client.unfocused        #0d1010 #212121 #808080 #424242   #0d1010
-client.focused_inactive #0d1010 #212121 #808080 #424242   #0d1010
-
-
-#------Media controls
-#---Volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +1%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -1%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
-
-#---Brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 1 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
-
-#---Media player
-bindsym XF86AudioPlay exec cmus-remote -u
-bindsym XF86AudioPause exec cmus-remote -u
-bindsym XF86AudioNext exec cmus-remote -k +5
-bindsym XF86AudioPrev exec cmus-remote -k -5
-
-#---Touchpad
-bindsym XF86TouchpadToggle exec ~/.config/i3/toggle_touchpad.sh
-
-
-#------numlock
-# activate the num lock. Need to download package `numlockx`.
-exec_always --no-startup-id numlockx on
-
-
-#------Lock screen
-bindsym $mod+o exec "i3lock -t -c 000000 -i /home/lasercata/Pictures/lasercata_logo_fly_parrot_bk/lasercata_logo_fly_on_parrot_bk_modif_9.png"
-
-# Auto lock the screen
-# exec "xautolock -detectsleep -time 20 -locker \"i3block -t -c 000000 -i /home/lasercata/Pictures/lasercata_logo_fly_parrot_bk/lasercata_logo_fly_on_parrot_bk_modif_9.png\""
-
+#}}}
 
 #------Clipboard manager (diodon)
+#{{{
 exec_always --no-startup-id diodon
 bindsym Control+Mod1+c exec diodon
-
-
-#------Gaps
-# default_border pixel 0
-gaps inner 10
-
-
-#------Transparency
-# Using picom. See ~/.config/picom.conf for configuration.
-exec --no-startup-id picom
-
-
-#------Remap caps lock to esc
-exec_always --no-startup-id setxkbmap -option caps:escape
-
+# }}}
 
 #------Integration of KDE apps in i3 (using qt5ct)
+#{{{
 exec_always --no-startup-id "export QT_QPA_PLATFORMTHEME=\"qt5ct\""
-
+# }}}
 
 #------For integration in KDE plasma (i3 as a window manager in KDE)
+#{{{
 # Used https://github.com/avivace/dotfiles
 
 # # Kill the wallpaper window set by Plasma*
@@ -259,3 +264,4 @@ for_window [title="Desktop — Plasma"] kill; floating enable; border none
 #
 # # Start the compositor daemonizing it (-b) and enabling shadows (-c)
 # exec_always --no-startup-id picom -cb
+# }}}
