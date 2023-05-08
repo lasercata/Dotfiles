@@ -16,20 +16,6 @@ set show-mode-in-prompt on
 set vi-ins-mode-string "\1\e[0;31m\e[6 q\2└─[ins]─╼ \$ \1\e[0m\2"
 set vi-cmd-mode-string "\1\e[0;33m\e[2 q\2└─[cmd]─╼ \$ \1\e[0m\2"
 
-#------Colors
-#---display common prefix colored (when double tab)
-set colored-completion-prefix on
-
-#---Use color to display completion
-set colored-stats on
-
-#---Better up/down history search
-"\e[A": history-search-backward
-"\e[B": history-search-forward
-
-"\ek": history-search-backward
-"\ej": history-search-forward
-
 #---Adding vim commands
 set keymap vi-command
 "gg": beginning-of-history
@@ -95,3 +81,25 @@ set keymap vi-insert
 "jk": "\e"
 "kj": "\e"
 Control-l: clear-screen
+
+
+#------Completion
+#---display common prefix colored (when double tab)
+set colored-completion-prefix on
+
+#---Use color to display completion
+set colored-stats on
+
+#---Show extra info when completing, like `ls -F` does
+set visible-stats on
+
+#---Better up/down history search
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+"\ek": history-search-backward
+"\ej": history-search-forward
+
+#---Context completion
+# Be more intelligent when autocompleting by also looking at the text after the cursor. For example, when the current line is "cd ~/src/mozil", and the cursor is on the "z", pressing Tab will not autocomplete it to "cd ~/src/mozillail", but to "cd ~/src/mozilla". (This is supported by the Readline used by Bash 4.)
+set skip-completed-text on
