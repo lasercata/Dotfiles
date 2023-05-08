@@ -18,11 +18,11 @@
 
 ;---------------------------------------------
 ;
-; Last modification : 2023.05.07
+; Last modification : 2023.05.08
 ; Author            : Polybar, then Lasercata
-; Version           : v1.2
+; Version           : v1.2.1
 ;
-; This is used for i3 (window manager)
+; This is used in i3 (window manager)
 ;
 ;---------------------------------------------
 
@@ -116,7 +116,7 @@ interval = 25
 
 mount-0 = /
 
-label-mounted =  : %percentage_used%%
+label-mounted =  %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
