@@ -21,12 +21,17 @@ font pango:Hack 10
 
 #---Status bar (polybar)
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id feh --bg-scale /home/lasercata/.local/share/wallpapers/Flow_5120x2880.jpg
 
 # bar {
 #     i3bar_command i3bar --transparency
 #     status_command i3status
 # }
+
+#---Wallpaper
+# exec_always --no-startup-id feh --bg-scale /home/lasercata/.local/share/wallpapers/Flow_5120x2880.jpg
+# exec_always --no-startup-id feh --bg-scale /home/lasercata/.local/share/wallpapers/7y7hhusqo5xa1.png
+exec_always --no-startup-id feh --bg-scale /home/lasercata/.local/share/wallpapers/aoraki-mount-cook-national-park-lake-sunset-reflection-1920x1080-8658.jpg
+# exec_always --no-startup-id feh --bg-scale /home/lasercata/.local/share/wallpapers/pragser-wildsee-lake-dolomite-mountains-italy-scenic-1920x1080-8839.jpg
 
 #---Windows colors
 # class                 border  backgr. text    indicator child_border
