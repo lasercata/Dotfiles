@@ -1,12 +1,97 @@
 #-----------------------------------------------
 #
 # Author            : Lasercata
-# Last modification : 2023.04.12
-# Version           : v1.0
+# Last modification : 2023.05.08
+# Version           : v1.1
 #
 #-----------------------------------------------
 
+#------Vi mode
 set show-mode-in-prompt on
 
+#set vi-ins-mode-string "\1\e[6 q\2ins"
+#set vi-cmd-mode-string "\1\e[2 q\2cmd"
+
+#\e[2 q for block, \e[6 for beam
 set vi-ins-mode-string "\1\e[0;31m\e[6 q\2└─[ins]─╼ \$ \1\e[0m\2"
 set vi-cmd-mode-string "\1\e[0;33m\e[2 q\2└─[cmd]─╼ \$ \1\e[0m\2"
+
+#------Colors
+#---display common prefix colored (when double tab)
+set colored-completion-prefix on
+
+#---Use color to display completion
+set colored-stats on
+
+#---Better up/down history search
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+"\ek": history-search-backward
+"\ej": history-search-forward
+
+#---Adding vim commands
+set keymap vi-command
+"gg": beginning-of-history
+"G": end-of-history
+"_": beginning-of-line
+"daw": "lbdW"
+"yaw": "lbyW"
+"caw": "lbcW"
+"diw": "lbdw"
+"yiw": "malbyw`a"
+"ciw": "lbcw"
+"da\"": "lF\"df\""
+"di\"": "lF\"lmtf\"d`t"
+"ci\"": "di\"i"
+"ca\"": "da\"i"
+"da'": "lF'df'"
+"di'": "lF'lmtf'd`t"
+"ci'": "di'i"
+"ca'": "da'i"
+"da`": "lF\`df\`"
+"di`": "lF\`lmtf\`d`t"
+"ci`": "di`i"
+"ca`": "da`i"
+"da(": "lF(df)"
+"di(": "lF(lmtf)d`t"
+"ci(": "di(i"
+"ca(": "da(i"
+"da)": "lF(df)"
+"di)": "lF(lmtf)d`t"
+"ci)": "di(i"
+"ca)": "da(i"
+"da{": "lF{df}"
+"di{": "lF{lmtf}d`t"
+"ci{": "di{i"
+"ca{": "da{i"
+"da}": "lF{df}"
+"di}": "lF{lmtf}d`t"
+"ci}": "di}i"
+"ca}": "da}i"
+"da[": "lF[df]"
+"di[": "lF[lmtf]d`t"
+"ci[": "di[i"
+"ca[": "da[i"
+"da]": "lF[df]"
+"di]": "lF[lmtf]d`t"
+"ci]": "di]i"
+"ca]": "da]i"
+"da<": "lF<df>"
+"di<": "lF<lmtf>d`t"
+"ci<": "di<i"
+"ca<": "da<i"
+"da>": "lF<df>"
+"di>": "lF<lmtf>d`t"
+"ci>": "di>i"
+"ca>": "da>i"
+"da/": "lF/df/"
+"di/": "lF/lmtf/d`t"
+"ci/": "di/i"
+"ca/": "da/i"
+Control-l: clear-screen
+
+set keymap vi-insert
+"jk": "\e"
+"kj": "\e"
+Control-l: clear-screen
