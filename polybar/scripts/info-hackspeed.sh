@@ -5,7 +5,7 @@
 #
 # Last modification : 2023.05.09
 # Author            : https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/info-hackspeed
-# Version           : v1.0
+# Version           : v1.1
 #
 #---------------------------------
 
@@ -18,7 +18,7 @@ KEYBOARD_ID="SONiX DIERYA DK61"
 METRIC=wpm
 FORMAT="  %d $METRIC"
 
-INTERVAL=20
+INTERVAL=10
 
 # If you have a keyboard layout that is not listed here yet, create a condition
 # yourself. $3 is the key index. Use `xinput test "AT Translated Set 2 keyboard"`
