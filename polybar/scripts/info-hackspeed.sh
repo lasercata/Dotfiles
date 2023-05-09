@@ -16,7 +16,7 @@ KEYBOARD_ID="SONiX DIERYA DK61"
 # cpm: characters per minute
 # wpm: words per minute (1 word = 5 characters)
 METRIC=wpm
-FORMAT="  %d $METRIC"
+FORMAT="%d $METRIC"
 
 INTERVAL=10
 
