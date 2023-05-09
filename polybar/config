@@ -18,9 +18,9 @@
 
 ;---------------------------------------------
 ;
-; Last modification : 2023.05.08
+; Last modification : 2023.05.09
 ; Author            : Polybar, then Lasercata
-; Version           : v1.2.1
+; Version           : v1.3.0
 ;
 ; This is used in i3 (window manager)
 ;
@@ -67,9 +67,9 @@ font-0 = Hack Nerd Font:size=10
 ; font-1 = siji:pixelsize=11;1
 ; font-3 = FontAwesome:size=10
 
-modules-left = i3
+modules-left = i3 info-hackspeed
 modules-center = memory cpu filesystem
-modules-right = alsa pulseaudio wlan eth battery date
+modules-right = alsa wlan eth battery date
 
 tray-position = right
 tray-padding = 2
@@ -88,6 +88,21 @@ scroll-down = i3wm-wsprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+
+[module/info-hackspeed]
+type = custom/script
+exec = ~/.config/polybar/scripts/info-hackspeed.sh
+tail = true
+
+
+[module/system-usb-udev]
+type = custom/script
+exec = ~/.config/polybar/scripts/system-usb-udev.sh
+tail = true
+click-left = ~/polybar-scripts/system-usb-udev.sh --mount &
+click-right = ~/polybar-scripts/system-usb-udev.sh --unmount &
+
 
 [module/xwindow]
 type = internal/xwindow
@@ -110,6 +125,7 @@ label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
 
+
 [module/filesystem]
 type = internal/fs
 interval = 25
@@ -119,6 +135,7 @@ mount-0 = /
 label-mounted =  %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
+
 
 [module/i3]
 type = internal/i3
@@ -174,10 +191,12 @@ bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
 
+
 [module/backlight-acpi]
 inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
+
 
 [module/cpu]
 type = internal/cpu
@@ -185,6 +204,7 @@ interval = 2
 ;format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 label =  %percentage:2%%
+
 
 [module/memory]
 type = internal/memory
@@ -194,12 +214,14 @@ format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #4bffdc
 label =  %percentage_used%%
 
+
 [module/wlan]
 type = internal/network
 interface = wlp3s0
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
+; format-connected = <ramp-signal> <label-connected>
+format-connected = <ramp-signal>
 ;format-connected-underline = #9f78e1
 label-connected =  %essid%
 
@@ -209,12 +231,13 @@ format-disconnected =
 label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 
+ramp-signal-0 = 睊
 ramp-signal-1 = 
 ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-3 = 直
+ramp-signal-4 = 直
+; ramp-signal-foreground = ${colors.foreground-alt}
+
 
 [module/eth]
 type = internal/network
@@ -232,9 +255,10 @@ format-disconnected =
 label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
+
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
 date = %Y-%m-%d
 date-alt = " %d-%m-%Y
@@ -248,6 +272,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 
 label =  %date% %time%
 
+
 [module/pulseaudio]
 type = internal/pulseaudio
 
@@ -255,8 +280,9 @@ format-volume = <label-volume> <bar-volume>
 label-volume =  %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇
+label-muted = 
 label-muted-foreground = #666
+
 
 [module/alsa]
 type = internal/alsa
@@ -267,7 +293,7 @@ label-volume-foreground = ${root.foreground}
 
 ;format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = 🔇
+label-muted =  
 
 
 [module/battery]
@@ -282,24 +308,24 @@ format-charging-underline = #ffb52a
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix = "  "
+; format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-0 =  
+ramp-capacity-1 =  
+ramp-capacity-2 =  
+; ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 =  
+animation-charging-1 =  
+animation-charging-2 =  
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
+animation-discharging-0 =  
+animation-discharging-1 =  
+animation-discharging-2 =  
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
@@ -333,6 +359,7 @@ menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
+
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
@@ -340,6 +367,7 @@ screenchange-reload = true
 ;compositing-foreground = source
 ;compositing-border = over
 ;pseudo-transparency = false
+
 
 [global/wm]
 margin-top = 5
