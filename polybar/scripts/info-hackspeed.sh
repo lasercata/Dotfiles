@@ -18,7 +18,7 @@ KEYBOARD_ID="SONiX DIERYA DK61"
 METRIC=wpm
 FORMAT="%d $METRIC"
 
-INTERVAL=10
+INTERVAL=5
 
 # If you have a keyboard layout that is not listed here yet, create a condition
 # yourself. $3 is the key index. Use `xinput test "AT Translated Set 2 keyboard"`
