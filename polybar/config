@@ -20,7 +20,7 @@
 ;
 ; Last modification : 2023.05.09
 ; Author            : Polybar, then Lasercata
-; Version           : v2.0.0
+; Version           : v2.0.1
 ;
 ; This is used in i3 (window manager)
 ; Inspired from https://github.com/Vallen217/dotfiles/tree/master/.config/polybar for v2.0.0.
@@ -36,6 +36,7 @@ include-file = $HOME/.config/polybar/modules/i3.ini
 include-file = $HOME/.config/polybar/modules/info.ini
 include-file = $HOME/.config/polybar/modules/misc.ini
 include-file = $HOME/.config/polybar/modules/system.ini
+include-file = $HOME/.config/polybar/modules/cmus.ini
 
 
 [bar/parrot]
@@ -67,9 +68,8 @@ font-0 = Hack Nerd Font:size=10
 ; font-1 = siji:pixelsize=11;1
 ; font-3 = FontAwesome:size=10
 
-modules-left = left i3 slash info-hackspeed right
+modules-left = left i3 slash info-hackspeed space slash space cmus right
 modules-center = left memory slash cpu slash temperature right
-
 modules-right = left alsa slash wlan slash eth slash battery slash time slash date right
 
 tray-position = right
