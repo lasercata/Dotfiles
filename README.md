@@ -16,7 +16,9 @@ There is currently a configuration for these softwares :
 - qt5ct (fix KDE theme) ;
 - ranger (command line file explorer) ;
 - rofi (can be used as an application launcher) ;
-- tmux (terminal multiplexer).
+- tmux (terminal multiplexer) ;
+- htop (process monitor) ;
+- btop (resources monitor).
 
 Other useful softwares :
 - zathura (pdf reader with vim-like keys) ;
