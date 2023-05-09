@@ -4,7 +4,7 @@
 #
 # Last modification : 2023.05.09
 # Author            : https://github.com/raytruong/polybar-cmus/, then Lasercata
-# Version           : v1.1
+# Version           : v1.2
 #
 #--------------------------------------------------------------------------------
 
@@ -32,7 +32,7 @@ elif [[ $fn = *[!\ ]* ]]; then
     duration=$(cmus-remote -C status | grep duration | cut -c 10-)
     minutes2=$(prepend_zero $(($duration / 60)))
     seconds2=$(prepend_zero $(($duration % 60)))
-    echo -n "$fn [$minutes1:$seconds1/$minutes2:$seconds2]"
+    echo -n "[$minutes1:$seconds1/$minutes2:$seconds2] $fn"
 
 else
     echo
