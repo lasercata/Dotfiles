@@ -4,7 +4,7 @@
 #
 # Last modification : 2023.05.09
 # Author            : Lasercata
-# Version           : v1.6.2
+# Version           : v1.6.3
 #
 #--------------------------------
 
@@ -68,8 +68,8 @@ bindsym --release button2 kill
 # There also is the (new) i3-dmenu-desktop which only displays applications shipping a .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+d exec "rofi -theme Monokai -modi drun,run -show-icons -show run"
-bindsym $mod+Shift+d exec "rofi -theme Monokai -modi drun,run -show-icons -show drun"
+bindsym $mod+d exec "rofi -theme Monokai -modi drun,run -show-icons -show drun"
+bindsym $mod+Shift+d exec "rofi -theme Monokai -modi drun,run -show-icons -show run"
 # Use ctrl+tab to change mode
 
 #---Change focus
