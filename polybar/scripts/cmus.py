@@ -4,7 +4,7 @@
 #
 # Last modification : 2023.05.09
 # Author            : Lasercata
-# Version           : v1.0
+# Version           : v1.1
 #
 #--------------------------------
 
@@ -49,6 +49,7 @@ def get_infos(status_str):
     for k in status_str:
         if k[:len('status')] == 'status':
             d['playing'] = 'playing' in k
+            d['stopped'] = 'stopped' in k
 
         elif k[:len('file')] == 'file':
             d['path'] = k.strip('file ')
@@ -79,6 +80,10 @@ def get_infos(status_str):
 
 def pretty_string(s_dct, max_len=65):
     '''Show a pretty string with the informations in s_dct, that do not exceed max_len in length.'''
+
+    if s_dct['stopped']:
+        return ''
+
     percent_str = str(round(100 * s_dct['position'] / s_dct['duration'])) + '%'
 
     pos_str = '[{}/{}]'.format(time_to_str(s_dct['position']), time_to_str(s_dct['duration']))
