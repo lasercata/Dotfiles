@@ -78,7 +78,7 @@ def get_infos(status_str):
     return d
 
 
-def pretty_string(s_dct, max_len=65):
+def pretty_string(s_dct, max_len=56):
     '''Show a pretty string with the informations in s_dct, that do not exceed max_len in length.'''
 
     if s_dct['stopped']:
