@@ -2,7 +2,7 @@
 
 This repository contain my personal configuration files for the some softwares that I use. Most are text-based (only run in terminal) and have vim-like key bindings.
 
-See each folder in `[config](config)` for more info.
+See each folder in [`config`](config) for more info.
 
 ![Screenshot](screenshots/Screenshot_20230510_000232.png)
 
