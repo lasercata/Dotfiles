@@ -43,18 +43,17 @@ include-file = $HOME/.config/polybar/modules/cmus.ini
 monitor = ${env:MONITOR:}
 width = 100%
 height = 23
-offset-x = 98%
-offset-y = 8pt
+; offset-x = 98%
+; offset-y = 8pt
 fixed-center = true
 
-; background = ${colors.bg-3}
 background = ${colors.bg-3}
 foreground = ${colors.fg-3}
 
 line-size = 1
 
-border-size = 3pt
-border-color = ${color.bg-3}
+border-size = 3
+border-color = #00000000
 radius = 4.0
 
 padding-left = 0
@@ -76,13 +75,14 @@ modules-right = alsa space slash space wlan space slash bluetooth slash space ba
 
 tray-position = right
 tray-padding = 2
-; tray-background = #000063ff
+; tray-background = #000
+; tray-foreground = #fff
 ; tray-transparent = true
 
 ;wm-restack = bspwm
 ; wm-restack = i3
 
-;override-redirect = true
+override-redirect = false
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
