@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.05.06
-" Version       :   v1.0
+" Last update   :   2023.05.10
+" Version       :   v1.1
 "
 "----------------------------------------
 
@@ -33,7 +33,9 @@ inoremap <C-w> <C-g>u<C-w>
 "---Wrap selection with a delimiter (in visual mode)
 vnoremap ( <ESC>`>a)<ESC>`<i(<ESC>%
 vnoremap [ <ESC>`>a]<ESC>`<i[<ESC>%
-vnoremap { <ESC>`<i{<ESC>`>la}<ESC>%
+vnoremap { <ESC>`<i{<ESC>`>la}<ESC>
+vnoremap <leader>" <ESC>`<i"<ESC>`>la"<ESC>
+vnoremap <leader>' <ESC>`<i'<ESC>`>la'<ESC>
 
 "---Deleting surrounding delimiter (any that is detected with %) in normal mode.
 "The cursor can be anywhere inside the delimiter pair.
