@@ -2,9 +2,12 @@
 
 This repository contain my personal configuration files for the some softwares that I use. Most are text-based (only run in terminal) and have vim-like key bindings.
 
-See each folder for more info.
+See each folder in `config` for more info.
 
-There is currently a configuration for these softwares :
+![Screenshot](screenshots/Screenshot_20230510_000232.png)
+
+## Software list
+### In this repository :
 - bash ;
 - elinks (terminal web browser) ;
 - i3wm (keyboard focused window manager) ;
@@ -20,7 +23,7 @@ There is currently a configuration for these softwares :
 - htop (process monitor) ;
 - btop (resources monitor).
 
-Other useful softwares :
+### Other useful softwares :
 - zathura (pdf reader with vim-like keys) ;
 - calcurse (terminal calendar, with vim-like keys) ;
 - cmus (terminal music player, with vim-like keys) ;
