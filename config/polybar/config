@@ -20,7 +20,7 @@
 ;
 ; Last modification : 2023.05.10
 ; Author            : Polybar, then Lasercata
-; Version           : v2.0.4
+; Version           : v2.0.5
 ;
 ; This is used in i3 (window manager)
 ; Inspired from https://github.com/Vallen217/dotfiles/tree/master/.config/polybar for v2.0.0.
@@ -71,7 +71,7 @@ font-1 = Hack Nerd Font:size=12
 ; font-3 = FontAwesome:size=10
 
 modules-left = i3 slash space info-hackspeed space slash space cmus
-modules-center = memory space slash space cpu space slash space temperature
+modules-center = memory space slash space filesystem space slash space cpu
 modules-right = alsa space slash space wlan space slash bluetooth slash space battery space slash space time space slash space date space
 
 tray-position = right
