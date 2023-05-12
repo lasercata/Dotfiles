@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.05.10
-" Version       :   v1.1
+" Last update   :   2023.05.12
+" Version       :   v1.2
 "
 "----------------------------------------
 
@@ -56,6 +56,10 @@ tnoremap <C-h> <C-\><C-n><C-w>h
 "---Change buffer faster
 nnoremap <C-n> <cmd>bn<CR>
 nnoremap <C-p> <cmd>bp<CR>
+
+"---Change tab faster
+nnoremap <M-n> gt
+nnoremap <M-p> gT
 
 "---Move cursor in insert and command mode : Alt + [hjkl$_]
 inoremap <M-j> <Down>
