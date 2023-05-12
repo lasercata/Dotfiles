@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.05.09
+# Last modification : 2023.05.12
 # Author            : Lasercata
-# Version           : v1.1
+# Version           : v1.1.1
 #
 #--------------------------------
 
@@ -13,7 +13,7 @@ from os import popen
 
 
 ##-Ini
-ext_lst = ['.mp3', '.wav']
+ext_lst = ['.mp3', '.wav', '.m4a', '.wma']
 
 
 ##-Useful functions
