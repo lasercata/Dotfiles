@@ -4,7 +4,7 @@
 #
 # Last modification : 2023.05.12
 # Author            : Lasercata
-# Version           : v1.6.4
+# Version           : v1.6.5
 #
 #--------------------------------
 
@@ -12,6 +12,15 @@
 
 # Should you change your keyboard layout some time, delete this file and re-run i3-config-wizard(1).
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+#------Startup
+#{{{
+#Turn Bluetooth off
+exec "bluetooth off"
+
+#Mute the microphone (actually just set volume to 0)
+exec "pactl set-source-volume 0 0%"
+#}}}
 
 #------Appearance
 #{{{
