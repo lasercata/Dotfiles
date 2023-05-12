@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.05.09
+# Last modification : 2023.05.12
 # Author            : Lasercata
-# Version           : v1.6.3
+# Version           : v1.6.4
 #
 #--------------------------------
 
@@ -237,6 +237,11 @@ bindsym $mod+r mode "resize"
 #{{{
 exec_always --no-startup-id diodon
 bindsym Control+Mod1+c exec diodon
+# }}}
+
+#------Hide mouse cursor when typing (xbanish)
+#{{{
+exec_always --no-startup-id xbanish
 # }}}
 
 #------Integration of KDE apps in i3 (using qt5ct)
