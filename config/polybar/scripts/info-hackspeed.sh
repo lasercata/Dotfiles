@@ -10,8 +10,8 @@
 #---------------------------------
 
 # Run xinput list --short to see keyboard list
-# KEYBOARD_ID="AT Translated Set 2 keyboard"
-KEYBOARD_ID="SONiX DIERYA DK61"
+KEYBOARD_ID="AT Translated Set 2 keyboard"
+# KEYBOARD_ID="SONiX DIERYA DK61"
 
 # cpm: characters per minute
 # wpm: words per minute (1 word = 5 characters)
