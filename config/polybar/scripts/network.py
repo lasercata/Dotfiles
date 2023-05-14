@@ -4,7 +4,7 @@
 #
 # Last modification : 2023.05.14
 # Author            : Lasercata
-# Version           : v1.0
+# Version           : v1.0.1
 #
 #--------------------------------
 
@@ -52,7 +52,7 @@ def pretty_string(d, max_len=16):
     '''Return wifi informations in a pretty string.'''
 
     if not d['power']:
-        return '%{F#f6668a}󰤭 ' #red-3
+        return '%{F#66ffffff}󰤭 '
 
     if not d['connected']:
         return '%{F#f6668a}󰤯 ' #red-3
