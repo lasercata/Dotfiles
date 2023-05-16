@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.05.14
+# Last modification : 2023.05.16
 # Author            : Lasercata
-# Version           : v1.0.1
+# Version           : v1.0.2
 #
 #--------------------------------
 
@@ -55,10 +55,10 @@ def pretty_string(d, max_len=16):
         return '%{F#66ffffff}󰤭 '
 
     if not d['connected']:
-        return '%{F#f6668a}󰤯 ' #red-3
+        return '%{F#f6668a}%{u#f6668a}%{+u}󰤯 ' #red-3
     
     ramp = ['󰤯 ', '󰤟 ', '󰤢 ', '󰤥 ', '󰤨 ']
-    logo = '%{F#7ff3ef}' + ramp[int((len(ramp) - 1) * d['strength_percent'])] #cyan-2
+    logo = '%{F#7ff3ef}%{u#7ff3ef}%{+u}' + ramp[int((len(ramp) - 1) * d['strength_percent'])] #cyan-2
     name = d['ESSID']
 
     if len(name) > max_len:
