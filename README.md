@@ -10,6 +10,7 @@ See each folder in [`config`](config) for more info.
 ### In this repository :
 - bash ;
 - elinks (terminal web browser) ;
+- greenclip (clipboard manager) ;
 - i3wm (keyboard focused window manager) ;
 - kitty (terminal emulator) ;
 - neofetch (display system information) ;
