@@ -9,6 +9,7 @@
 
 "---Leader keys
 let mapleader = " "
+nmap <space> <nop>
 let maplocalleader = ","
 
 "---Escape from insert mode
