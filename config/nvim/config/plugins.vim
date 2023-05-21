@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.05.06
-" Version       :   v1.0
+" Last update   :   2023.05.21
+" Version       :   v1.1
 "
 "----------------------------------------
 
@@ -30,8 +30,12 @@ call plug#begin('~/.config/nvim/plugged')
 
     "---Utilities
     "-ChadTree : better than NerdTree (a file explorer in a side bar)
-    Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
-        nnoremap <leader>e <cmd>CHADopen<CR>
+    " Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+    "     nnoremap <leader>e <cmd>CHADopen<CR>
+
+    "-Nvim-tree (file explorer)
+    Plug 'nvim-tree/nvim-tree.lua'
+        nnoremap <leader>e <cmd>NvimTreeFindFileToggle<cr>
 
     "-Pear-tree : auto close some delimiters
     Plug 'tmsvg/pear-tree'
@@ -84,5 +88,8 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 "---Plugins require
+" vim.keymap.set('n', '+', api.tree.change_root_to_node, opts('CD'))
+
 lua require('Comment').setup()
 lua require('neoscroll').setup()
+lua require("nvim-tree").setup()
