@@ -2,7 +2,7 @@
 "
 " Author        :   Lasercata
 " Last update   :   2023.05.06
-" Version       :   v4.0.0
+" Version       :   v4.0.1
 "
 "----------------------------------------
 
@@ -12,4 +12,4 @@ source ~/.config/nvim/config/keybinds.vim
 source ~/.config/nvim/config/plugins.vim
 
 "---Apply theme
-colorscheme nightfly
+colorscheme nightfly_but_ff4500
