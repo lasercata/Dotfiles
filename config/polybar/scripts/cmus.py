@@ -15,6 +15,7 @@ from os import popen
 ##-Ini
 ext_lst = ['.mp3', '.wav', '.m4a', '.wma']
 fg = '%{F#d4d7ff}'
+fg_paused = '%{F#77ffffff}'
 col = '%{F#ff4500}'
 
 
@@ -101,7 +102,7 @@ def pretty_string(s_dct, max_len=56):
     partial_len = len(playing_str + ' ' + ' ' + pos_str)
     partial_len2 = len(playing_str + ' ' + ' ' + percent_str)
 
-    playing_str = col + playing_str + fg
+    playing_str = col + playing_str + (fg_paused, fg)[s_dct['playing']]
 
     if len(track_str) + partial_len <= max_len:
         return playing_str + ' ' + track_str + ' ' + pos_str
