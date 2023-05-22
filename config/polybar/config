@@ -20,7 +20,7 @@
 ;
 ; Last modification : 2023.05.22
 ; Author            : Polybar, then Lasercata
-; Version           : v2.0.9
+; Version           : v2.0.10
 ;
 ; This is used in i3 (window manager)
 ; Inspired from https://github.com/Vallen217/dotfiles/tree/master/.config/polybar for v2.0.0.
