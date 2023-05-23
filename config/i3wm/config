@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.05.20
+# Last modification : 2023.05.23
 # Author            : Lasercata
-# Version           : v1.7.6
+# Version           : v1.7.7
 #
 #--------------------------------
 
@@ -37,11 +37,11 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 # }
 
 #---Wallpaper
-# exec_always --no-startup-id feh --bg-scale /home/lasercata/.local/share/wallpapers/Flow_5120x2880.jpg
+exec_always --no-startup-id feh --bg-scale /home/lasercata/.local/share/wallpapers/Flow_5120x2880.jpg
 # exec_always --no-startup-id feh --bg-scale /home/lasercata/.wallpapers/7y7hhusqo5xa1.png
 # exec_always --no-startup-id feh --bg-scale /home/lasercata/.local/share/wallpapers/aoraki-mount-cook-national-park-lake-sunset-reflection-1920x1080-8658.jpg
 # exec_always --no-startup-id feh --bg-scale /home/lasercata/.local/share/wallpapers/pragser-wildsee-lake-dolomite-mountains-italy-scenic-1920x1080-8839.jpg
-exec_always --no-startup-id feh --bg-scale /home/lasercata/.wallpapers/misty-mountains-v0-zwq468b18ywa1.jpg
+# exec_always --no-startup-id feh --bg-scale /home/lasercata/.wallpapers/misty-mountains-v0-zwq468b18ywa1.jpg
 
 #---Windows colors
 # class                 border  backgr. text    indicator child_border
@@ -187,8 +187,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -1%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 #-Brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 1 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec brightnessctl set +1% --quiet # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl set 1%- --quiet # decrease screen brightness
 
 #-Media player
 bindsym XF86AudioPlay exec cmus-remote -u
