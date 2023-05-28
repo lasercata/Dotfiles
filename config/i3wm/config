@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.05.27
+# Last modification : 2023.05.28
 # Author            : Lasercata
-# Version           : v1.7.9
+# Version           : v1.7.10
 #
 #--------------------------------
 
@@ -168,7 +168,7 @@ bindsym XF86AudioNext exec cmus-remote -k +5
 bindsym XF86AudioPrev exec cmus-remote -k -5
 
 #-Touchpad
-bindsym XF86TouchpadToggle exec ~/.config/i3/toggle_touchpad.sh
+bindsym XF86TouchpadToggle exec ~/.config/i3/toggle_touchpad_libinput.sh
 
 #---Numlock
 # activate the num lock. Need to download package `numlockx`.
