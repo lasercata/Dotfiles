@@ -4,7 +4,7 @@
 #
 # Last modification : 2023.05.28
 # Author            : Lasercata
-# Version           : v1.7.12
+# Version           : v1.7.13
 #
 #--------------------------------
 
@@ -317,6 +317,7 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
+        bindsym q mode "default"
 }
 
 bindsym $mod+r mode "resize"
