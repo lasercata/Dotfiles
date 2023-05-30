@@ -234,12 +234,12 @@ workspace $ws4 output $Rmon
 workspace $ws6 output $Rmon
 workspace $ws8 output $Rmon
 workspace $ws10 output $Rmon
-workspace $ws12 output $Lmon
-workspace $ws14 output $Lmon
-workspace $ws16 output $Lmon
-workspace $ws18 output $Lmon
-workspace $ws20 output $Lmon
-workspace $ws22 output $Lmon
+workspace $ws12 output $Rmon
+workspace $ws14 output $Rmon
+workspace $ws16 output $Rmon
+workspace $ws18 output $Rmon
+workspace $ws20 output $Rmon
+workspace $ws22 output $Rmon
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
