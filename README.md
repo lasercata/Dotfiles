@@ -23,9 +23,9 @@ See each folder in [`config`](config) for more info.
 - tmux (terminal multiplexer) ;
 - htop (process monitor) ;
 - btop (resources monitor).
+- zathura (pdf reader with vim-like keys) ;
 
 ### Other useful softwares :
-- zathura (pdf reader with vim-like keys) ;
 - calcurse (terminal calendar, with vim-like keys) ;
 - cmus (terminal music player, with vim-like keys) ;
 - w3m (another terminal web browser) ;
