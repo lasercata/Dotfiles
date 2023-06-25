@@ -4,7 +4,7 @@ This repository contain my personal configuration files for the some softwares t
 
 See each folder in [`config`](config) for more info.
 
-![Screenshot](screenshots/Screenshot_20230527_222935.png)
+![Screenshot](screenshots/Screenshot_20230625_151834.png)
 
 ## Software list
 ### In this repository :
