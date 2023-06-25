@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=i3-gaps-rounded
+Comment=improved dynamic tiling window manager
+Exec=i3-gaps-rounded
+Type=Application
+Keywords=tiling;wm;windowmanager;window;manager;

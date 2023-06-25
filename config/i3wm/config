@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.05.28
+# Last modification : 2023.06.25
 # Author            : Lasercata
-# Version           : v1.7.13
+# Version           : v1.8.0
 #
 #--------------------------------
 
@@ -58,13 +58,23 @@ client.focused          #ff4500 #000000 #ff4500 #ff4500   #ff4500
 client.unfocused        #0d1010 #212121 #808080 #424242   #0d1010
 client.focused_inactive #0d1010 #212121 #808080 #424242   #0d1010
 
-#------Gaps
+#---Gaps
 # default_border pixel 0
 gaps inner 10
 
-#------Transparency
+#---Rounded corners
+border_radius 15
+
+# It is needed to install the version of i3 from this fork : `https://github.com/jbenden/i3-gaps-rounded`
+
+#---Hide title bar
+default_border pixel 2
+default_floating_border pixel 2
+
+#---Transparency
 # Using picom. See ~/.config/picom.conf for configuration.
 exec --no-startup-id picom
+# exec --no-startup-id ~/Documents/0.AAA_softwares/99.autres/picom_jonaburg/picom/build/src/picom
 # }}}
 
 #------Bindings
