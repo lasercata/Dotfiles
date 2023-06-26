@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.06.25
+# Last modification : 2023.06.26
 # Author            : Lasercata
-# Version           : v1.8.0
+# Version           : v1.8.1
 #
 #--------------------------------
 
@@ -306,32 +306,83 @@ bindsym $mod+Shift+F12 move container to workspace $ws22
 # {{{
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 3 px or 3 ppt
-        bindsym j resize grow height 3 px or 3 ppt
-        bindsym k resize shrink height 3 px or 3 ppt
-        bindsym l resize grow width 3 px or 3 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym h resize shrink width 3 px or 3 ppt
+    bindsym j resize grow height 3 px or 3 ppt
+    bindsym k resize shrink height 3 px or 3 ppt
+    bindsym l resize grow width 3 px or 3 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 3 px or 3 ppt
-        bindsym Down resize grow height 3 px or 3 ppt
-        bindsym Up resize shrink height 3 px or 3 ppt
-        bindsym Right resize grow width 3 px or 3 ppt
+    #---same bindings, but for the arrow keys
+    bindsym Left resize shrink width 3 px or 3 ppt
+    bindsym Down resize grow height 3 px or 3 ppt
+    bindsym Up resize shrink height 3 px or 3 ppt
+    bindsym Right resize grow width 3 px or 3 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-        bindsym q mode "default"
+    #---win+ctrl+[hjkl] resize by 10px
+    bindsym CTRL+h resize shrink width 10 px or 10 ppt
+    bindsym CTRL+j resize grow height 10 px or 10 ppt
+    bindsym CTRL+k resize shrink height 10 px or 10 ppt
+    bindsym CTRL+l resize grow width 10 px or 10 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym CTRL+Left resize shrink width 10 px or 10 ppt
+    bindsym CTRL+Down resize grow height 10 px or 10 ppt
+    bindsym CTRL+Up resize shrink height 10 px or 10 ppt
+    bindsym CTRL+Right resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+    bindsym q mode "default"
+
+    #--Move mode
+    bindsym $mod+t mode "move" focus floating
 }
 
 bindsym $mod+r mode "resize"
+
+#---Just win+ctrl+[hjkl] to resize faster.
+bindsym $mod+CTRL+h resize shrink width 3 px or 3 ppt
+bindsym $mod+CTRL+j resize grow height 3 px or 3 ppt
+bindsym $mod+CTRL+k resize shrink height 3 px or 3 ppt
+bindsym $mod+CTRL+l resize grow width 3 px or 3 ppt
 #}}}
+
+#------Move floating windows mode
+# {{{
+# Note: it is already possible to move windows with $mod+Shift+[hjkl] ...
+mode "move" {
+    bindsym $mod+Tab focus right
+
+    #---move
+    bindsym Left  move left
+    bindsym Down  move down
+    bindsym Up    move up
+    bindsym Right move right
+
+    bindsym h     move left
+    bindsym j     move down
+    bindsym k     move up
+    bindsym l     move right
+
+    #---back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+t mode "default"
+    bindsym q mode "default"
+
+    #---Resize mode
+    bindsym $mod+r mode "resize"
+}
+
+bindsym $mod+t mode "move" focus floating
+# }}}
 
 #------Clipboard manager (greenclip: https://github.com/erebe/greenclip)
 #{{{
