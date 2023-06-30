@@ -1,8 +1,8 @@
 #-----------------------------------------------
 #
 # Author            : Parrot OS, then Lasercata
-# Last modification : 2023.04.17
-# Version           : v1.6
+# Last modification : 2023.06.30
+# Version           : v1.7.0
 #
 #-----------------------------------------------
 
@@ -61,7 +61,8 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 
-#------Colors
+#------Colors / prompt
+#---colors
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -108,8 +109,6 @@ if [ "$color_prompt" = yes ]; then
 	}
 fi
 
-unset color_prompt force_color_prompt
-
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -121,6 +120,67 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+
+#---add functions to time commands
+#This file is from the repo https://github.com/rcaloras/bash-preexec.
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+
+convertsecs() {
+    h=$(bc <<< "${1}/3600")
+    m=$(bc <<< "(${1}%3600)/60")
+    s=$(bc <<< "${1}%60")
+    printf "%02d:%02d:%06.3f\n" $h $m $s |
+    sed 's/\(00:\)*//' ;
+}
+
+#Used https://unix.stackexchange.com/questions/485798/show-time-elapsed-since-i-started-last-command-in-prompt.
+first_command=true
+preexec() {
+    cmd_start="$SECONDS"
+    start=$(date +%s.%N)
+
+    first_command=false
+}
+
+precmd() {
+    [ -n "$COMP_LINE" ] && return  # do nothing if completing
+
+    if $first_command; then
+        normal_ps=true
+    else
+        local cmd_end="$SECONDS"
+        elapsed_=$((cmd_end-cmd_start))
+        elapsed=$(echo "$(date +%s.%N) - $start" | bc)
+
+        if (($elapsed_ < 1)); then
+            normal_ps=true
+        else
+            normal_ps=false
+        fi
+    fi
+
+    if $normal_ps; then #In this case, the terminal has just be launched, so no command has been executed, or the command finished rapidly.
+        if [ "$color_prompt" = yes ]; then
+            PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n"
+            #\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]
+            #Changed this in order to have a (mostly) nice prompt with mode indicator (vi mode)
+            #See .inputrc
+        else
+            PS1='┌──[\u@\h]─[\w]\n'
+            #└──╼ \$ 
+        fi
+
+    else
+        if [ "$color_prompt" = yes ]; then
+            PS1="\n\033[0;3mLast command took $(convertsecs $elapsed)s.\n\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n"
+            # PS1="\n\033[0;3mLast command took $(printf "%.3f" $elapsed)s.\n\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n"
+        else
+            PS1='Last command took $(convertsecs $elapsed)s.\n┌──[\u@\h]─[\w]\n'
+        fi
+    fi
+}
+
+# unset color_prompt force_color_prompt
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -169,3 +229,12 @@ EDITOR=nvim #The editor used for visual mode (when hitting v in normal mode in c
 #------fzf bindings and autocompletion
 source /usr/share/doc/fzf/examples/key-bindings.bash
 source /usr/share/doc/fzf/examples/completion.bash
+
+#------Integrate KDE apps in i3
+# export QT_QPA_PLATFORMTHEME="qt5ct"
+# QT_QPA_PLATFORMTHEME="qt5ct"
+#
+# export QT_STYLE_OVERRIDE="Breeze Dark"
+# QT_STYLE_OVERRIDE="Breeze Dark"
+
+source /home/lasercata/.bash_completions/please.sh

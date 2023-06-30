@@ -2,6 +2,7 @@
 
 ## bashrc
 This is the main configuration file. It should be located in the home directory, at `~/.bashrc`.
+This file uses the file `.bash-preexec.sh` from [https://github.com/rcaloras/bash-preexec](https://github.com/rcaloras/bash-preexec) in order to show the time elapsed for a command execution.
 
 ## bash_aliases
 This file contain the definition of some handy aliases. It is sourced by `.bashrc`.
