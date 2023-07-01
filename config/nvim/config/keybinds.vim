@@ -2,7 +2,7 @@
 "
 " Author        :   Lasercata
 " Last update   :   2023.05.12
-" Version       :   v1.2
+" Version       :   v1.2.1
 "
 "----------------------------------------
 
@@ -32,9 +32,9 @@ inoremap <C-w> <C-g>u<C-w>
 "inoremap {<CR> {<CR>}<ESC>O
 
 "---Wrap selection with a delimiter (in visual mode)
-vnoremap ( <ESC>`>a)<ESC>`<i(<ESC>%
-vnoremap [ <ESC>`>a]<ESC>`<i[<ESC>%
-vnoremap { <ESC>`<i{<ESC>`>la}<ESC>
+vnoremap ( <ESC>`>a)<ESC>`<i(<ESC>
+vnoremap [ <ESC>`>a]<ESC>`<i[<ESC>
+vnoremap { <ESC>`<i{<ESC>`>la}<ESC>%
 vnoremap <leader>" <ESC>`<i"<ESC>`>la"<ESC>
 vnoremap <leader>' <ESC>`<i'<ESC>`>la'<ESC>
 
