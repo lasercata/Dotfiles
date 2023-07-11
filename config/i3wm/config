@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.06.26
+# Last modification : 2023.07.11
 # Author            : Lasercata
-# Version           : v1.8.1
+# Version           : v1.8.2
 #
 #--------------------------------
 
@@ -181,7 +181,7 @@ bindsym XF86AudioNext exec cmus-remote -k +5
 bindsym XF86AudioPrev exec cmus-remote -k -5
 
 #-Touchpad
-bindsym XF86TouchpadToggle exec ~/.config/i3/toggle_touchpad_libinput.sh
+bindsym XF86TouchpadToggle exec ~/.config/i3/script/toggle_touchpad_libinput.sh
 
 #---Numlock
 # activate the num lock. Need to download package `numlockx`.
@@ -189,9 +189,15 @@ exec_always --no-startup-id numlockx on
 
 #---Lock screen
 bindsym $mod+o exec "i3lock -t -c 000000 -i ~/.wallpapers/lasercata_logo_fly_on_parrot_bk_modif_9.png"
+bindsym $mod+Shift+o exec "i3lock -t -c 000000 -i ~/.wallpapers/lasercata_logo_fly_on_parrot_bk_modif_9.png && systemctl suspend"
 
 # Auto lock the screen
-# exec "xautolock -detectsleep -time 20 -locker \"i3block -t -c 000000 -i ~/.wallpapers/lasercata_logo_fly_on_parrot_bk_modif_9.png\""
+exec "xautolock -detectsleep -time 19 -locker \"i3block -t -c 000000 -i ~/.wallpapers/lasercata_logo_fly_on_parrot_bk_modif_9.png\""
+#TODO: test this.
+#does not works ...
+
+#TODO: add the battery script.
+exec ~/.config/i3/scripts/battery_mesages.sh
 # }}}
 
 #------Workspaces
