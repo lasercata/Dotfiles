@@ -4,7 +4,7 @@
 #
 # Last modification : 2023.07.12
 # Author            : Lasercata
-# Version           : v1.8.5
+# Version           : v1.8.6
 #
 #--------------------------------
 
@@ -192,7 +192,7 @@ exec_always --no-startup-id numlockx on
 
 #---Lock screen
 #-Define locker app
-set $locker i3lock -t -c 000000 -i ~/.wallpapers/lasercata_logo_fly_on_parrot_bk_modif_9.png
+set $locker ~/.config/i3/scripts/locker.sh
 
 #-Bind keys to lock
 bindsym $mod+o exec $locker
