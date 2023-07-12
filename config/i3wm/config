@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.07.11
+# Last modification : 2023.07.12
 # Author            : Lasercata
-# Version           : v1.8.4
+# Version           : v1.8.5
 #
 #--------------------------------
 
@@ -199,10 +199,8 @@ bindsym $mod+o exec $locker
 bindsym $mod+Shift+o exec $locker && systemctl suspend
 
 #-Auto lock the screen
-# exec_always "xautolock -detectsleep -time 9 -locker \"$locker\""
-exec_always --no-startup-id xss-lock -l $locker
-
-#TODO: test this.
+exec_always "xautolock -detectsleep -time 10 -locker \"$locker\""
+# exec_always --no-startup-id xss-lock -l $locker
 # }}}
 
 #------Workspaces
