@@ -2,15 +2,16 @@
 
 #--------------------------
 #
-# Last update : 2023.07.11
+# Last update : 2023.07.12
 # Author      : lasercata
-# Version     : v1.0
+# Version     : v1.1
 #
 #--------------------------
 
 CRITICAL=5
 DANGER=10
 WARN=15
+change_time=20
 
 SLEEP_TIME=5 #minutes
 
@@ -22,30 +23,34 @@ function check_power {
     echo "state: $state"
     echo "percentage: $percentage%"
 
-    echo "critical: $CRITICAL"
+    echo "critical: $CRITICAL%"
 
-    # if (( $percent <= $CRITICAL )); then
+    # if (( $percent<=$CRITICAL )); then
     #     echo crit;
     # else
     #     echo norm;
     # fi
 
     if [[ "$state" == "discharging" ]]; then
-        if (( $percent <= $CRITICAL )); then #This condition does not work as expected.
+        if (( $percent<=$CRITICAL )); then
             # i3lock -t -c 000000 -i ~/.wallpapers/lasercata_logo_fly_on_parrot_bk_modif_9.png &&
             # systemctl suspend #lock screen and fell asleep
             notify-send "Critical battery !" "Current battery level : $percent%"
             SLEEP_TIME=1;
-            # echo "Critical !!!";
 
-        elif (( $percent <= $DANGER )); then #same.
+        elif (( $percent<=$DANGER )); then #same.
             notify-send "Low battery !" "Current battery level : $percent%"
             SLEEP_TIME=1;
 
-        elif (( $percent <= $WARN )); then #same.
+        elif (( $percent<=$WARN )); then #same.
             notify-send "Low battery" "Current battery level : $percent%";
+            SLEEP_TIME=1;
+
+        elif (( $percent<=$change_time )); then
+            SLEEP_TIME=1;
 
         fi
+
     else
         SLEEP_TIME=5;
     fi
