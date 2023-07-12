@@ -4,11 +4,7 @@
 #
 # Last update : 2023.07.12
 # Author      : lasercata
-<<<<<<< Updated upstream
-# Version     : v1.1
-=======
 # Version     : v1.2.0
->>>>>>> Stashed changes
 #
 #--------------------------
 
@@ -28,32 +24,6 @@ function check_power {
     echo "state: $state"
     echo "percentage: $percentage%"
 
-<<<<<<< Updated upstream
-    echo "critical: $CRITICAL%"
-
-    # if (( $percent<=$CRITICAL )); then
-    #     echo crit;
-    # else
-    #     echo norm;
-    # fi
-
-    if [[ "$state" == "discharging" ]]; then
-        if (( $percent<=$CRITICAL )); then
-            # i3lock -t -c 000000 -i ~/.wallpapers/lasercata_logo_fly_on_parrot_bk_modif_9.png &&
-            # systemctl suspend #lock screen and fell asleep
-            notify-send "Critical battery !" "Current battery level : $percent%"
-            SLEEP_TIME=1;
-
-        elif (( $percent<=$DANGER )); then #same.
-            notify-send "Low battery !" "Current battery level : $percent%"
-            SLEEP_TIME=1;
-
-        elif (( $percent<=$WARN )); then #same.
-            notify-send "Low battery" "Current battery level : $percent%";
-            SLEEP_TIME=1;
-
-        elif (( $percent<=$change_time )); then
-=======
     if [[ "$state" == "discharging" ]]; then
         if (( $percentage <= $CRITICAL )); then
             i3lock -t -c 000000 -i ~/.wallpapers/lasercata_logo_fly_on_parrot_bk_modif_9.png &&
@@ -77,7 +47,6 @@ function check_power {
             SLEEP_TIME=1;
 
         elif (( $percentage <= $change_time )); then
->>>>>>> Stashed changes
             SLEEP_TIME=1;
 
         fi
