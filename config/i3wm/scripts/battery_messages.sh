@@ -2,9 +2,9 @@
 
 #--------------------------
 #
-# Last update : 2023.07.12
+# Last update : 2023.07.13
 # Author      : lasercata
-# Version     : v1.2.0
+# Version     : v1.2.1
 #
 #--------------------------
 
@@ -56,7 +56,12 @@ function check_power {
     fi
 }
 
-##-Main loop
+##-Run
+#---Init
+# notify-send "Battery script" "The battery script has launched."
+echo "The battery script has launched."
+
+#---Loop
 while [[ true ]]; do
     check_power
     sleep "$SLEEP_TIME"m
