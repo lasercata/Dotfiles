@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.07.13
+# Last modification : 2023.07.14
 # Author            : Lasercata
-# Version           : v1.8.7
+# Version           : v1.8.8
 #
 #--------------------------------
 
@@ -31,7 +31,7 @@ exec_always "pactl set-source-volume 0 0%"
 # Done in the file /etc/default/keyboard
 
 #---Battery script launch
-exec_always --no-startup-id ~/.config/i3/scripts/battery_messages.sh
+exec_always --no-startup-id ~/.config/i3/scripts/launcher.sh ~/.config/i3/scripts/battery_messages.sh
 
 #---Status bar (polybar)
 exec_always --no-startup-id ~/.config/polybar/launch.sh
