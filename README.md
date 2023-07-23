@@ -27,7 +27,7 @@ See each folder in [`config`](config) for more info.
 
 ### Other useful softwares :
 - calcurse (terminal calendar, with vim-like keys) ;
-- cmus (terminal music player, with vim-like keys) ;
+- cmus (terminal music player, with vim-like keys) (there is a polybar widget for cmus in this repository) ;
 - w3m (another terminal web browser) ;
 - fim (simple image viewer, works in tty (with framebuffer), with vim-like keys)
 - mpv (video player, works in tty).
