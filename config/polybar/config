@@ -18,9 +18,9 @@
 
 ;---------------------------------------------
 ;
-; Last modification : 2023.05.22
+; Last modification : 2023.07.23
 ; Author            : Polybar, then Lasercata
-; Version           : v2.1.1
+; Version           : v3.0.0
 ;
 ; This is used in i3 (window manager)
 ; Inspired from https://github.com/Vallen217/dotfiles/tree/master/.config/polybar for v2.0.0.
@@ -39,7 +39,7 @@ include-file = $HOME/.config/polybar/modules/system.ini
 include-file = $HOME/.config/polybar/modules/cmus.ini
 
 
-[bar/parrot]
+[bar/main_bar]
 monitor = ${env:MONITOR:}
 width = 100%
 height = 23
@@ -72,6 +72,61 @@ font-1 = Hack Nerd Font:size=12
 modules-left = i3 slash space info-hackspeed space slash space cmus
 modules-center = memory space slash space filesystem space slash space cpu space slash space system-fan-speed
 modules-right = alsa space slash space network space slash bluetooth slash space battery space slash brightnessctl space slash space date space slash space time space
+
+tray-position = right
+tray-padding = 2
+; tray-background = #000
+; tray-foreground = #fff
+; tray-transparent = true
+
+;wm-restack = bspwm
+; wm-restack = i3
+
+override-redirect = false
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+[bar/second_bar]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 23
+; offset-x = 98%
+; offset-y = 8pt
+fixed-center = true
+
+background = ${colors.bg-3}
+foreground = ${colors.fg-3}
+
+line-size = 1
+
+border-size = 3
+border-color = #00000000
+radius = 4.0
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = Hack Nerd Font:size=10
+font-1 = Hack Nerd Font:size=12
+;font-1 = fixed:pixelsize=10;1
+; font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
+; font-1 = siji:pixelsize=11;1
+; font-3 = FontAwesome:size=10
+
+modules-left = i3 slash space info-hackspeed space slash space cmus-short
+modules-center = memory space slash space filesystem space slash space cpu space slash space system-fan-speed
+modules-right = alsa space slash space network-short space slash bluetooth slash space battery space slash brightnessctl space slash space date space slash space time space
 
 tray-position = right
 tray-padding = 2

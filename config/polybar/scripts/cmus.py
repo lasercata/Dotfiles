@@ -18,6 +18,8 @@ fg = '%{F#d4d7ff}'
 fg_paused = '%{F#77ffffff}'
 col = '%{F#ff4500}'
 
+default_len = 56
+
 
 ##-Useful functions
 def time_to_str(n):
@@ -81,7 +83,7 @@ def get_infos(status_str):
     return d
 
 
-def pretty_string(s_dct, max_len=56):
+def pretty_string(s_dct, max_len=default_len):
     '''Show a pretty string with the informations in s_dct, that do not exceed max_len in length.'''
 
     if s_dct['stopped']:
@@ -117,5 +119,17 @@ def pretty_string(s_dct, max_len=56):
 
 ##-Run
 if __name__ == '__main__':
-    print(pretty_string(get_infos(get_status())))
+    from sys import argv
+
+    if len(argv) == 1:
+        max_len = default_len
+
+    else:
+        try:
+            max_len = int(argv[1])
+
+        except ValueError:
+            max_len = default_len
+
+    print(pretty_string(get_infos(get_status()), max_len=max_len))
 

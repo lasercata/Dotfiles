@@ -12,6 +12,10 @@
 from os import popen
 
 
+##-Ini
+default_len = 16
+
+
 ##-Get infos
 def get_str(interface='wlp3s0'):
     '''Return the string of informations.'''
@@ -48,7 +52,7 @@ def get_infos(status_str):
 
     return d
 
-def pretty_string(d, max_len=16):
+def pretty_string(d, max_len=default_len):
     '''Return wifi informations in a pretty string.'''
 
     if not d['power']:
@@ -70,4 +74,17 @@ def pretty_string(d, max_len=16):
 
 
 if __name__ == '__main__':
-    print(pretty_string(get_infos(get_str())))
+    from sys import argv
+
+    if len(argv) == 1:
+        max_len = default_len
+
+    else:
+        try:
+            max_len = int(argv[1])
+
+        except ValueError:
+            max_len = default_len
+
+    print(pretty_string(get_infos(get_str()), max_len=max_len))
+
