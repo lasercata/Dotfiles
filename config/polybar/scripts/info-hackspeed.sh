@@ -1,17 +1,36 @@
-#!/bin/sh
+#!/bin/bash
 # shellcheck disable=SC2016,SC2059
 
 #---------------------------------
 #
-# Last modification : 2023.05.09
+# Last modification : 2023.07.23
 # Author            : https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/info-hackspeed
-# Version           : v1.1
+# Version           : v2.0
 #
 #---------------------------------
 
 # Run xinput list --short to see keyboard list
-KEYBOARD_ID="AT Translated Set 2 keyboard"
+# KEYBOARD_ID="AT Translated Set 2 keyboard"
 # KEYBOARD_ID="SONiX DIERYA DK61"
+# KEYBOARD_ID="ZSA Technology Labs Moonlander Mark I Keyboard"
+# KEYBOARD_ID=14
+
+if [[ -n $(xinput list --short | grep ZSA) ]]; then
+    KEYBOARD_ID=$(
+        xinput list --short |
+            grep ZSA |
+            grep -v "Consumer" |
+            grep -v "System Control" |
+            grep -v "pointer" |
+            grep -v "Keyboard" |
+            awk '{print $8}' |
+            awk -F = '{print $2}'
+    )
+else
+    KEYBOARD_ID="AT Translated Set 2 keyboard"
+fi
+
+# echo "KEYBOARD_ID" "$KEYBOARD_ID"
 
 # cpm: characters per minute
 # wpm: words per minute (1 word = 5 characters)
