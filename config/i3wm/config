@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.07.14
+# Last modification : 2023.07.24
 # Author            : Lasercata
-# Version           : v1.8.8
+# Version           : v1.8.9
 #
 #--------------------------------
 
@@ -40,6 +40,9 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 #     i3bar_command i3bar --transparency
 #     status_command i3status
 # }
+
+#---Removable devices utility (udiskie)
+exec_always --no-startup-id "udiskie --no-automount --tray"
 
 #}}}
 
