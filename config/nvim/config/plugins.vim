@@ -1,7 +1,7 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.05.21
+" Last update   :   2023.08.16
 " Version       :   v1.1
 "
 "----------------------------------------
@@ -47,6 +47,7 @@ call plug#begin('~/.config/nvim/plugged')
     "-Tagbar : a class outline viewer for Vim
     Plug 'preservim/tagbar'
         nnoremap <leader>o <cmd>TagbarToggle<CR>
+        let g:tagbar_sort = 0
 
     "-Telescope : a fuzzy finder
     Plug 'nvim-lua/plenary.nvim'
@@ -77,6 +78,11 @@ call plug#begin('~/.config/nvim/plugged')
     "-Nightfly colorscheme
     Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }
         "let g:nightflyTransparent= v:true
+
+    "-Nightfly_but_ff4500 colorscheme
+    Plug 'lasercata/nightfly_but_ff4500', { 'as': 'nightfly_but_ff4500' }
+        "let g:nightflyTransparent= v:true
+
 
     "-Monokai colorscheme
     Plug 'tanvirtin/monokai.nvim'
