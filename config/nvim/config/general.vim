@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.05.06
-" Version       :   v1.0
+" Last update   :   2023.08.16
+" Version       :   v1.1
 "
 "----------------------------------------
 
@@ -50,4 +50,8 @@ inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Toggle spell in normal mode
 nnoremap <C-s> <cmd>set invspell<CR>
+
+
+"------Python and folds
+autocmd FileType python setlocal foldnestmax=2 foldmethod=indent
 
