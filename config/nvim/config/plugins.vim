@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.08.16
-" Version       :   v1.1
+" Last update   :   2023.08.17
+" Version       :   v1.2
 "
 "----------------------------------------
 
@@ -26,6 +26,24 @@ call plug#begin('~/.config/nvim/plugged')
     "Plug 'jpalardy/vim-slime'
         "let g:slime_target = "tmux"
         "let g:slime_paste_file = "$HOME/.slime_paste"
+
+
+    "---LSP
+    "-Config for nvim LSP
+    Plug 'neovim/nvim-lspconfig'
+
+    "-nvim-cmp, for autocompletion
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-cmdline'
+    Plug 'hrsh7th/nvim-cmp'
+
+    "-Show function signature when typing
+    Plug 'ray-x/lsp_signature.nvim'
+
+    "-coq-nvim, for autocompletion
+    " Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 
 
     "---Utilities
@@ -99,3 +117,4 @@ call plug#end()
 lua require('Comment').setup()
 lua require('neoscroll').setup()
 lua require("nvim-tree").setup()
+
