@@ -90,7 +90,11 @@ call plug#begin('~/.config/nvim/plugged')
 
     "-Indentation guides (lines)
     Plug 'lukas-reineke/indent-blankline.nvim'
+        set list
         " This plugin needs `set list`.
+
+    "-Simpler folds for python.
+    " Plug 'tmhedberg/SimpylFold'
 
 
     "---Style
