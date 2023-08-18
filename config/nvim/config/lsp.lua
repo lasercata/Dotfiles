@@ -11,6 +11,11 @@
 local cmp = require'cmp'
 
 cmp.setup({
+    snippet = {
+      expand = function(args)
+        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end,
+    },
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
@@ -68,5 +73,39 @@ require('lspconfig')['pyright'].setup {
   capabilities = capabilities
 }
 
+
+--========= C
+require('lspconfig')['clangd'].setup {
+  capabilities = capabilities
+}
+
+
+--========= OCaml
+require('lspconfig')['ocamllsp'].setup {
+  capabilities = capabilities
+}
+
+
+--========= Bash
+require('lspconfig')['bashls'].setup {
+  capabilities = capabilities
+}
+
+
+--========= cmake
+require('lspconfig')['cmake'].setup {
+  capabilities = capabilities
+}
+
 --=========lsp_signature.nvim
 require 'lsp_signature'.setup()
+
+
+--========= Other
+-- this is for diagnositcs signs on the line number column
+-- use this to beautify the plain E W signs to more fun ones
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " } 
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
+end

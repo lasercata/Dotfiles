@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.05.12
-" Version       :   v1.2.1
+" Last update   :   2023.08.18
+" Version       :   v1.3.0
 "
 "----------------------------------------
 
@@ -90,3 +90,15 @@ nnoremap <leader>n <cmd>set invrelativenumber<CR>
 
 "---Make
 nnoremap <F5> <cmd>make<CR>
+
+"---LSP
+lua << EOF
+vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, bufopts)
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+-- vim.keymap.set('n', '<space>K', vim.lsp.buf.signature_help, bufopts)
+vim.keymap.set('n', '<leader>gt', vim.lsp.buf.type_definition, bufopts)
+vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, bufopts)
+EOF

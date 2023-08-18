@@ -1,7 +1,7 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.08.17
+" Last update   :   2023.08.18
 " Version       :   v1.2
 "
 "----------------------------------------
@@ -38,9 +38,13 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'hrsh7th/nvim-cmp'
+    Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
     "-Show function signature when typing
     Plug 'ray-x/lsp_signature.nvim'
+
+    "-YouCompleteMe, for completion
+    " Plug 'Valloric/YouCompleteMe'
 
     "-coq-nvim, for autocompletion
     " Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
