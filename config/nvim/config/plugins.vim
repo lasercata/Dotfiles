@@ -84,6 +84,10 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'sudormrfbin/cheatsheet.nvim'
         "The default binding is <leader>?
 
+    "-code runner
+    Plug 'CRAG666/code_runner.nvim'
+        nnoremap <leader>r <cmd>RunCode<CR>
+
 
     "---Style
     "-Airline
@@ -122,3 +126,11 @@ lua require('Comment').setup()
 lua require('neoscroll').setup()
 lua require("nvim-tree").setup()
 
+lua << EOF
+require('code_runner').setup({
+  filetype = {
+    python = "python3 -u",
+    ocaml = "ocaml",
+  },
+})
+EOF
