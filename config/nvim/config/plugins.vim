@@ -88,6 +88,10 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'CRAG666/code_runner.nvim'
         nnoremap <leader>r <cmd>RunCode<CR>
 
+    "-Indentation guides (lines)
+    Plug 'lukas-reineke/indent-blankline.nvim'
+        " This plugin needs `set list`.
+
 
     "---Style
     "-Airline
@@ -125,6 +129,8 @@ call plug#end()
 lua require('Comment').setup()
 lua require('neoscroll').setup()
 lua require("nvim-tree").setup()
+
+lua require('indent_blankline').setup()
 
 lua << EOF
 require('code_runner').setup({

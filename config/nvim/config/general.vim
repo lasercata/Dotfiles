@@ -1,7 +1,7 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.08.16
+" Last update   :   2023.08.18
 " Version       :   v1.1
 "
 "----------------------------------------
@@ -32,7 +32,7 @@ set background=dark
 set nu             "Line numbers
 set relativenumber "Relative line number to current position
 set ruler          "Show things at bottom right
-set nolist         "Don't show '$' at the end of lines
+set list           "Needed for the plugin 'indent_blankline'
 set mouse=r
 set scrolloff=3
 
