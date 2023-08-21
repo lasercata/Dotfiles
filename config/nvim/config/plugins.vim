@@ -95,6 +95,11 @@ call plug#begin('~/.config/nvim/plugged')
         nnoremap <leader>" <cmd>lua require("harpoon.ui").nav_file(3)<CR>
         nnoremap <leader>' <cmd>lua require("harpoon.ui").nav_file(4)<CR>
 
+        nnoremap <leader>jf <cmd>lua require("harpoon.ui").nav_file(1)<CR>
+        nnoremap <leader>jd <cmd>lua require("harpoon.ui").nav_file(2)<CR>
+        nnoremap <leader>js <cmd>lua require("harpoon.ui").nav_file(3)<CR>
+        nnoremap <leader>jq <cmd>lua require("harpoon.ui").nav_file(4)<CR>
+
     "-Comment.nvim : adding bindings to comment code
     Plug 'numToStr/Comment.nvim'
 
