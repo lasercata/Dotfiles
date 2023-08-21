@@ -100,12 +100,20 @@ call plug#begin('~/.config/nvim/plugged')
         nnoremap <leader>js <cmd>lua require("harpoon.ui").nav_file(3)<CR>
         nnoremap <leader>jq <cmd>lua require("harpoon.ui").nav_file(4)<CR>
 
+    "-Float terminal
+    Plug 'numToStr/FTerm.nvim'
+        nnoremap <A-i> <cmd>lua require('FTerm').toggle()<CR>
+        tnoremap <A-i> <C-\><C-n><cmd>lua require('FTerm').toggle()<CR>
+
+    " "-Kitty runner
+    " Plug 'jghauser/kitty-runner.nvim'
+
     "-Comment.nvim : adding bindings to comment code
     Plug 'numToStr/Comment.nvim'
 
     "-CheatSheet : use telescope to find vim info
     Plug 'sudormrfbin/cheatsheet.nvim'
-        "The default binding is <leader>?
+        nnoremap <leader>? <cmd>Cheatsheet<CR>
 
     "-Which-key : show possible key bindings of the command you started typing
     Plug 'folke/which-key.nvim'
@@ -159,7 +167,8 @@ call plug#end()
 lua require('Comment').setup()
 lua require('neoscroll').setup()
 lua require('nvim-tree').setup()
-lua require('which-key').setup()
+lua require('which-key').setup({window = {winblend = 20}})
+" lua require('kitty-runner').setup()
 
 lua require('indent_blankline').setup()
 
