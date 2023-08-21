@@ -1,14 +1,20 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.08.18
-" Version       :   v1.2
+" Last update   :   2023.08.21
+" Version       :   v1.3
 "
 "----------------------------------------
 
 
 "------Plugins
 call plug#begin('~/.config/nvim/plugged')
+    "---Lib
+    "-plenary.nvim contain useful functions needed for Telescope and other
+    "plugins
+    Plug 'nvim-lua/plenary.nvim'
+
+
     "---Prog
     "-UltiSnips snippets
     Plug 'sirver/ultisnips'
@@ -72,10 +78,22 @@ call plug#begin('~/.config/nvim/plugged')
         let g:tagbar_sort = 0
 
     "-Telescope : a fuzzy finder
-    Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
         nnoremap <leader>f <cmd>Telescope find_files<CR>
         nnoremap <leader>b <cmd>Telescope buffers<CR>
+
+    "-harpoon
+    Plug 'ThePrimeagen/harpoon'
+        nnoremap <leader>m <cmd>lua require('harpoon.mark').add_file()<CR>
+        nnoremap <leader>h <cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>
+
+        nnoremap <M-j> <cmd>lua require('harpoon.ui').nav_next()<CR>
+        nnoremap <M-k> <cmd>lua require('harpoon.ui').nav_prev()<CR>
+
+        nnoremap <leader>& <cmd>lua require("harpoon.ui").nav_file(1)<CR>
+        nnoremap <leader>é <cmd>lua require("harpoon.ui").nav_file(2)<CR>
+        nnoremap <leader>" <cmd>lua require("harpoon.ui").nav_file(3)<CR>
+        nnoremap <leader>' <cmd>lua require("harpoon.ui").nav_file(4)<CR>
 
     "-Comment.nvim : adding bindings to comment code
     Plug 'numToStr/Comment.nvim'
