@@ -107,6 +107,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'sudormrfbin/cheatsheet.nvim'
         "The default binding is <leader>?
 
+    "-Which-key : show possible key bindings of the command you started typing
+    Plug 'folke/which-key.nvim'
+
     "-code runner
     Plug 'CRAG666/code_runner.nvim'
         nnoremap <leader>r <cmd>RunCode<CR>
@@ -155,7 +158,8 @@ call plug#end()
 
 lua require('Comment').setup()
 lua require('neoscroll').setup()
-lua require("nvim-tree").setup()
+lua require('nvim-tree').setup()
+lua require('which-key').setup()
 
 lua require('indent_blankline').setup()
 

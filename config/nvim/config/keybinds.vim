@@ -93,12 +93,14 @@ nnoremap <F5> <cmd>make<CR>
 
 "---LSP
 lua << EOF
-vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, bufopts)
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+-- vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, bufopts)
+-- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, { desc = 'Show signature' })
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition' })
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = 'Go to implementation' })
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = 'Go to references' })
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Go to declaration' })
 -- vim.keymap.set('n', '<space>K', vim.lsp.buf.signature_help, bufopts)
-vim.keymap.set('n', '<leader>gt', vim.lsp.buf.type_definition, bufopts)
-vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, bufopts)
+vim.keymap.set('n', '<leader>gt', vim.lsp.buf.type_definition, { desc = 'Go to type definition' })
+vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, { desc = 'Rename' })
 EOF
