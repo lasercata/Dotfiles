@@ -2,7 +2,7 @@
 "
 " Author        :   Lasercata
 " Last update   :   2023.08.21
-" Version       :   v1.3
+" Version       :   v2.0
 "
 "----------------------------------------
 
@@ -163,20 +163,13 @@ call plug#end()
 
 "---Plugins require
 " vim.keymap.set('n', '+', api.tree.change_root_to_node, opts('CD'))
-
-lua require('Comment').setup()
-lua require('neoscroll').setup()
-lua require('nvim-tree').setup()
-lua require('which-key').setup({window = {winblend = 20}})
 " lua require('kitty-runner').setup()
 
-lua require('indent_blankline').setup()
-
-lua << EOF
-require('code_runner').setup({
-  filetype = {
-    python = "python3 -u",
-    ocaml = "ocaml",
-  },
-})
-EOF
+source ~/.config/nvim/config/plugins/lsp.lua
+source ~/.config/nvim/config/plugins/Comment.lua
+source ~/.config/nvim/config/plugins/neoscroll.lua
+source ~/.config/nvim/config/plugins/nvim-tree.lua
+source ~/.config/nvim/config/plugins/which-key.lua
+source ~/.config/nvim/config/plugins/indent_blankline.lua
+source ~/.config/nvim/config/plugins/code_runner.lua
+source ~/.config/nvim/config/plugins/FTerm.lua
