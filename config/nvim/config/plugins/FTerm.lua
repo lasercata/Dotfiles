@@ -6,6 +6,21 @@
 -- 
 -------------------------------------------
 
+--===Bindings
+vim.keymap.set(
+    'n',
+    '<M-i>',
+    '<cmd>lua require("FTerm").toggle()<cr>',
+    {desc = 'Toggle floating terminal'}
+)
+vim.keymap.set(
+    't',
+    '<M-i>',
+    '<C-\\><C-n><cmd>lua require("FTerm").toggle()<cr>',
+    {desc = 'Toggle floating terminal'}
+)
+
+
 --===Python console
 local fterm = require('FTerm')
 
@@ -17,7 +32,8 @@ local py = fterm:new({
 vim.keymap.set({'n', 't'}, '<A-m>',
     function()
         py:toggle()
-    end
+    end,
+    {desc = 'Toggle python console'}
 )
 
 --===Btop
@@ -29,5 +45,6 @@ local btop = fterm:new({
 vim.keymap.set({'n', 't'}, '<A-b>',
     function()
         btop:toggle()
-    end
+    end,
+    {desc = 'Toggle btop'}
 )

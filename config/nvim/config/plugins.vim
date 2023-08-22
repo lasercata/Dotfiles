@@ -10,23 +10,16 @@
 "------Plugins
 call plug#begin('~/.config/nvim/plugged')
     "---Lib
-    "-plenary.nvim contain useful functions needed for Telescope and other
-    "plugins
+    "-plenary.nvim contain useful functions needed for Telescope and other plugins
     Plug 'nvim-lua/plenary.nvim'
 
 
     "---Prog
     "-UltiSnips snippets
     Plug 'sirver/ultisnips'
-        let g:UltiSnipsExpandTrigger = '<tab>'
-        let g:UltiSnipsJumpForwardTrigger = '<tab>'
-        let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-        "let g:UltiSnipsSnippetDirectories = '~/.config/nvim/my_snippets/UltiSnips'
-        let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 
     "-Vimtex
     Plug 'lervag/vimtex'
-        let g:vimtex_view_method = 'zathura'
 
     "-Vim-Slime (for ocaml)
     "Plug 'jpalardy/vim-slime'
@@ -63,47 +56,21 @@ call plug#begin('~/.config/nvim/plugged')
 
     "-Nvim-tree (file explorer)
     Plug 'nvim-tree/nvim-tree.lua'
-        nnoremap <leader>e <cmd>NvimTreeFindFileToggle<cr>
 
     "-Pear-tree : auto close some delimiters
     Plug 'tmsvg/pear-tree'
-        let g:pear_tree_smart_openers = 1
-        let g:pear_tree_smart_closers = 1
-        let g:pear_tree_smart_backspace = 1
-        let g:pear_tree_repeatable_expand = 0
 
     "-Tagbar : a class outline viewer for Vim
     Plug 'preservim/tagbar'
-        nnoremap <leader>o <cmd>TagbarToggle<CR>
-        let g:tagbar_sort = 0
 
     "-Telescope : a fuzzy finder
     Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
-        nnoremap <leader>f <cmd>Telescope find_files<CR>
-        nnoremap <leader>b <cmd>Telescope buffers<CR>
 
     "-harpoon
     Plug 'ThePrimeagen/harpoon'
-        nnoremap <leader>m <cmd>lua require('harpoon.mark').add_file()<CR>
-        nnoremap <leader>h <cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>
-
-        nnoremap <M-j> <cmd>lua require('harpoon.ui').nav_next()<CR>
-        nnoremap <M-k> <cmd>lua require('harpoon.ui').nav_prev()<CR>
-
-        nnoremap <leader>& <cmd>lua require("harpoon.ui").nav_file(1)<CR>
-        nnoremap <leader>é <cmd>lua require("harpoon.ui").nav_file(2)<CR>
-        nnoremap <leader>" <cmd>lua require("harpoon.ui").nav_file(3)<CR>
-        nnoremap <leader>' <cmd>lua require("harpoon.ui").nav_file(4)<CR>
-
-        nnoremap <leader>jf <cmd>lua require("harpoon.ui").nav_file(1)<CR>
-        nnoremap <leader>jd <cmd>lua require("harpoon.ui").nav_file(2)<CR>
-        nnoremap <leader>js <cmd>lua require("harpoon.ui").nav_file(3)<CR>
-        nnoremap <leader>jq <cmd>lua require("harpoon.ui").nav_file(4)<CR>
 
     "-Float terminal
     Plug 'numToStr/FTerm.nvim'
-        nnoremap <A-i> <cmd>lua require('FTerm').toggle()<CR>
-        tnoremap <A-i> <C-\><C-n><cmd>lua require('FTerm').toggle()<CR>
 
     " "-Kitty runner
     " Plug 'jghauser/kitty-runner.nvim'
@@ -113,19 +80,17 @@ call plug#begin('~/.config/nvim/plugged')
 
     "-CheatSheet : use telescope to find vim info
     Plug 'sudormrfbin/cheatsheet.nvim'
-        nnoremap <leader>? <cmd>Cheatsheet<CR>
 
     "-Which-key : show possible key bindings of the command you started typing
     Plug 'folke/which-key.nvim'
 
     "-code runner
     Plug 'CRAG666/code_runner.nvim'
-        nnoremap <leader>r <cmd>RunCode<CR>
 
     "-Indentation guides (lines)
     Plug 'lukas-reineke/indent-blankline.nvim'
-        set list
         " This plugin needs `set list`.
+        set list
 
     "-Simpler folds for python.
     " Plug 'tmhedberg/SimpylFold'
@@ -161,15 +126,12 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'karb94/neoscroll.nvim'
 call plug#end()
 
-"---Plugins require
-" vim.keymap.set('n', '+', api.tree.change_root_to_node, opts('CD'))
-" lua require('kitty-runner').setup()
 
-source ~/.config/nvim/config/plugins/lsp.lua
-source ~/.config/nvim/config/plugins/Comment.lua
-source ~/.config/nvim/config/plugins/neoscroll.lua
-source ~/.config/nvim/config/plugins/nvim-tree.lua
-source ~/.config/nvim/config/plugins/which-key.lua
-source ~/.config/nvim/config/plugins/indent_blankline.lua
-source ~/.config/nvim/config/plugins/code_runner.lua
-source ~/.config/nvim/config/plugins/FTerm.lua
+"------Plugins require and definitions
+for plug_file in split(globpath("~/.config/nvim/config/plugins", "*.vim"), '\n') 
+    execute('source '.plug_file)
+endfor
+
+for plug_file in split(globpath("~/.config/nvim/config/plugins", "*.lua"), '\n') 
+    execute('source '.plug_file)
+endfor
