@@ -1,0 +1,130 @@
+#---------------------------------
+#
+# Author            :   Lasercata
+# Last modification :   2023.09.11
+# Version           :   v1.0
+#
+#---------------------------------
+
+global !p
+
+class Arg(object):
+	def __init__(self, arg):
+		self.arg = arg
+		name_and_type = arg.split('=')[0].split(':')
+		self.name = name_and_type[0].strip()
+		self.type = name_and_type[1].strip() if len(name_and_type) == 2 else None
+
+	def __str__(self):
+		return self.name
+
+	def __unicode__(self):
+		return self.name
+
+	def is_kwarg(self):
+		return '=' in self.arg
+
+	def is_vararg(self):
+		return '*' in self.name
+
+
+def get_args(arglist):
+	args = []
+	n = len(arglist)
+	i = 0
+	while i < n:
+		l_bracket = 0
+		start = i
+		while i < n and (l_bracket > 0 or arglist[i] != ','):
+			if arglist[i] == '[':
+				l_bracket += 1
+			elif arglist[i] == ']' and l_bracket > 0:
+				l_bracket -= 1
+			i += 1
+		arg = arglist[start:i]
+		if arg:
+			args.append(Arg(arg))
+		i += 1
+
+	args = [arg for arg in args if arg.name != 'self']
+
+	return args
+
+
+def write_docstring_args(args, snip):
+	if not args:
+		snip.rv += "*/"
+		return
+
+	snip.rv += '\n' + snip.mkline('', indent='')
+
+	for arg in args:
+		snip += f"- {arg} : TODO"
+
+
+def write_function_docstring(t, snip):
+	"""
+	Writes a function docstring with the current style.
+
+	:param t: The values of the placeholders
+	:param snip: UltiSnips.TextObjects.SnippetUtil object instance
+	"""
+	snip.rv = ""
+	snip >> 1
+
+	args = get_args(t[3])
+	if args:
+		write_docstring_args(args, snip)
+
+	snip += "*/"
+
+endglobal
+
+
+snippet main "main() (main)"
+int main(int argc, char *argv[]) {
+	${VISUAL}$0
+
+	return 0;
+}
+endsnippet
+
+snippet for "for loop (for)"
+for (int ${1:k} = 0; $1 < ${2:count}; ${3:$1++}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet if "if statement"
+if ($1) {
+	${VISUAL}$2
+}$0
+endsnippet
+
+snippet ife "if else statement"
+if ($1) {
+	${VISUAL}${2}
+}
+else {
+	$3
+}${0}
+endsnippet
+
+# snippet fn "function" b
+# ${1:void} ${2:function_name}($3) {
+# 	/* ${4:description} */
+#
+# 	${VISUAL}$0
+# }
+# endsnippet
+
+snippet fn "function with docstrings" b
+${1:void} ${2:function}(`!p
+if snip.indent:
+	snip.rv = 'self' + (", " if len(t[3]) else "")`${3:arg1}) {
+	/*${5:TODO: Docstring for $2.}`!p
+write_function_docstring(t, snip) `
+
+	${6:${VISUAL}}
+}
+endsnippet

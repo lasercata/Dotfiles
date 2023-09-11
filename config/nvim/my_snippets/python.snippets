@@ -1,0 +1,138 @@
+#---------------------------------
+#
+# Author            :   Lasercata
+# Last modification :   2023.09.11
+# Version           :   v1.0
+#
+#---------------------------------
+
+global !p
+
+class Arg(object):
+	def __init__(self, arg):
+		self.arg = arg
+		name_and_type = arg.split('=')[0].split(':')
+		self.name = name_and_type[0].strip()
+		self.type = name_and_type[1].strip() if len(name_and_type) == 2 else None
+
+	def __str__(self):
+		return self.name
+
+	def __unicode__(self):
+		return self.name
+
+	def is_kwarg(self):
+		return '=' in self.arg
+
+	def is_vararg(self):
+		return '*' in self.name
+
+
+def get_args(arglist):
+	args = []
+	n = len(arglist)
+	i = 0
+	while i < n:
+		l_bracket = 0
+		start = i
+		while i < n and (l_bracket > 0 or arglist[i] != ','):
+			if arglist[i] == '[':
+				l_bracket += 1
+			elif arglist[i] == ']' and l_bracket > 0:
+				l_bracket -= 1
+			i += 1
+		arg = arglist[start:i]
+		if arg:
+			args.append(Arg(arg))
+		i += 1
+
+	args = [arg for arg in args if arg.name != 'self']
+
+	return args
+
+
+def write_docstring_args(args, snip):
+	if not args:
+		snip.rv += "'''"
+		return
+
+	snip.rv += '\n' + snip.mkline('', indent='')
+
+	for arg in args:
+		snip += f"- {arg} : TODO"
+
+
+def write_init_body(args, parents, snip):
+	parents = [p.strip() for p in parents.split(",")]
+	parents = [p for p in parents if p != 'object']
+
+	for p in parents:
+		snip += p + ".__init__(self)"
+
+	if parents:
+		snip.rv += '\n' + snip.mkline('', indent='')
+
+	for arg in filter(lambda arg: not arg.is_vararg(), args):
+		snip += "self._%s = %s" % (arg, arg)
+
+
+def write_function_docstring(t, snip):
+	"""
+	Writes a function docstring with the current style.
+
+	:param t: The values of the placeholders
+	:param snip: UltiSnips.TextObjects.SnippetUtil object instance
+	"""
+	snip.rv = ""
+	snip >> 1
+
+	args = get_args(t[2])
+	if args:
+		write_docstring_args(args, snip)
+
+	snip += "'''"
+
+endglobal
+
+
+
+snippet class "class with docstrings" b
+class ${1:MyClass}(${2:object}):
+	'''${3:Docstring for $1.}'''
+
+	def __init__(self$4):
+		'''${5:TODO: to be defined.}`!p
+snip.rv = ""
+snip >> 2
+
+args = get_args(t[4])
+
+write_docstring_args(args, snip)
+if args:
+	snip.rv += '\n' + snip.mkline('', indent='')
+	snip += "'''"
+
+write_init_body(args, t[2], snip)
+`
+		$0
+endsnippet
+
+snippet def "function with docstrings" b
+def ${1:function}(`!p
+if snip.indent:
+	snip.rv = 'self' + (", " if len(t[2]) else "")`${2:arg1}):
+	'''${4:TODO: Docstring for $1.}`!p
+write_function_docstring(t, snip) `
+
+	${5:${VISUAL:pass}}
+endsnippet
+
+snippet from "from module import name" b
+from ${1:module} import ${2:Stuff}
+endsnippet
+
+snippet #! "#!/usr/bin/env python3" b
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+$0
+endsnippet
