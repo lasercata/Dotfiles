@@ -6,6 +6,7 @@
 #
 #---------------------------------
 
+#---------Functions
 global !p
 
 class Arg(object):
@@ -95,7 +96,7 @@ def write_function_docstring(t, snip):
 endglobal
 
 
-
+#---------Snippets
 snippet class "class with docstrings" b
 class ${1:MyClass}(${2:object}):
 	'''${3:Docstring for $1.}'''
