@@ -16,9 +16,13 @@ See [https://github.com/equalsraf/neovim-qt](https://github.com/equalsraf/neovim
 
 
 ## Snippets
-I use [ulrisnips](https://github.com/sirver/ultisnips/) as a snippet engine.
+I use [ultisnips](https://github.com/sirver/ultisnips/) as a snippet engine.
 
-There is currently one snippet file, `tex.snippet` that contain LaTeX snippets, some of which are for macros defined in [my LaTeX template](https://github.com/lasercata/LaTeX_Templates).
+Snippets :
+- `all.snippets` : contain just `date` that expand to the date, e.g `2023.09.12` ;
+- `c.snippets` : contain `main`, `fn` (function with interactive docstring), `if`, ... ;
+- `python.snippets` : contain `class`, `def` (both with interactive docstring), `#!`, ... ;
+- `tex.snippets` : contain my LaTeX snippets, some of which are for macros defined in [my LaTeX template](https://github.com/lasercata/LaTeX_Templates).
 
 Add the folder `my_snippets` to `~/.config/nvim/my_snippets`.
 
