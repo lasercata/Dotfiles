@@ -1,5 +1,5 @@
 # qt5ct
-    [qt5ct](https://github.com/desktop-app/qt5ct) is a configuration tool for Qt5, that I use to change the theme of KDE apps in i3.
+[qt5ct](https://github.com/desktop-app/qt5ct) is a configuration tool for Qt5, that I use to change the theme of KDE apps in i3.
 
 ## Configuration location
 The configuration folder is located at `~/.config/qt5ct/`.
