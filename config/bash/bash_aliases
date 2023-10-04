@@ -30,5 +30,6 @@ alias f="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 
 
 alias gits="git status"
 alias gitd="git diff"
+alias gitl="git log --oneline --all"
 
 alias q="exit"
