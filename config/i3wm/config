@@ -42,7 +42,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 # }
 
 #---Removable devices utility (udiskie)
-exec_always --no-startup-id ~/.config/i3/scripts/launcher.sh "udiskie --no-automount --tray"
+exec_always --no-startup-id ~/.config/i3/scripts/launcher.sh "udiskie --config=$HOME/.config/udiskie/config.yml --no-automount --tray"
 
 #}}}
 
@@ -70,7 +70,7 @@ client.focused_inactive #0d1010 #212121 #808080 #424242   #0d1010
 gaps inner 10
 
 #---Rounded corners
-border_radius 15
+# border_radius 15
 
 # It is needed to install the version of i3 from this fork : `https://github.com/jbenden/i3-gaps-rounded`
 
