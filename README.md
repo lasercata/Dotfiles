@@ -8,27 +8,31 @@ See each folder in [`config`](config) for more info.
 
 ## Software list
 ### In this repository :
-- bash ;
-- elinks (terminal web browser) ;
-- greenclip (clipboard manager) ;
-- i3wm (keyboard focused window manager) ;
-- kitty (terminal emulator) ;
-- neofetch (display system information) ;
-- neovim (text editor) ;
-- picom (for transparency in i3) ;
-- polybar (status bar) ;
-- qt5ct (fix KDE theme) ;
-- ranger (command line file explorer) ;
-- rofi (can be used as an application launcher) ;
-- tmux (terminal multiplexer) ;
-- htop (process monitor) ;
-- btop (resources monitor).
-- udiskie (utility to mount / unmount devices) ;
-- zathura (pdf reader with vim-like keys) ;
+| Software                      | Description                            |
+| --------                      | -----------                            |
+| [bash](config/bash)           |                                        |
+| [elinks](config/elinks)       | terminal web browser                   |
+| [greenclip](config/greenclip) | clipboard manager                      |
+| [i3wm](config/i3wm)           | keyboard focused window manager        |
+| [kitty](config/kitty)         | terminal emulator                      |
+| [neofetch](config/neofetch)   | display system information             |
+| [neovim](config/neovim)       | text editor                            |
+| [picom](config/picom)         | for transparency in i3                 |
+| [polybar](config/polybar)     | status bar                             |
+| [qt5ct](config/qt5ct)         | fix KDE theme                          |
+| [ranger](config/ranger)       | command line file explorer             |
+| [rofi](config/rofi)           | can be used as an application launcher |
+| [tmux](config/tmux)           | terminal multiplexer                   |
+| [htop](config/htop)           | process monitor                        |
+| [btop](config/btop)           | resources monitor                      |
+| [udiskie](config/udiskie)     | utility to mount / unmount devices     |
+| [zathura](config/zathura)     | pdf reader with vim-like keys          |
 
 ### Other useful softwares :
-- calcurse (terminal calendar, with vim-like keys) ;
-- cmus (terminal music player, with vim-like keys) (there is a polybar widget for cmus in this repository) ;
-- w3m (another terminal web browser) ;
-- fim (simple image viewer, works in tty (with framebuffer), with vim-like keys)
-- mpv (video player, works in tty).
+| Software | Description                                                                  |
+| -------- | -----------                                                                  |
+| calcurse | terminal calendar, with vim-like keys                                                             |
+| cmus     | terminal music player, with vim-like keys (there is a polybar widget for cmus in this repository) |
+| w3m      | another terminal web browser                                                                      |
+| fim      | simple image viewer, works in tty (with framebuffer), with vim-like keys                          |
+| mpv      | video player, works in tty                                                                        |
