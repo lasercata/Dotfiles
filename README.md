@@ -23,6 +23,7 @@ See each folder in [`config`](config) for more info.
 - tmux (terminal multiplexer) ;
 - htop (process monitor) ;
 - btop (resources monitor).
+- udiskie (utility to mount / unmount devices) ;
 - zathura (pdf reader with vim-like keys) ;
 
 ### Other useful softwares :
