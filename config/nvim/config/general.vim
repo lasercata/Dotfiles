@@ -33,8 +33,11 @@ set nu             "Line numbers
 set relativenumber "Relative line number to current position
 set ruler          "Show things at bottom right
 set list           "Needed for the plugin 'indent_blankline'
+set listchars=trail:-
 set mouse=r
 set scrolloff=3
+
+set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20 "Cursor shape in different modes, see :h guicursor
 
 
 "------Search

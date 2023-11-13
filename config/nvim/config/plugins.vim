@@ -87,10 +87,12 @@ call plug#begin('~/.config/nvim/plugged')
     "-code runner
     Plug 'CRAG666/code_runner.nvim'
 
+    "-Build
+    " Plug 'trimclain/builder.nvim'
+
     "-Indentation guides (lines)
-    Plug 'lukas-reineke/indent-blankline.nvim'
-        " This plugin needs `set list`.
-        set list
+    Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': 'v2.20.8' }
+    " Plug 'lukas-reineke/indent-blankline.nvim'
 
     "-Simpler folds for python.
     " Plug 'tmhedberg/SimpylFold'
