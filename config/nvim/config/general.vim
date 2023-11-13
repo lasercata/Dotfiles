@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.08.18
-" Version       :   v1.1
+" Last update   :   2023.11.13
+" Version       :   v1.2
 "
 "----------------------------------------
 
@@ -58,4 +58,5 @@ nnoremap <C-s> <cmd>set invspell<CR>
 "------Folds
 "---Python
 autocmd FileType python setlocal foldnestmax=2 foldmethod=indent
+autocmd FileType c setlocal foldnestmax=1 foldmethod=indent
 
