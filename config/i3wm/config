@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.08.01
+# Last modification : 2023.11.15
 # Author            : Lasercata
-# Version           : v1.8.10
+# Version           : v1.8.11
 #
 #--------------------------------
 
@@ -42,6 +42,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 # }
 
 #---Removable devices utility (udiskie)
+exec_always "killall udiskie"
 exec_always --no-startup-id ~/.config/i3/scripts/launcher.sh "udiskie --config=$HOME/.config/udiskie/config.yml --no-automount --tray"
 
 #}}}
