@@ -1,8 +1,8 @@
 #------------------------------------------------
 #
 # Author            :   Lasercata
-# Last modification :   2023.09.13
-# Version           :   v1.6.1
+# Last modification :   2023.11.28
+# Version           :   v1.6.2
 #
 # Contain definition of snippets for LaTex.
 # Some of them need my LaTeX template.
@@ -97,6 +97,67 @@ child [xshift=${1:0}pt] {node ${2:[circle, draw] }{${VISUAL}$3}}$0
 endsnippet
 
 
+#-Figures
+snippet fig "Figure environnment" bA
+\begin{figure}[H]
+	\centering
+
+	${VISUAL}$0
+
+	\caption{$1}
+	\label{fig:$2}
+\end{figure}
+endsnippet
+
+snippet pfig "Figure environnment for image" bA
+\begin{figure}[H]
+	\centering
+
+	\includegraphics[width=${1:.75}\textwidth]{$2}
+
+	\caption{$3}
+	\label{fig:$4}
+\end{figure}
+endsnippet
+
+snippet tfig "Figure environnment for tikz" bA
+\begin{figure}[H]
+	\centering
+
+	\begin{tikzpicture}
+		$0
+	\end{tikzpicture}
+
+	\caption{$1}
+	\label{fig:$2}
+\end{figure}
+endsnippet
+
+snippet tab "Table environnment" bA
+\begin{table}[H]
+	\centering
+
+	${VISUAL}$0
+
+	\caption{$1}
+	\label{tab:$2}
+\end{table}
+endsnippet
+
+snippet Tab "Table environnment with tabular" bA
+\begin{table}[H]
+	\centering
+
+	\begin{tabular}{$3}
+		$0
+	\end{tabular}
+
+	\caption{$1}
+	\label{tab:$2}
+\end{table}
+endsnippet
+
+
 #-emphBox
 snippet embox "emphBox env" bA
 \begin{emphBox}
@@ -107,19 +168,19 @@ endsnippet
 
 #-lstlistings
 snippet clst "C listings" bA
-\begin{lstlisting}[language=C, xleftmargin=$1pt]
+\begin{lstlisting}[language=C, xleftmargin=${1:60}pt]
 $0
 \end{lstlisting}
 endsnippet
 
 snippet mllst "OCaml listings" bA
-\begin{lstlisting}[language=Caml, xleftmargin=$1pt]
+\begin{lstlisting}[language=Caml, xleftmargin=${1:60}pt]
 $0
 \end{lstlisting}
 endsnippet
 
 snippet lstl "listings" bA
-\begin{lstlisting}[language=$1, xleftmargin=$2pt]
+\begin{lstlisting}[language=$1, xleftmargin=${2:60}pt]
 $0
 \end{lstlisting}
 endsnippet
