@@ -10,6 +10,7 @@ See each folder in [`config`](config) for more info.
 ### In this repository :
 | Software                      | Description                            |
 | --------                      | -----------                            |
+| [Alacritty](config/alacritty) | terminal emulator                      |
 | [bash](config/bash)           |                                        |
 | [elinks](config/elinks)       | terminal web browser                   |
 | [greenclip](config/greenclip) | clipboard manager                      |
