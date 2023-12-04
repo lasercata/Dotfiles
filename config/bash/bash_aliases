@@ -1,8 +1,8 @@
 #--------------------------------
 #
 # Author            : Lasercata
-# Last modification : 2023.08.22
-# Version           : v1.2.1
+# Last modification : 2023.12.04
+# Version           : v1.2.3
 #
 #--------------------------------
 
@@ -22,11 +22,12 @@ alias viqt='nvim-qt'
 
 #When quitting ranger, the terminal will cd to the last location.
 alias rg='. ranger'
+alias f='cd $(lf -print-last-dir)'
 
 alias v='nvim'
 
 alias bat='batcat'
-alias f="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'"
+alias fd="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'"
 
 alias gits="git status"
 alias gitd="git diff"
