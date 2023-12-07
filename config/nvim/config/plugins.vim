@@ -64,7 +64,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'preservim/tagbar'
 
     "-Telescope : a fuzzy finder
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+    Plug 'nvim-telescope/telescope.nvim'
 
     "-harpoon
     Plug 'ThePrimeagen/harpoon'
