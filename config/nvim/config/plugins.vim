@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.08.21
-" Version       :   v2.0
+" Last update   :   2023.12.07
+" Version       :   v2.1
 "
 "----------------------------------------
 
@@ -48,6 +48,9 @@ call plug#begin('~/.config/nvim/plugged')
     "-coq-nvim, for autocompletion
     " Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 
+    "-nvim-treesitter, better syntax highlighting
+    " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 
     "---Utilities
     "-ChadTree : better than NerdTree (a file explorer in a side bar)
@@ -64,7 +67,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'preservim/tagbar'
 
     "-Telescope : a fuzzy finder
-    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
 
     "-harpoon
     Plug 'ThePrimeagen/harpoon'
@@ -94,8 +97,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': 'v2.20.8' }
     " Plug 'lukas-reineke/indent-blankline.nvim'
 
-    "-Simpler folds for python.
+    "-Folds for python
     " Plug 'tmhedberg/SimpylFold'
+    "     let g:SimpylFold_fold_docstring=0
 
 
     "---Style
