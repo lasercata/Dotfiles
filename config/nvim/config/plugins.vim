@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.12.07
-" Version       :   v2.1
+" Last update   :   2023.12.14
+" Version       :   v2.2
 "
 "----------------------------------------
 
@@ -60,8 +60,10 @@ call plug#begin('~/.config/nvim/plugged')
     "-Nvim-tree (file explorer)
     Plug 'nvim-tree/nvim-tree.lua'
 
-    "-Pear-tree : auto close some delimiters
-    Plug 'tmsvg/pear-tree'
+    "-Auto pair
+    " Plug 'tmsvg/pear-tree'
+    " Plug 'windwp/nvim-autopairs'
+    Plug 'jiangmiao/auto-pairs'
 
     "-Tagbar : a class outline viewer for Vim
     Plug 'preservim/tagbar'
