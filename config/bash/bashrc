@@ -1,8 +1,8 @@
 #-----------------------------------------------
 #
 # Author            : Parrot OS, then Lasercata
-# Last modification : 2023.06.30
-# Version           : v1.7.0
+# Last modification : 2023.12.04
+# Version           : v1.7.1
 #
 #-----------------------------------------------
 
@@ -39,8 +39,8 @@ PROMPT_COMMAND='history -a'
 export HISTIGNORE="history:ls:ll"
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-export HISTSIZE=10000
 export HISTFILESIZE=20000 #For some reason, this does not works : echo $HISTSIZE shows the right number, but only last 1000 commands are kept ...
+export HISTSIZE=10000
 
 
 #------Other
@@ -201,6 +201,11 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 
+#------Bindings
+# f is an alias for lf + cd to last dir.
+bind '"\C-f":"f\C-m"'
+
+
 #------Completion
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -227,8 +232,13 @@ EDITOR=nvim #The editor used for visual mode (when hitting v in normal mode in c
 # Done in system settings.
 
 #------fzf bindings and autocompletion
-source /usr/share/doc/fzf/examples/key-bindings.bash
-source /usr/share/doc/fzf/examples/completion.bash
+if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
+    source /usr/share/doc/fzf/examples/key-bindings.bash
+fi
+
+if [ -f /usr/share/doc/fzf/examples/completion.bash ]; then
+    source /usr/share/doc/fzf/examples/completion.bash
+fi
 
 #------Integrate KDE apps in i3
 # export QT_QPA_PLATFORMTHEME="qt5ct"
@@ -237,4 +247,10 @@ source /usr/share/doc/fzf/examples/completion.bash
 # export QT_STYLE_OVERRIDE="Breeze Dark"
 # QT_STYLE_OVERRIDE="Breeze Dark"
 
-source /home/lasercata/.bash_completions/please.sh
+#------Gnome dark mode ?
+export GTK_THEME=Adwaita:dark
+
+# source /home/lasercata/.bash_completions/please.sh
+
+export NVM_DIR="/home/lasercata/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
