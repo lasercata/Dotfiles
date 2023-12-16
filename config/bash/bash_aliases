@@ -1,8 +1,8 @@
 #--------------------------------
 #
 # Author            : Lasercata
-# Last modification : 2023.12.04
-# Version           : v1.2.3
+# Last modification : 2023.12.16
+# Version           : v1.2.4
 #
 #--------------------------------
 
@@ -22,7 +22,7 @@ alias viqt='nvim-qt'
 
 #When quitting ranger, the terminal will cd to the last location.
 alias rg='. ranger'
-alias f='cd $(lf -print-last-dir)'
+alias f='cd "$(lf -print-last-dir)"'
 
 alias v='nvim'
 
