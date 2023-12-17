@@ -1,8 +1,8 @@
 #--------------------------------
 #
 # Author            : Lasercata
-# Last modification : 2023.12.16
-# Version           : v1.2.4
+# Last modification : 2023.12.17
+# Version           : v1.2.5
 #
 #--------------------------------
 
@@ -26,8 +26,8 @@ alias f='cd "$(lf -print-last-dir)"'
 
 alias v='nvim'
 
-alias bat='batcat'
-alias fd="fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'"
+#alias bat='batcat'
+alias fd="fzf --preview 'bat--color=always --style=numbers --line-range=:500 {}'"
 
 alias gits="git status"
 alias gitd="git diff"
