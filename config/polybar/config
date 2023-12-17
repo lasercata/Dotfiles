@@ -18,9 +18,9 @@
 
 ;---------------------------------------------
 ;
-; Last modification : 2023.07.23
+; Last modification : 2023.12.17
 ; Author            : Polybar, then Lasercata
-; Version           : v3.0.0
+; Version           : v3.0.1
 ;
 ; This is used in i3 (window manager)
 ; Inspired from https://github.com/Vallen217/dotfiles/tree/master/.config/polybar for v2.0.0.
@@ -128,8 +128,8 @@ modules-left = i3 slash space info-hackspeed space slash space cmus-short
 modules-center = memory space slash space filesystem space slash space cpu space slash space system-fan-speed
 modules-right = alsa space slash space network-short space slash bluetooth slash space battery space slash brightnessctl space slash space date space slash space time space
 
-tray-position = right
-tray-padding = 2
+; tray-position = right
+; tray-padding = 2
 ; tray-background = #000
 ; tray-foreground = #fff
 ; tray-transparent = true
