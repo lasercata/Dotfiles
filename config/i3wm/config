@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.12.04
+# Last modification : 2023.12.17
 # Author            : Lasercata
-# Version           : v1.8.13
+# Version           : v1.9.0
 #
 #--------------------------------
 
@@ -54,11 +54,16 @@ exec_always --no-startup-id ~/.config/i3/scripts/launcher.sh "udiskie --config=$
 font pango:Hack 10
 
 #---Wallpaper
-exec_always --no-startup-id feh --bg-scale ~/.wallpapers/Flow_5120x2880.jpg
+# exec_always --no-startup-id feh --bg-scale ~/.wallpapers/Flow_5120x2880.jpg
 # exec_always --no-startup-id feh --bg-scale ~/.wallpapers/7y7hhusqo5xa1.png
 # exec_always --no-startup-id feh --bg-scale ~/.wallpapers/aoraki-mount-cook-national-park-lake-sunset-reflection-1920x1080-8658.jpg
 # exec_always --no-startup-id feh --bg-scale ~/.wallpapers/pragser-wildsee-lake-dolomite-mountains-italy-scenic-1920x1080-8839.jpg
 # exec_always --no-startup-id feh --bg-scale ~/.wallpapers/misty-mountains-v0-zwq468b18ywa1.jpg
+# exec_always --no-startup-id feh --bg-scale ~/.wallpapers/laser_in_wind.jpeg
+# exec_always --no-startup-id feh --bg-scale ~/.wallpapers/boat_backwards.jpeg
+# exec_always --no-startup-id feh --bg-scale ~/.wallpapers/city_surrounded_by_water.jpeg
+# exec_always --no-startup-id feh --bg-scale ~/.wallpapers/lake_surrounded_by_mountains.jpeg
+exec_always --no-startup-id feh --bg-scale ~/.wallpapers/water_and_island.jpeg
 
 #---Windows colors
 # class                 border  backgr. text    indicator child_border
@@ -127,6 +132,9 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
+# focus right output
+bindsym $mod+Tab focus output right
+
 #---Move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
@@ -138,6 +146,9 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# Move workspace through outputs
+bindsym $mod+Shift+Tab move workspace to output right
 
 #---Change split direction
 # split in horizontal orientation
@@ -241,32 +252,32 @@ set $ws22 "22"
 
 #For two monitors, use odd for the main one, and even for the other.
 #If there is only one monitor, all workspaces are accessible.
-set $Lmon eDP-1
-set $Rmon DP-1
+set $primary_mon eDP1 eDP-1
+set $secondary_mon DP1 DP-1 HDMI1 HDMI2 VIRTUAL1
 
-workspace $ws1 output $Lmon
-workspace $ws3 output $Lmon
-workspace $ws5 output $Lmon
-workspace $ws7 output $Lmon
-workspace $ws9 output $Lmon
-workspace $ws11 output $Lmon
-workspace $ws13 output $Lmon
-workspace $ws15 output $Lmon
-workspace $ws17 output $Lmon
-workspace $ws19 output $Lmon
-workspace $ws21 output $Lmon
+workspace $ws1 output $primary_mon
+workspace $ws3 output $primary_mon
+workspace $ws5 output $primary_mon
+workspace $ws7 output $primary_mon
+workspace $ws9 output $primary_mon
+workspace $ws11 output $primary_mon
+workspace $ws13 output $primary_mon
+workspace $ws15 output $primary_mon
+workspace $ws17 output $primary_mon
+workspace $ws19 output $primary_mon
+workspace $ws21 output $primary_mon
 
-workspace $ws2 output $Rmon
-workspace $ws4 output $Rmon
-workspace $ws6 output $Rmon
-workspace $ws8 output $Rmon
-workspace $ws10 output $Rmon
-workspace $ws12 output $Rmon
-workspace $ws14 output $Rmon
-workspace $ws16 output $Rmon
-workspace $ws18 output $Rmon
-workspace $ws20 output $Rmon
-workspace $ws22 output $Rmon
+workspace $ws2 output $secondary_mon
+workspace $ws4 output $secondary_mon
+workspace $ws6 output $secondary_mon
+workspace $ws8 output $secondary_mon
+workspace $ws10 output $secondary_mon
+workspace $ws12 output $secondary_mon
+workspace $ws14 output $secondary_mon
+workspace $ws16 output $secondary_mon
+workspace $ws18 output $secondary_mon
+workspace $ws20 output $secondary_mon
+workspace $ws22 output $secondary_mon
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -317,6 +328,14 @@ bindsym $mod+Shift+F9 move container to workspace $ws19
 bindsym $mod+Shift+F10 move container to workspace $ws20
 bindsym $mod+Shift+F11 move container to workspace $ws21
 bindsym $mod+Shift+F12 move container to workspace $ws22
+
+#---Assigning some windows to some workspaces
+assign [class="Vivaldi"] workspace $ws3
+assign [class="Firefox"] workspace $ws3
+assign [class="Chromium"] workspace $ws3
+
+assign [class="Signal"] workspace $ws9
+assign [class="Discord"] workspace $ws9
 # }}}
 
 #------Resize mode
