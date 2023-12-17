@@ -1,8 +1,8 @@
 #-----------------------------------------------
 #
 # Author            : Parrot OS, then Lasercata
-# Last modification : 2023.12.04
-# Version           : v1.7.1
+# Last modification : 2023.12.17
+# Version           : v1.7.2
 #
 #-----------------------------------------------
 
@@ -239,6 +239,11 @@ fi
 if [ -f /usr/share/doc/fzf/examples/completion.bash ]; then
     source /usr/share/doc/fzf/examples/completion.bash
 fi
+
+#------GPG
+#To be able to enter the password of my key to sign commits
+GPG_TTY=$(tty)
+export GPG_TTY
 
 #------Integrate KDE apps in i3
 # export QT_QPA_PLATFORMTHEME="qt5ct"
