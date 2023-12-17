@@ -2,7 +2,7 @@
 #
 # Author            : Parrot OS, then Lasercata
 # Last modification : 2023.12.17
-# Version           : v1.7.2
+# Version           : v1.7.3
 #
 #-----------------------------------------------
 
@@ -18,7 +18,7 @@ esac
 
 
 #------Path
-export PATH=~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH
+export PATH=/usr/local/texlive/2023/bin/x86_64-linux:~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH
 
 
 #------History
@@ -192,6 +192,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+
+    alias ip='ip -color=auto'
 fi
 
 
