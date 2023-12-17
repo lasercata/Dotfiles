@@ -4,7 +4,7 @@
 #
 # Last modification : 2023.12.17
 # Author            : Lasercata
-# Version           : v1.9.0
+# Version           : v1.9.2
 #
 #--------------------------------
 
@@ -104,6 +104,9 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec alacritty
 
 bindsym $mod+i exec alacritty --config-file ~/.config/alacritty/alacritty_lf.yml
+
+#---Start cmus in tmux
+bindsym $mod+c exec kitty -e ~/.config/i3/scripts/launch_cmus_in_tmux.sh
 
 #---Kill focused window
 bindsym $mod+Shift+q kill
@@ -330,6 +333,9 @@ bindsym $mod+Shift+F11 move container to workspace $ws21
 bindsym $mod+Shift+F12 move container to workspace $ws22
 
 #---Assigning some windows to some workspaces
+assign [class="korganizer"] workspace $ws2
+assign [class="thunderbird"] workspace $ws2
+
 assign [class="Vivaldi"] workspace $ws3
 assign [class="Firefox"] workspace $ws3
 assign [class="Chromium"] workspace $ws3
