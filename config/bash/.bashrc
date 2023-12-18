@@ -1,8 +1,8 @@
 #-----------------------------------------------
 #
 # Author            : Parrot OS, then Lasercata
-# Last modification : 2023.12.17
-# Version           : v1.7.3
+# Last modification : 2023.12.18
+# Version           : v1.7.4
 #
 #-----------------------------------------------
 
@@ -224,6 +224,7 @@ fi
 #------Vi mode
 set -o vi
 EDITOR=nvim #The editor used for visual mode (when hitting v in normal mode in command line, open the line in an editor)
+export EDITOR
 
 
 #------Cap locks
@@ -259,5 +260,5 @@ export GTK_THEME=Adwaita:dark
 
 # source /home/lasercata/.bash_completions/please.sh
 
-export NVM_DIR="/home/lasercata/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# export NVM_DIR="/home/lasercata/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
