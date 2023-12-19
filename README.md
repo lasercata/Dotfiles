@@ -13,6 +13,7 @@ See each folder in [`config`](config) for more info.
 | [Alacritty](config/alacritty) | terminal emulator                      |
 | [bash](config/bash)           |                                        |
 | [cmus](config/cmus)           | terminal music player (vim-like keys)  |
+| [dunst](config/dunst)         | notification daemon                    |
 | [elinks](config/elinks)       | terminal web browser                   |
 | [greenclip](config/greenclip) | clipboard manager                      |
 | [i3wm](config/i3wm)           | keyboard focused window manager        |

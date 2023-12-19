@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.12.17
+# Last modification : 2023.12.19
 # Author            : Lasercata
-# Version           : v1.9.2
+# Version           : v1.9.3
 #
 #--------------------------------
 
@@ -44,6 +44,11 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 #---Removable devices utility (udiskie)
 exec_always "killall udiskie"
 exec_always --no-startup-id ~/.config/i3/scripts/launcher.sh "udiskie --config=$HOME/.config/udiskie/config.yml --no-automount --tray"
+
+#---Dunst (notifications)
+exec_always notify-send "i3" "Relaunching ..." -t 1800
+exec_always "killall dunst"
+exec_always --no-startup-id "dunst"
 
 #}}}
 
