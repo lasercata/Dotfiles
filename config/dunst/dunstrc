@@ -2,9 +2,9 @@
 
 #-------------------------------------------
 #
-# Last modification : 2023.12.19
+# Last modification : 2023.12.20
 # Author            : Dunst, then Lasercata
-# Version           : v1.0.0
+# Version           : v1.0.1
 #
 #-------------------------------------------
 
@@ -38,7 +38,7 @@
     height = 300
 
     # Position the notification in the top right corner
-    origin = top-right
+    origin = bottom-right
 
     # Offset from the origin
     offset = 10x50
@@ -337,7 +337,8 @@
 [urgency_normal]
     # background = "#285577"
     background = "#222222"
-    foreground = "#ffffff"
+    # foreground = "#ffffff"
+    foreground = "#00ffff"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
