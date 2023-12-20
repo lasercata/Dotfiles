@@ -1,8 +1,8 @@
 -------------------------------------------
 -- 
 --  Author        :   Lasercata
---  Last update   :   2023.08.17
---  Version       :   v1.0.0
+--  Last update   :   2023.12.20
+--  Version       :   v1.0.1
 -- 
 -------------------------------------------
 
@@ -88,6 +88,12 @@ require('lspconfig')['ocamllsp'].setup {
 
 --========= Bash
 require('lspconfig')['bashls'].setup {
+  capabilities = capabilities
+}
+
+
+--========= LaTeX
+require('lspconfig')['texlab'].setup {
   capabilities = capabilities
 }
 
