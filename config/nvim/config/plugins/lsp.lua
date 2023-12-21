@@ -1,8 +1,8 @@
 -------------------------------------------
 -- 
 --  Author        :   Lasercata
---  Last update   :   2023.12.20
---  Version       :   v1.0.1
+--  Last update   :   2023.12.21
+--  Version       :   v1.0.2
 -- 
 -------------------------------------------
 
@@ -64,7 +64,6 @@ cmp.setup.cmdline(':', {
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-
 --=========Python
 -- require'lspconfig'.pylsp.setup{}
 -- require'lspconfig'.pyright.setup{}
@@ -73,33 +72,33 @@ require('lspconfig')['pyright'].setup {
   capabilities = capabilities
 }
 
-
 --========= C
 require('lspconfig')['clangd'].setup {
   capabilities = capabilities
 }
-
 
 --========= OCaml
 require('lspconfig')['ocamllsp'].setup {
   capabilities = capabilities
 }
 
-
 --========= Bash
 require('lspconfig')['bashls'].setup {
   capabilities = capabilities
 }
-
 
 --========= LaTeX
 require('lspconfig')['texlab'].setup {
   capabilities = capabilities
 }
 
-
 --========= cmake
 require('lspconfig')['cmake'].setup {
+  capabilities = capabilities
+}
+
+--========= javascript
+require('lspconfig')['tsserver'].setup {
   capabilities = capabilities
 }
 
