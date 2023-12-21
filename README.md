@@ -18,6 +18,7 @@ See each folder in [`config`](config) for more info.
 | [greenclip](config/greenclip) | clipboard manager                      |
 | [i3wm](config/i3wm)           | keyboard focused window manager        |
 | [kitty](config/kitty)         | terminal emulator                      |
+| [lf](config/lf)               | faster terminal file explorer          |
 | [neofetch](config/neofetch)   | display system information             |
 | [neovim](config/nvim)         | text editor                            |
 | [picom](config/picom)         | manages transparency in i3             |

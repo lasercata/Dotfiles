@@ -6,6 +6,6 @@
 The configuration folder is located at `~/.config/ranger/`.
 
 ## Files
-- The file `rc.conf` contain the commands for ranger. I added image preview and removed the mouse.
+- The file `rc.conf` contains the commands for ranger. I added image preview and removed the mouse.
 
 - The file `rifle.conf` defines the programs used to open files.
