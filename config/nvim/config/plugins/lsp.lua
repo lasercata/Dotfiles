@@ -2,7 +2,7 @@
 -- 
 --  Author        :   Lasercata
 --  Last update   :   2023.12.21
---  Version       :   v1.0.2
+--  Version       :   v1.0.3
 -- 
 -------------------------------------------
 
@@ -94,6 +94,11 @@ require('lspconfig')['texlab'].setup {
 
 --========= cmake
 require('lspconfig')['cmake'].setup {
+  capabilities = capabilities
+}
+
+--========= HTML
+require('lspconfig')['html'].setup {
   capabilities = capabilities
 }
 
