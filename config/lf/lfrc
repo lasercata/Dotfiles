@@ -37,6 +37,9 @@ set tabstop 4
 set info size
 set icons true
 
+# Refresh every second
+set period 1
+
 # preview dir cursor
 set cursorpreviewfmt "\033[7m"
 
@@ -118,7 +121,7 @@ map DD trash
 map Du trash-restore
 
 # Previewer
-map i $~/.config/lf/pv.sh "$f" | bat --paging=always
+map i $~/.config/lf/previewer.sh "$f" | bat --paging=always
 
 # Reload files
 map <f-5> :reload
