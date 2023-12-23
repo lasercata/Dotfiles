@@ -1,8 +1,8 @@
 #--------------------------------
 #
-# Last modification : 2023.12.21
+# Last modification : 2023.12.23
 # Author            : Lasercata
-# Version           : v1.0.0
+# Version           : v1.1.0
 #
 #--------------------------------
 
@@ -11,6 +11,7 @@
 #   - https://pkg.go.dev/github.com/chrispenner/lf
 #   - https://github.com/gokcehan/lf/blob/master/etc/lfrc.example
 
+# {{{ Init
 # interpreter for shell commands
 set shell sh
 
@@ -35,17 +36,20 @@ set tabstop 4
 set info size
 set icons true
 
-map zi set icons!
+# preview dir cursor
+set cursorpreviewfmt "\033[7m"
 
+# Previewer
+set previewer ~/.config/lf/pv.sh
+# }}}
+
+# {{{ Command definition
 # Set binding to go edit this file
 cmd edit-config ${{
     $EDITOR ~/.config/lf/lfrc
     lf -remote "send $id source ~/.config/lf/lfrc"
 }}
 
-map C edit-config
-
-# Toggle preview
 cmd toggle_preview %{{
     if [ "$lf_preview" = "true" ]; then
         lf -remote "send $id :set preview false; set ratios 1:5"
@@ -53,35 +57,6 @@ cmd toggle_preview %{{
         lf -remote "send $id :set preview true; set ratios 1:2:3"
     fi
 }}
-
-map zp toggle_preview
-
-# map toggle hidden
-map <backspace2> set hidden!
-
-# "visual" mode
-map V invert-below
-
-# Choose which app use to open the selected file
-map o $mimeopen --ask $f
-
-# preview dir cursor
-set cursorpreviewfmt "\033[7m"
-
-# Execute file
-map xx !$f
-map X &$f
-
-# Show execution results
-map S !true
-
-# Trash
-# cmd trash $trash -v $fx
-cmd trash $IFS="$(printf '\n\t')"; trash -v $fx
-cmd trash-restore $trash-restore
-
-map DD trash
-map Du trash-restore
 
 # Extract the current file with the right command
 # (xkcd link: https://xkcd.com/1168/)
@@ -97,10 +72,60 @@ cmd extract ${{
     esac
 }}
 
+# Trash
+# cmd trash $trash -v $fx
+cmd trash $IFS="$(printf '\n\t')"; trash -v $fx
+cmd trash-restore $trash-restore
+
+# mkdir
+cmd mkdir $mkdir -p $@
+
+# }}}
+
+# {{{ Mappings
+# Toggle things
+map zi set icons!
+map zp toggle_preview
+map <backspace2> set hidden!
+
+# "visual" mode
+map V invert-below
+
+# Rename
+map R :rename; cmd-end
+
+# Choose which app use to open the selected file
+map o $mimeopen --ask $f
+
+# Execute file
+map xx !$f
+map X &$f
+
+# Extract
 map xt extract
 
-# previewer
-set previewer ~/.config/lf/pv.sh
-map i $~/.config/lf/pv.sh "$f" | bat
+# Show metadata
+map xm $exiftool $f | bat --paging=always
 
-# vim:ft=conf
+# Show execution results
+map S !true
+
+# Trash
+map DD trash
+map Du trash-restore
+
+# Previewer
+map i $~/.config/lf/pv.sh "$f" | bat --paging=always
+
+# Reload files
+map <f-5> :reload
+
+# Reload source
+map <c-r> :source ~/.config/lf/lfrc
+
+# Edit config file and reload
+map C edit-config
+
+# }}}
+
+# vim:ft=conf:foldmethod=marker
