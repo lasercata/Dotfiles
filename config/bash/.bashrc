@@ -1,8 +1,8 @@
 #-----------------------------------------------
 #
 # Author            : Parrot OS, then Lasercata
-# Last modification : 2023.12.18
-# Version           : v1.7.4
+# Last modification : 2023.12.23
+# Version           : v1.7.5
 #
 #-----------------------------------------------
 
@@ -226,6 +226,9 @@ set -o vi
 EDITOR=nvim #The editor used for visual mode (when hitting v in normal mode in command line, open the line in an editor)
 export EDITOR
 
+# PAGER=bat
+# export PAGER
+
 
 #------Cap locks
 # Disable the cap locks key
@@ -250,13 +253,13 @@ export GPG_TTY
 
 #------Integrate KDE apps in i3
 # export QT_QPA_PLATFORMTHEME="qt5ct"
-# QT_QPA_PLATFORMTHEME="qt5ct"
 #
-# export QT_STYLE_OVERRIDE="Breeze Dark"
-# QT_STYLE_OVERRIDE="Breeze Dark"
+export QT_STYLE_OVERRIDE="Breeze Dark"
 
 #------Gnome dark mode ?
 export GTK_THEME=Adwaita:dark
+# export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+# export QT_STYLE_OVERRIDE=adwaita-dark
 
 # source /home/lasercata/.bash_completions/please.sh
 
