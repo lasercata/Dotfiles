@@ -1,8 +1,8 @@
 #--------------------------------
 #
 # Author            : Lasercata
-# Last modification : 2023.12.17
-# Version           : v1.2.5
+# Last modification : 2023.12.28
+# Version           : v1.2.6
 #
 #--------------------------------
 
@@ -34,3 +34,5 @@ alias gitd="git diff"
 alias gitl="git log --oneline --all"
 
 alias q="exit"
+alias qq="exit"
+alias qqq="exit"
