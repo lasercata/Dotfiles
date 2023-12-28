@@ -252,9 +252,9 @@ GPG_TTY=$(tty)
 export GPG_TTY
 
 #------Integrate KDE apps in i3
-# export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_QPA_PLATFORMTHEME="qt5ct"
 #
-export QT_STYLE_OVERRIDE="Breeze Dark"
+# export QT_STYLE_OVERRIDE="Breeze Dark"
 
 #------Gnome dark mode ?
 export GTK_THEME=Adwaita:dark

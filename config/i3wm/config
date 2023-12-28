@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.12.19
+# Last modification : 2023.12.27
 # Author            : Lasercata
-# Version           : v1.9.3
+# Version           : v1.9.4
 #
 #--------------------------------
 
@@ -95,6 +95,11 @@ exec_always --no-startup-id picom
 # exec_always --no-startup-id ~/Documents/0.AAA_softwares/99.autres/picom_jonaburg/picom/build/src/picom
 # }}}
 
+#------Integration of KDE apps in i3 (for the theme, using qt5ct)
+#{{{
+exec_always --no-startup-id "export QT_QPA_PLATFORMTHEME=qt5ct"
+# }}}
+
 #------Bindings
 # {{{
 #---Main key (windows key)
@@ -118,11 +123,19 @@ bindsym $mod+Shift+q kill
 bindsym --release button2 kill
 
 #---Program launcher
-# There also is the (new) i3-dmenu-desktop which only displays applications shipping a .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindsym $mod+m exec dmenu_run
-# bindsym $mod+m exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+m exec "rofi -theme Monokai -modi drun,run -show-icons -show drun"
-bindsym $mod+Shift+m exec "rofi -theme Monokai -modi drun,run -show-icons -show run"
+# bindsym $mod+m exec "rofi -e $(echo $HOME)"
+# bindsym $mod+m exec "source /home/lasercata/.bashrc; rofi -theme Monokai -modi drun,run -show-icons -show drun"
+# bindsym $mod+Shift+m exec "export QT_QPA_PLATFORMTHEME=qt5ct; rofi -theme Monokai -modi drun,run -show-icons -show run"
+
+bindsym $mod+m exec "export QT_QPA_PLATFORMTHEME=qt5ct; rofi -theme Monokai -modi drun,run -show-icons -show drun"
+bindsym $mod+Shift+m exec "export QT_QPA_PLATFORMTHEME=qt5ct; rofi -theme Monokai -modi drun,run -show-icons -show run"
+
+# bindsym $mod+m exec "rofi -theme Monokai -modi drun,run -show-icons -show drun"
+# bindsym $mod+Shift+m exec "rofi -theme Monokai -modi drun,run -show-icons -show run"
+
+# bindsym $mod+m exec "bash -c \"rofi -theme Monokai -modi drun,run -show-icons -show drun\""
+# bindsym $mod+Shift+m exec "bash -c \"rofi -theme Monokai -modi drun,run -show-icons -show run\""
+
 # Use ctrl+tab to change mode
 
 #---Window finder
@@ -440,11 +453,6 @@ bindsym Control+Mod1+c exec rofi -theme Monokai -modi "clipboard:greenclip print
 #------Hide mouse cursor when typing (xbanish)
 #{{{
 exec_always --no-startup-id xbanish
-# }}}
-
-#------Integration of KDE apps in i3 (for the theme, using qt5ct)
-#{{{
-exec_always --no-startup-id "export QT_QPA_PLATFORMTHEME=\"qt5ct\""
 # }}}
 
 #------For integration in KDE plasma (i3 as a window manager in KDE)
