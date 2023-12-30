@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.12.27
+# Last modification : 2023.12.30
 # Author            : Lasercata
-# Version           : v1.9.4
+# Version           : v1.9.5
 #
 #--------------------------------
 
@@ -16,17 +16,17 @@
 #------Startup
 #{{{
 #---Turn Bluetooth off
-exec_always "bluetooth off"
+exec_always --no-startup-id "bluetooth off"
 
 #---Mute the microphone (actually just set volume to 0)
-exec_always "pactl set-source-volume 0 0%"
+exec_always --no-startup-id "pactl set-source-volume 0 0%"
 
 #---Set the keyboard layout to azerty (variant azerty, not the default latin9)
 #To list all the available variants : `localectl list-x11-keymap-variants fr`
-# exec_always "setxkbmap fr -variant azerty"
+# exec_always --no-startup-id "setxkbmap fr -variant azerty"
 
 #---Remap caps lock to esc
-# exec_always "setxkbmap -option caps:escape"
+# exec_always --no-startup-id "setxkbmap -option caps:escape"
 
 # Done in the file /etc/default/keyboard
 
@@ -42,12 +42,12 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 # }
 
 #---Removable devices utility (udiskie)
-exec_always "killall udiskie"
+exec_always --no-startup-id "killall udiskie"
 exec_always --no-startup-id ~/.config/i3/scripts/launcher.sh "udiskie --config=$HOME/.config/udiskie/config.yml --no-automount --tray"
 
 #---Dunst (notifications)
-exec_always notify-send "i3" "Relaunching ..." -t 1800
-exec_always "killall dunst"
+exec_always --no-startup-id notify-send "i3" "Relaunching ..." -t 1800
+exec_always --no-startup-id "killall dunst"
 exec_always --no-startup-id "dunst"
 
 #}}}
@@ -92,12 +92,6 @@ default_floating_border pixel 2
 #---Transparency
 # Using picom. See ~/.config/picom.conf for configuration.
 exec_always --no-startup-id picom
-# exec_always --no-startup-id ~/Documents/0.AAA_softwares/99.autres/picom_jonaburg/picom/build/src/picom
-# }}}
-
-#------Integration of KDE apps in i3 (for the theme, using qt5ct)
-#{{{
-exec_always --no-startup-id "export QT_QPA_PLATFORMTHEME=qt5ct"
 # }}}
 
 #------Bindings
@@ -124,17 +118,12 @@ bindsym --release button2 kill
 
 #---Program launcher
 # bindsym $mod+m exec "rofi -e $(echo $HOME)"
-# bindsym $mod+m exec "source /home/lasercata/.bashrc; rofi -theme Monokai -modi drun,run -show-icons -show drun"
-# bindsym $mod+Shift+m exec "export QT_QPA_PLATFORMTHEME=qt5ct; rofi -theme Monokai -modi drun,run -show-icons -show run"
-
-bindsym $mod+m exec "export QT_QPA_PLATFORMTHEME=qt5ct; rofi -theme Monokai -modi drun,run -show-icons -show drun"
-bindsym $mod+Shift+m exec "export QT_QPA_PLATFORMTHEME=qt5ct; rofi -theme Monokai -modi drun,run -show-icons -show run"
 
 # bindsym $mod+m exec "rofi -theme Monokai -modi drun,run -show-icons -show drun"
 # bindsym $mod+Shift+m exec "rofi -theme Monokai -modi drun,run -show-icons -show run"
 
-# bindsym $mod+m exec "bash -c \"rofi -theme Monokai -modi drun,run -show-icons -show drun\""
-# bindsym $mod+Shift+m exec "bash -c \"rofi -theme Monokai -modi drun,run -show-icons -show run\""
+bindsym $mod+m exec "source ~/.config/i3/scripts/set_env_vars.sh; rofi -theme Monokai -modi drun,run -show-icons -show drun"
+bindsym $mod+Shift+m exec "source ~/.config/i3/scripts/set_env_vars.sh; rofi -theme Monokai -modi drun,run -show-icons -show run"
 
 # Use ctrl+tab to change mode
 
@@ -214,17 +203,17 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -1%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 #-Brightness
-bindsym XF86MonBrightnessUp exec brightnessctl set +1% --quiet # increase screen brightness
-bindsym XF86MonBrightnessDown exec brightnessctl set 1%- --quiet # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +1% --quiet # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 1%- --quiet # decrease screen brightness
 
 #-Media player
-bindsym XF86AudioPlay exec cmus-remote -u
-bindsym XF86AudioPause exec cmus-remote -u
-bindsym XF86AudioNext exec cmus-remote -k +5
-bindsym XF86AudioPrev exec cmus-remote -k -5
+bindsym XF86AudioPlay exec --no-startup-id cmus-remote -u
+bindsym XF86AudioPause exec --no-startup-id cmus-remote -u
+bindsym XF86AudioNext exec --no-startup-id cmus-remote -k +5
+bindsym XF86AudioPrev exec --no-startup-id cmus-remote -k -5
 
 #-Touchpad
-bindsym XF86TouchpadToggle exec ~/.config/i3/script/toggle_touchpad_libinput.sh
+bindsym XF86TouchpadToggle exec --no-startup-id ~/.config/i3/script/toggle_touchpad_libinput.sh
 
 #---Numlock
 # activate the num lock. Need to download package `numlockx`.
@@ -235,11 +224,11 @@ exec_always --no-startup-id numlockx on
 set $locker ~/.config/i3/scripts/locker.sh
 
 #-Bind keys to lock
-bindsym $mod+o exec $locker
-bindsym $mod+Shift+o exec $locker && systemctl suspend
+bindsym $mod+o exec --no-startup-id $locker
+bindsym $mod+Shift+o exec --no-startup-id $locker && systemctl suspend
 
 #-Auto lock the screen
-exec_always "xautolock -detectsleep -time 10 -locker \"$locker\""
+exec_always --no-startup-id "xautolock -detectsleep -time 10 -locker \"$locker\""
 # exec_always --no-startup-id xss-lock -l $locker
 # }}}
 
@@ -349,8 +338,10 @@ bindsym $mod+Shift+F9 move container to workspace $ws19
 bindsym $mod+Shift+F10 move container to workspace $ws20
 bindsym $mod+Shift+F11 move container to workspace $ws21
 bindsym $mod+Shift+F12 move container to workspace $ws22
+# }}}
 
-#---Assigning some windows to some workspaces
+#------Window rules
+# {{{
 assign [class="korganizer"] workspace $ws2
 assign [class="thunderbird"] workspace $ws2
 
@@ -360,6 +351,8 @@ assign [class="Chromium"] workspace $ws3
 
 assign [class="Signal"] workspace $ws9
 assign [class="Discord"] workspace $ws9
+
+for_window [title="VeraCrypt"] floating disable
 # }}}
 
 #------Resize mode
@@ -455,6 +448,11 @@ bindsym Control+Mod1+c exec rofi -theme Monokai -modi "clipboard:greenclip print
 exec_always --no-startup-id xbanish
 # }}}
 
+#------Integration of KDE apps in i3 (for the theme, using qt5ct)
+#{{{
+# exec_always --no-startup-id "export QT_QPA_PLATFORMTHEME=qt5ct"
+# }}}
+
 #------For integration in KDE plasma (i3 as a window manager in KDE)
 #{{{
 # Used https://github.com/avivace/dotfiles
@@ -463,8 +461,8 @@ exec_always --no-startup-id xbanish
 for_window [title="Desktop — Plasma"] kill; floating enable; border none
 #
 # # Set Plasma dialogs and pop ups as floating so they won't get tiled
-# for_window [window_role="pop-up"] floating enable
-# for_window [window_role="task_dialog"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
 # #for_window [class="systemsettings"] floating enable
 # for_window [class="plasmashell"] floating enable;
 # for_window [class="Plasma"] floating enable; border none
