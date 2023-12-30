@@ -8,6 +8,9 @@
 #
 #--------------------------
 
+# This script launch cmus in a new tmux session named "cmus" if it was not
+# created, and attach to it otherwise.
+
 tmux new -d -s cmus;
 status=$?
 
