@@ -3,9 +3,9 @@
 
 #---------------------------------
 #
-# Last modification : 2023.07.23
-# Author            : https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/info-hackspeed
-# Version           : v2.0
+# Last modification : 2023.12.31
+# Author            : https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/info-hackspeed, then lasercata
+# Version           : v2.1.0
 #
 #---------------------------------
 
@@ -14,21 +14,56 @@
 # KEYBOARD_ID="SONiX DIERYA DK61"
 # KEYBOARD_ID="ZSA Technology Labs Moonlander Mark I Keyboard"
 # KEYBOARD_ID=14
+#
+KEYBOARD_LIST=$(
+    xinput list --short |
+        grep -v "Consumer" |
+        grep -v "Control" |
+        grep -v "Bus" |
+        grep -v "Virtual" |
+        grep -v "Button" |
+        grep -v "hotkeys" |
+        grep "keyboard"
+)
 
-if [[ -n $(xinput list --short | grep ZSA) ]]; then
+# echo "$KEYBOARD_LIST"
+
+# If there is at least an other keyboard than the laptop one or the ZSA, choose the first one.
+if [[ -n $(echo "$KEYBOARD_LIST" | grep -v "AT Translated" | grep -v "ZSA") ]]; then
     KEYBOARD_ID=$(
-        xinput list --short |
-            grep ZSA |
-            grep -v "Consumer" |
-            grep -v "System Control" |
-            grep -v "pointer" |
-            grep -v "Keyboard" |
-            awk '{print $8}' |
-            awk -F = '{print $2}'
+        echo "$KEYBOARD_LIST" |
+            grep -v "AT Translated" |
+            grep -v "ZSA" |
+            awk -F '\t' '{print $2}' |
+            awk -F = '{print $2}' |
+            head -n 1
+    )
+elif [[ -n $(echo "$KEYBOARD_LIST" | grep ZSA) ]]; then
+    KEYBOARD_ID=$(
+        echo "$KEYBOARD_LIST" |
+            grep "ZSA" |
+            awk -F '\t' '{print $2}' |
+            awk -F = '{print $2}' |
+            head -n 1
     )
 else
     KEYBOARD_ID="AT Translated Set 2 keyboard"
 fi
+
+# if [[ -n $(xinput list --short | grep ZSA) ]]; then
+#     KEYBOARD_ID=$(
+#         xinput list --short |
+#             grep ZSA |
+#             grep -v "Consumer" |
+#             grep -v "System Control" |
+#             grep -v "pointer" |
+#             grep -v "Keyboard" |
+#             awk '{print $8}' |
+#             awk -F = '{print $2}'
+#     )
+# else
+#     KEYBOARD_ID="AT Translated Set 2 keyboard"
+# fi
 
 # echo "KEYBOARD_ID" "$KEYBOARD_ID"
 
