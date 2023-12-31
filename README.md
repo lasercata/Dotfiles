@@ -30,6 +30,7 @@ See each folder in [`config`](config) for more info.
 | [htop](config/top/htop)       | process monitor                        |
 | [btop](config/top/btop)       | resources monitor                      |
 | [udiskie](config/udiskie)     | utility to mount / unmount devices     |
+| [vimiv](config/vimiv)         | an image viewer with vim-like keybinds |
 | [zathura](config/zathura)     | pdf reader with vim-like keys          |
 
 ### Other useful softwares :
