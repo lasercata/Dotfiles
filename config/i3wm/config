@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.12.30
+# Last modification : 2023.12.31
 # Author            : Lasercata
-# Version           : v1.9.7
+# Version           : v1.9.8
 #
 #--------------------------------
 
@@ -51,7 +51,7 @@ exec_always --no-startup-id "killall dunst"
 exec_always --no-startup-id "dunst"
 
 #---Arch update indicator
-exec_always --no-startup-id "archupdate-indicator.py"
+exec --no-startup-id "archupdate-indicator.py"
 
 #}}}
 
