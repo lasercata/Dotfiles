@@ -39,7 +39,7 @@ PROMPT_COMMAND='history -a'
 export HISTIGNORE="history:ls:ll"
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-export HISTFILESIZE=20000 #For some reason, this does not works : echo $HISTSIZE shows the right number, but only last 1000 commands are kept ...
+export HISTFILESIZE=20000
 export HISTSIZE=10000
 
 
@@ -129,7 +129,7 @@ convertsecs() {
     h=$(bc <<< "${1}/3600")
     m=$(bc <<< "(${1}%3600)/60")
     s=$(bc <<< "${1}%60")
-    printf "%02d:%02d:%06.3f\n" $h $m $s |
+    printf "%02d:%02d:%06.3f\n" "$h" "$m" "$s" |
     sed 's/\(00:\)*//' ;
 }
 
@@ -226,8 +226,11 @@ set -o vi
 EDITOR=nvim #The editor used for visual mode (when hitting v in normal mode in command line, open the line in an editor)
 export EDITOR
 
-# PAGER=bat
-# export PAGER
+PAGER=bat
+export PAGER
+
+TERMINAL=kitty
+export TERMINAL
 
 
 #------Cap locks
