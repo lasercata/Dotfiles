@@ -1,8 +1,8 @@
 #-----------------------------------------------
 #
 # Author            : Parrot OS, then Lasercata
-# Last modification : 2023.12.23
-# Version           : v1.7.5
+# Last modification : 2023.12.31
+# Version           : v1.7.6
 #
 #-----------------------------------------------
 
@@ -226,8 +226,8 @@ set -o vi
 EDITOR=nvim #The editor used for visual mode (when hitting v in normal mode in command line, open the line in an editor)
 export EDITOR
 
-PAGER=bat
-export PAGER
+# PAGER=bat
+# export PAGER
 
 TERMINAL=kitty
 export TERMINAL
