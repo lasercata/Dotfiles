@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.12.31
+# Last modification : 2024.01.02
 # Author            : Lasercata
-# Version           : v1.9.8
+# Version           : v1.9.9
 #
 #--------------------------------
 
@@ -358,6 +358,8 @@ assign [class="Signal"] workspace $ws9
 assign [class="Discord"] workspace $ws9
 
 for_window [title="VeraCrypt"] floating disable
+
+for_window [class="Yad"] floating enable
 # }}}
 
 #------Resize mode

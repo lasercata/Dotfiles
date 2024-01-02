@@ -18,9 +18,9 @@
 
 ;---------------------------------------------
 ;
-; Last modification : 2023.12.30
+; Last modification : 2024.01.02
 ; Author            : Polybar, then Lasercata
-; Version           : v3.0.2
+; Version           : v3.0.3
 ;
 ; This is used in i3 (window manager)
 ; Inspired from https://github.com/Vallen217/dotfiles/tree/master/.config/polybar for v2.0.0.
