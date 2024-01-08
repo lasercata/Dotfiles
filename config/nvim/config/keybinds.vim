@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.08.18
-" Version       :   v1.3.0
+" Last update   :   2024.01.08
+" Version       :   v1.3.1
 "
 "----------------------------------------
 
@@ -37,6 +37,9 @@ vnoremap [ <ESC>`>a]<ESC>`<i[<ESC>
 vnoremap { <ESC>`<i{<ESC>`>la}<ESC>%
 vnoremap <leader>" <ESC>`<i"<ESC>`>la"<ESC>
 vnoremap <leader>' <ESC>`<i'<ESC>`>la'<ESC>
+
+"---Space around a char
+nnoremap <space><space> i <esc>la <esc>
 
 "---Deleting surrounding delimiter (any that is detected with %) in normal mode.
 "The cursor can be anywhere inside the delimiter pair.
