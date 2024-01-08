@@ -62,16 +62,8 @@ exec --no-startup-id "archupdate-indicator.py"
 font pango:Hack 10
 
 #---Wallpaper
-# exec_always --no-startup-id feh --bg-scale ~/.wallpapers/Flow_5120x2880.jpg
-# exec_always --no-startup-id feh --bg-scale ~/.wallpapers/7y7hhusqo5xa1.png
-# exec_always --no-startup-id feh --bg-scale ~/.wallpapers/aoraki-mount-cook-national-park-lake-sunset-reflection-1920x1080-8658.jpg
-# exec_always --no-startup-id feh --bg-scale ~/.wallpapers/pragser-wildsee-lake-dolomite-mountains-italy-scenic-1920x1080-8839.jpg
-# exec_always --no-startup-id feh --bg-scale ~/.wallpapers/misty-mountains-v0-zwq468b18ywa1.jpg
-# exec_always --no-startup-id feh --bg-scale ~/.wallpapers/laser_in_wind.jpeg
-# exec_always --no-startup-id feh --bg-scale ~/.wallpapers/boat_backwards.jpeg
-# exec_always --no-startup-id feh --bg-scale ~/.wallpapers/city_surrounded_by_water.jpeg
-# exec_always --no-startup-id feh --bg-scale ~/.wallpapers/lake_surrounded_by_mountains.jpeg
-exec_always --no-startup-id feh --bg-scale ~/.wallpapers/water_and_island.jpeg
+#To change the wallpaper, change the content of the file ~/.wallpaper_filename.txt to the file name of the desired wallpaper.
+exec_always --no-startup-id feh --bg-scale $(cat ~/.wallpapers/wallpaper_filename.txt)
 
 #---Windows colors
 # class                 border  backgr. text    indicator child_border
