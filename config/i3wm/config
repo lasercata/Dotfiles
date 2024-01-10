@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2024.01.02
+# Last modification : 2024.01.10
 # Author            : Lasercata
-# Version           : v1.9.9
+# Version           : v1.9.10
 #
 #--------------------------------
 
@@ -47,8 +47,8 @@ exec_always --no-startup-id ~/.config/i3/scripts/launcher.sh "udiskie --config=$
 
 #---Dunst (notifications)
 exec_always --no-startup-id notify-send "i3" "Relaunching ..." -t 1800
-exec_always --no-startup-id "killall dunst"
-exec_always --no-startup-id "dunst"
+# exec_always --no-startup-id "killall dunst"
+# exec_always --no-startup-id "dunst"
 
 #---Arch update indicator
 exec --no-startup-id "archupdate-indicator.py"
