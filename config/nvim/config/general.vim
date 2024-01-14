@@ -68,3 +68,6 @@ autocmd FileType c setlocal foldnestmax=1 foldmethod=indent
 "---LaTeX
 autocmd FileType tex setlocal foldnestmax=3 foldmethod=indent foldlevelstart=1 foldlevel=1
 
+"---JS
+autocmd FileType javascript setlocal foldnestmax=1 foldmethod=indent
+
