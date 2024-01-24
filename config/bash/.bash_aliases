@@ -1,8 +1,8 @@
 #--------------------------------
 #
 # Author            : Lasercata
-# Last modification : 2023.12.28
-# Version           : v1.2.6
+# Last modification : 2024.01.24
+# Version           : v1.2.7
 #
 #--------------------------------
 
@@ -32,6 +32,7 @@ alias fd="fzf --preview 'bat--color=always --style=numbers --line-range=:500 {}'
 alias gits="git status"
 alias gitd="git diff"
 alias gitl="git log --oneline --all"
+alias gitc="git commit -m"
 
 alias q="exit"
 alias qq="exit"
