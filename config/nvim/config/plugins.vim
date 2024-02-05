@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.12.14
-" Version       :   v2.2
+" Last update   :   2024.02.05
+" Version       :   v2.2.1
 "
 "----------------------------------------
 
@@ -59,6 +59,7 @@ call plug#begin('~/.config/nvim/plugged')
 
     "-Nvim-tree (file explorer)
     Plug 'nvim-tree/nvim-tree.lua'
+    Plug 'nvim-tree/nvim-web-devicons'
 
     "-Auto pair
     " Plug 'tmsvg/pear-tree'

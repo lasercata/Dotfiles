@@ -1,4 +1,8 @@
-require('nvim-tree').setup()
+require('nvim-tree').setup({
+    renderer = {
+        highlight_opened_files = 'name',
+    },
+})
 
 vim.keymap.set(
     'n',
