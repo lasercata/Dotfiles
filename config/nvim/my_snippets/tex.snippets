@@ -1,8 +1,8 @@
 #------------------------------------------------
 #
 # Author            :   Lasercata
-# Last modification :   2023.11.28
-# Version           :   v1.6.2
+# Last modification :   2024.02.08
+# Version           :   v1.6.3
 #
 # Contain definition of snippets for LaTex.
 # Some of them need my LaTeX template.
@@ -183,6 +183,14 @@ snippet lstl "listings" bA
 \begin{lstlisting}[language=$1, xleftmargin=${2:60}pt]
 $0
 \end{lstlisting}
+endsnippet
+
+snippet lstf "file listings" bA
+\lstinputlisting[language=$1, xleftmargin=${2:60}pt]{$0}
+endsnippet
+
+snippet lsti "inline listings" A
+\lstinline[language=$1]{$2}$0
 endsnippet
 
 snippet algo "Algorithm" bA
