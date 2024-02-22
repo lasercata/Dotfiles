@@ -1,0 +1,31 @@
+#---------------------------------
+#
+# Author            :   Lasercata
+# Last modification :   2024.02.22
+# Version           :   v1.0.0
+#
+#---------------------------------
+
+# From https://github.com/hlissner/vim-ultisnips-snippets/blob/master/snips/java.snippets
+# Getters/Setters
+snippet get "getter"
+public ${1:void} get${2:VarName}() {
+    return this.${2/\w+\s*/\l$0/};
+}
+endsnippet
+
+snippet set "setter"
+public void set${2:VarName}(${3:Type} ${4:value}) {
+    this.${2/\w+\s*/\l$0/} = $4;
+}
+endsnippet
+
+snippet getset "getter & setter"
+public ${1:void} get${2:VarName}() {
+	return this.${2/\w+\s*/\l$0/};
+}
+public void set$2($1 ${2/\w+\s*/\l$0/}) {
+	this.${2/\w+\s*/\l$0/} = ${2/\w+\s*/\l$0/};
+}
+
+endsnippet
