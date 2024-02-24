@@ -1,7 +1,7 @@
 #--------------------------------
 #
 # Author            : Lasercata
-# Last modification : 2024.02.07
+# Last modification : 2024.02.24
 # Version           : v1.2.8
 #
 #--------------------------------
@@ -38,3 +38,4 @@ alias gitc="git commit -m"
 alias q="exit"
 alias qq="exit"
 alias qqq="exit"
+alias :q="exit"
