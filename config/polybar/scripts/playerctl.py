@@ -107,14 +107,30 @@ class Player:
 
         # Formatting each line in a better way
         for j, k in enumerate(mt):
-            # mt[j] = k.split(' ')
-            mt[j] = k.split('  ') #TODO: this does not work. I need to find a solution to separate in three columns (player name, field name, data).
+            mt[j] = k.split(' ')
+            # mt[j] = k.split('  ') #TODO: this does not work. I need to find a solution to separate in three columns (player name, field name, data).
             #TODO: Or I could try to get each field one by one ? And manage the popen error ? But this would make many calls to the playerctl.
 
-            while '' in mt[j]:
-                mt[j].remove('')
+            l = []
+            l.append(mt[j][0]) # player name
 
-        print(mt) #TODO: remove
+            # Search for next not empty string
+            i = 1
+            while mt[j][i] == '':
+                i += 1
+
+            #Adding field name
+            l.append(mt[j][i])
+
+            # Search for next not empty string
+            i += 1
+            while i < len(mt[j]) and mt[j][i] == '':
+                i += 1
+
+            # Adding data
+            l.append(''.join(mt[j][i:]))
+
+            mt[j] = l
 
         # Getting the player used
         d = {}
@@ -123,6 +139,11 @@ class Player:
         for k in mt:
             if d['player'] in k:
                 k.remove(d['player'])
+
+            if '' in k:
+                k.remove('')
+
+        # print(mt) #TODO: remove
 
         # Getter remaining metadata
         for k in mt:
@@ -133,8 +154,12 @@ class Player:
         for k in ('position', 'length'):
             if k in d.keys():
                 d[k] = float(d[k])
+                d[k] = int(d[k])
 
-        print(d) #TODO: remove
+        if 'length' in d.keys():
+            d['length'] = int(d['length'] / 10**6)
+
+        # print(d) #TODO: remove
         return d
 
     def _get_long_pos_from_d(self, d):
@@ -143,6 +168,10 @@ class Player:
 
         - d : the dict containing the informations.
         '''
+
+        #TODO: remove
+        # print('pos : {}, formatted : {}'.format(d['position'], time_to_str(d["position"])))
+        # print('len : {}, formatted : {}'.format(d['length'], time_to_str(d["length"])))
 
         return f'[{time_to_str(d["position"])}/{time_to_str(d["length"])}]'
 
