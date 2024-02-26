@@ -391,6 +391,11 @@ def print_all_players(max_len, min_len=10, remove_cmus=True):
         else:
             k += 1
 
+    #---If all players are stopped, do not show anything.
+    if len(players) == 0:
+        print()
+        return
+
     #---Setting the length limit
     # Counting the number of playing players
     nb_playing = 0
