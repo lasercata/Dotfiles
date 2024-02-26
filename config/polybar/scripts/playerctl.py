@@ -11,6 +11,7 @@
 
 ##-Imports
 from os import popen
+from subprocess import PIPE, Popen
 
 #TODO: use signals + polybar tail mode ?
 
@@ -23,7 +24,8 @@ fg_paused = '%{F#77ffffff}'
 ul = '%{u#ff4500}'
 end_ul = '%{u-}'
 
-col = '%{F#ff4500}'
+accent_col = '%{F#ff4500}'
+accent_col_2 = '%{F#91f5f3}' # cyan-3
 
 default_len = 56
 
@@ -36,8 +38,8 @@ def time_to_str(n):
     - n : a duration, in seconds.
     '''
 
-    # if type(n) == str:
-    #     n = float(n)
+    if n == '?':
+        return n
 
     if n < 3600:
         s = n % 60
@@ -70,12 +72,41 @@ class Player:
         else:
             self.player_arg = f'-p {player}'
 
-        self.max_len = max_len
+        self.max_len = int(max_len)
+
+        self.status = None
+
+    def set_max_len(self, max_len):
+        '''Setter for max_len.'''
+    
+        self.max_len = int(max_len)
 
     def _get_status(self):
-        '''Call playerctl to get the status for the current player'''
+        '''
+        Call playerctl to get the status for the current player.
 
-        return popen(f'playerctl {self.player_arg} status').read().strip('\n')
+        It stores the result in self.status, and returns this instead of calling playerctl if it has been set.
+        '''
+
+        if self.status == None:
+            self.status = popen(f'playerctl {self.player_arg} status').read().strip('\n')
+
+        return self.status
+
+    def is_stopped(self):
+        '''Returns True if and only if the current player is stopped.'''
+    
+        return self._get_status().lower() == 'stopped'
+
+    def is_playing(self):
+        '''Returns True if and only if the current player is playing.'''
+    
+        return self._get_status().lower() == 'playing'
+
+    def is_paused(self):
+        '''Returns True if and only if the current player is paused.'''
+    
+        return self._get_status().lower() == 'paused'
 
     def _get_metadata(self, add_pos=True):
         '''
@@ -86,7 +117,15 @@ class Player:
         mt = popen(f'playerctl {self.player_arg} metadata').read().strip('\n').split('\n')
 
         if add_pos:
-            mt.append('position  ' + popen(f'playerctl {self.player_arg} position').read().strip('\n'))
+            # pos = popen(f'playerctl {self.player_arg} position').read().strip('\n')
+            pos, _ = Popen(f'playerctl {self.player_arg} position', shell=True, stdout=PIPE, stderr=PIPE).communicate()
+
+            pos = pos.decode().strip('\n')
+
+            if pos == '':
+                pos = '?'
+
+            mt.append('position  ' + pos)
 
         return mt
 
@@ -128,7 +167,7 @@ class Player:
                 i += 1
 
             # Adding data
-            l.append(''.join(mt[j][i:]))
+            l.append(' '.join(mt[j][i:]))
 
             mt[j] = l
 
@@ -148,11 +187,11 @@ class Player:
         # Getter remaining metadata
         for k in mt:
             for m in ('mpris:length', 'xesam:artist', 'xesam:title', 'position'):
-                if m in k:
+                if m in k and len(k) > 1:
                     d[m.split(':')[-1]] = k[-1]
 
         for k in ('position', 'length'):
-            if k in d.keys():
+            if k in d.keys() and d[k] != '?':
                 d[k] = float(d[k])
                 d[k] = int(d[k])
 
@@ -162,16 +201,20 @@ class Player:
         # print(d) #TODO: remove
         return d
 
-    def _get_long_pos_from_d(self, d):
+    def _get_long_pos_from_d(self, d, with_color=True):
         '''
         Return a string showing the position in the format [pos/duration].
 
-        - d : the dict containing the informations.
+        - d           : the dict containing the informations ;
+        - with_colors : if True, also add colors.
         '''
 
-        #TODO: remove
-        # print('pos : {}, formatted : {}'.format(d['position'], time_to_str(d["position"])))
-        # print('len : {}, formatted : {}'.format(d['length'], time_to_str(d["length"])))
+        if d['position'] == '?':
+            return '[?/?]'
+
+        if with_color:
+            return accent_col + '[' + accent_col_2 + time_to_str(d['position']) + accent_col + f'/{time_to_str(d["length"])}]'
+            # return accent_col + '[' + accent_col_2 + time_to_str(d['position']) + accent_col + f'/' + accent_col_2 + time_to_str(d['length']) + accent_col + ']'
 
         return f'[{time_to_str(d["position"])}/{time_to_str(d["length"])}]'
 
@@ -182,6 +225,9 @@ class Player:
         - d : the dict containing the informations.
         '''
 
+        if d['position'] == '?':
+            return '?%'
+
         return str(round(100 * d['position'] / d['length'])) + '%'
 
     def __str__(self):
@@ -190,14 +236,15 @@ class Player:
 
         All the colors (background, foreground, underline), and the action when clicked are encoded in the string.
 
-        - max_len : the max length of the string to return.
+        - self.max_len : the max length of the string to return.
         '''
 
         status = self._get_status()
-        mt_d = self._mt_to_dct(self._get_metadata())
 
         if status.lower() == 'stopped':
             return ''
+
+        mt_d = self._mt_to_dct(self._get_metadata())
 
         #------Making the full string
         #---Track
@@ -217,7 +264,8 @@ class Player:
         play_icon = ('󰏤', '󰐊')[status.lower() == 'playing']
 
         #---Position
-        pos_str = self._get_long_pos_from_d(mt_d)
+        pos_str = self._get_long_pos_from_d(mt_d, with_color=False)
+        pos_str_col = self._get_long_pos_from_d(mt_d, with_color=True)
         percent_str = self._get_short_pos_from_d(mt_d)
 
         #---Calculate the optimal length
@@ -225,21 +273,21 @@ class Player:
         partial_len2 = len(play_icon + ' ' + ' ' + percent_str)
 
         # The beginning of the string (color for the icon, icon, color for the text.)
-        playing_str = col + play_icon + (fg_paused, fg)[status.lower() == 'playing']
+        playing_str = accent_col + play_icon + (fg_paused, fg)[status.lower() == 'playing']
 
         # To toggle play / pause when left clicking on the text, add those around the text :
         bt_beg = '%{A1:' + self._play_pause_str() + ':}'
         bt_end = '%{A}'
 
-        if len(track_str) + partial_len <= max_len:
-            return bt_beg + ul + playing_str + ' ' + track_str + ' ' + pos_str + end_ul + bt_end
+        if len(track_str) + partial_len <= self.max_len:
+            return bt_beg + ul + playing_str + ' ' + track_str + ' ' + pos_str_col + end_ul + bt_end
 
-        elif len(track_str) + partial_len2 <= max_len:
-            return bt_beg + ul + playing_str + ' ' + track_str + ' ' + percent_str + end_ul + bt_end
+        elif len(track_str) + partial_len2 <= self.max_len:
+            return bt_beg + ul + playing_str + ' ' + track_str + ' ' + accent_col + percent_str + end_ul + bt_end
 
         else:
-            l = max_len - partial_len2 - 3
-            return bt_beg + ul + playing_str + ' ' + track_str[:l] + '... ' + percent_str + end_ul + bt_end
+            l = self.max_len - partial_len2 - 1
+            return bt_beg + ul + playing_str + ' ' + track_str[:l] + '~ ' + accent_col + percent_str + end_ul + bt_end
 
 
     def play(self):
@@ -318,10 +366,12 @@ def list_players():
     return l
 
 
-def print_all_players(max_len, remove_cmus=True):
+def print_all_players(max_len, min_len=10, remove_cmus=True):
     '''
     Print all the players' info.
 
+    - max_len     : the maximum length for all players ;
+    - min_len     : the minimum length allowed for a single player ;
     - remove_cmus : if true, ignore cmus.
     '''
 
@@ -330,13 +380,52 @@ def print_all_players(max_len, remove_cmus=True):
     if remove_cmus and 'cmus' in l:
         l.remove('cmus')
 
-    players = [Player(k, max_len=max_len) for k in l]
+    players = [Player(p) for p in l]
 
-    for k in players:
-        print(k, end=' | ')
+    #---Removing stopped players from the list
+    k = 0
+    while k < len(players):
+        if players[k].is_stopped():
+            players.pop(k)
 
-    print('\b\b  \b\b')
+        else:
+            k += 1
 
+    #---Setting the length limit
+    # Counting the number of playing players
+    nb_playing = 0
+    for p in players:
+        if p.is_playing():
+            nb_playing += 1
+
+    # Calculating the length for playing players
+    if nb_playing == 0:
+        long_len = max_len / len(players)
+    else:
+        long_len = int((max_len - min_len * (len(players) - nb_playing)) / nb_playing) #TODO: check that it is positive ...
+
+    # Setting the lengths
+    for p in players:
+        # p.set_max_len(max_len / len(players))
+
+        if p.is_playing() or nb_playing == 0:
+            p.set_max_len(long_len)
+        
+        else:
+            p.set_max_len(min_len)
+
+    #---Printing players' informations
+    for k, p in enumerate(players):
+        print(p, end='')
+
+        if k != len(players) - 1:
+            # print(' %{F#ff4500}|%{F-} ', end='') # orange
+            # print(' %{F#66efeb}|%{F-} ', end='') #cyan-1
+            # print(' %{F#7ff3ef}|%{F-} ', end='') #cyan-2
+            print(' ' + accent_col_2 + '|%{F-} ', end='') #cyan-3
+            # print(' %{F#aaaaaa}|%{F-} ', end='') # grey
+
+    print()
 
 ##-Run
 if __name__ == '__main__':
