@@ -21,8 +21,8 @@ from subprocess import PIPE, Popen
 fg = '%{F#d4d7ff}'
 fg_paused = '%{F#77ffffff}'
 
-ul = '%{u#ff4500}'
-end_ul = '%{u-}'
+ul = '%{u#ff4500}%{+u}'
+# end_ul = '%{u-}'
 
 accent_col = '%{F#ff4500}'
 accent_col_2 = '%{F#91f5f3}' # cyan-3
@@ -275,14 +275,14 @@ class Player:
         bt_end = '%{A}'
 
         if len(track_str) + partial_len <= self.max_len:
-            return bt_beg + ul + playing_str + ' ' + track_str + ' ' + pos_str_col + end_ul + bt_end
+            return bt_beg + ul + playing_str + ' ' + track_str + ' ' + pos_str_col + bt_end
 
         elif len(track_str) + partial_len2 <= self.max_len:
-            return bt_beg + ul + playing_str + ' ' + track_str + ' ' + accent_col + percent_str + end_ul + bt_end
+            return bt_beg + ul + playing_str + ' ' + track_str + ' ' + accent_col + percent_str + bt_end
 
         else:
             l = self.max_len - partial_len2 - 1
-            return bt_beg + ul + playing_str + ' ' + track_str[:l] + '~ ' + accent_col + percent_str + end_ul + bt_end
+            return bt_beg + ul + playing_str + ' ' + track_str[:l] + '~ ' + accent_col + percent_str + bt_end
 
 
     def play(self):
