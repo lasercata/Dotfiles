@@ -147,8 +147,6 @@ class Player:
         # Formatting each line in a better way
         for j, k in enumerate(mt):
             mt[j] = k.split(' ')
-            # mt[j] = k.split('  ') #TODO: this does not work. I need to find a solution to separate in three columns (player name, field name, data).
-            #TODO: Or I could try to get each field one by one ? And manage the popen error ? But this would make many calls to the playerctl.
 
             l = []
             l.append(mt[j][0]) # player name
@@ -182,8 +180,6 @@ class Player:
             if '' in k:
                 k.remove('')
 
-        # print(mt) #TODO: remove
-
         # Getter remaining metadata
         for k in mt:
             for m in ('mpris:length', 'xesam:artist', 'xesam:title', 'position'):
@@ -198,7 +194,6 @@ class Player:
         if 'length' in d.keys():
             d['length'] = int(d['length'] / 10**6)
 
-        # print(d) #TODO: remove
         return d
 
     def _get_long_pos_from_d(self, d, with_color=True):
@@ -349,14 +344,20 @@ def get_cmus_trackname():
         cmus-remote -Q |
             grep file |
             awk -F "/" '{print $NF}' |
-            sed "s/\[.*\]\....//"
+            sed "s/\[.*\]\....$//" |
+            sed "s/\....$//"
     ''').read().strip('\n')
 
 
 def list_players():
     '''Return the list of all available players'''
 
-    l = popen('playerctl -l').read().strip('\n').split('\n')
+    l, _ = Popen('playerctl -l', shell=True, stdout=PIPE, stderr=PIPE).communicate()
+
+    if l == b'':
+        return []
+
+    l = l.decode().strip('\n').split('\n')
 
     # Always put cmus first
     if 'cmus' in l:
@@ -407,12 +408,14 @@ def print_all_players(max_len, min_len=10, remove_cmus=True):
     if nb_playing == 0:
         long_len = max_len / len(players)
     else:
-        long_len = int((max_len - min_len * (len(players) - nb_playing)) / nb_playing) #TODO: check that it is positive ...
+        long_len = int((max_len - min_len * (len(players) - nb_playing)) / nb_playing)
+
+        if long_len < 0:
+            long_len = max_len / len(players)
+            min_len = long_len
 
     # Setting the lengths
     for p in players:
-        # p.set_max_len(max_len / len(players))
-
         if p.is_playing() or nb_playing == 0:
             p.set_max_len(long_len)
         
@@ -432,6 +435,7 @@ def print_all_players(max_len, min_len=10, remove_cmus=True):
 
     print()
 
+
 ##-Run
 if __name__ == '__main__':
     from sys import argv
@@ -448,4 +452,3 @@ if __name__ == '__main__':
 
     # Printing all players
     print_all_players(max_len, remove_cmus=False)
-    # print_all_players(max_len, remove_cmus=True)
