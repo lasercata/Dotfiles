@@ -10,6 +10,10 @@
 " Enable Mouse for scrolling
 set mouse=n
 
+" Neovide
+let g:neovide_scale_factor = 0.65
+let g:neovide_transparency = 0.8
+
 " Set Editor Font
 if exists(':GuiFont')
     " Use GuiFont! to ignore font errors
