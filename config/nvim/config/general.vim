@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2023.12.07
-" Version       :   v1.3
+" Last update   :   2024.03.14
+" Version       :   v1.3.1
 "
 "----------------------------------------
 
@@ -71,3 +71,5 @@ autocmd FileType tex setlocal foldnestmax=3 foldmethod=indent foldlevelstart=1 f
 "---JS
 autocmd FileType javascript setlocal foldnestmax=1 foldmethod=indent
 
+"---Java
+autocmd FileType java setlocal foldnestmax=2 foldmethod=indent foldlevel=1
