@@ -113,7 +113,7 @@ map X &"$f"
 map xt extract
 
 # Show metadata
-map xm $exiftool "$f" | bat --paging=always
+map xm $exiftool "$f" | batcat --paging=always
 
 # Show execution results
 map S !true
@@ -123,7 +123,7 @@ map DD trash
 map Du trash-restore
 
 # Previewer
-map i $~/.config/lf/previewer.sh "$f" | bat --paging=always
+map i $~/.config/lf/previewer.sh "$f" | batcat --paging=always
 
 # Reload files
 map <f-5> :reload

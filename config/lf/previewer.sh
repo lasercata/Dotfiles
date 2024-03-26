@@ -263,6 +263,7 @@ case "${MIME_TYPE}" in
     # application/pdf) pdftotext "$1" -;;
     *opendocument*) odt2txt "$1";;
     image/* | video/* | font/* | application/pdf) show_image ;;
-    text/*) bat --color always -p "$1";;
+    # text/*) bat --color always -p "$1";;
+    text/*) batcat --color always -p "$1";;
     *) fallback ;;
 esac
