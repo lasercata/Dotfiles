@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2024.03.26
+# Last modification : 2024.04.22
 # Author            : Lasercata
-# Version           : v1.9.11
+# Version           : v1.9.12
 #
 #--------------------------------
 
@@ -260,7 +260,7 @@ set $ws22 "22"
 #For two monitors, use odd for the main one, and even for the other.
 #If there is only one monitor, all workspaces are accessible.
 set $primary_mon eDP1 eDP-1
-set $secondary_mon DP1 DP-1 HDMI1 HDMI2 VIRTUAL1 VGA-1
+set $secondary_mon DP1 DP-1 HDMI-1 HDMI-2 HDMI1 HDMI2 VIRTUAL1 VGA-1
 
 workspace $ws1 output $primary_mon
 workspace $ws3 output $primary_mon
