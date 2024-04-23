@@ -17,7 +17,7 @@ default_len = 16
 
 
 ##-Get infos
-def get_str(interface='wlp3s0'):
+def get_str(interface='wlp0s20f3'):
     '''Return the string of informations.'''
 
     return popen(f'/usr/sbin/iwconfig {interface}').read().split('\n')
