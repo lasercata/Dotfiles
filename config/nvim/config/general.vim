@@ -49,7 +49,7 @@ set smartcase  "Overwrite ignorecase if there is an uppercase character in the s
 
 "------Spelling
 setlocal spell
-set spelllang=en_us,fr
+set spelllang=en_gb,fr
 
 " Correct the closer error behind cursor in insert mode.
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
