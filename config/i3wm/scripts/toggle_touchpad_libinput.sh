@@ -14,9 +14,11 @@ enabled=$(xinput list-props $id | grep "Device Enabled" | awk '{print $4}')
 
 if [[ $enabled -eq 1 ]]; then
     xinput set-prop $id "Device Enabled" 0;
+    notify-send "Touchpad toggling" "Touchpad turned off";
 
 elif [[ $enabled -eq 0 ]]; then
     xinput set-prop $id "Device Enabled" 1;
+    notify-send "Touchpad toggling" "Touchpad turned on";
 
 else
     exit 1;

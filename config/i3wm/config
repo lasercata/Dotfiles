@@ -210,7 +210,8 @@ bindsym XF86AudioPrev exec --no-startup-id cmus-remote -k -5
 bindsym $mod+p exec --no-startup-id "playerctl play-pause"
 
 #-Touchpad
-bindsym XF86TouchpadToggle exec --no-startup-id ~/.config/i3/script/toggle_touchpad_libinput.sh
+bindsym XF86TouchpadToggle exec --no-startup-id ~/.config/i3/scripts/toggle_touchpad_libinput.sh
+bindsym $mod+u exec --no-startup-id ~/.config/i3/scripts/toggle_touchpad_libinput.sh
 
 #---Numlock
 # activate the num lock. Need to download package `numlockx`.
