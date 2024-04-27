@@ -2,9 +2,9 @@
 
 #--------------------------
 #
-# Last update : 2023.07.24
+# Last update : 2024.04.27
 # Author      : lasercata
-# Version     : v1.3.1
+# Version     : v1.4.0
 #
 #--------------------------
 
@@ -12,6 +12,9 @@
 CRITICAL=5
 DANGER=10
 WARN=30
+WARN_HIGH=50
+HIGH_BUT_DISCHARGING=85
+
 change_time=35
 
 SLEEP_TIME=5 #minutes
@@ -51,6 +54,14 @@ function check_power {
             notify-send "Low battery" "Current battery level : $percentage%" &
             play $SOUND
             echo "Low battery ! Current battery level : $percentage%"
+
+        elif (( $percentage <= $WARN_HIGH )); then
+            notify-send "Low battery" "Current battery level : $percentage%" &
+            play $SOUND
+            echo "Low battery ! Current battery level : $percentage%"
+
+        elif (( $percentage <= $HIGH_BUT_DISCHARGING )) then
+            notify-send "Battery discharging" "The battery is currently discharging.\nCurrent battery level : $percentage%"
 
         fi
 
