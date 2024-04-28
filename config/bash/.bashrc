@@ -1,8 +1,8 @@
 #-----------------------------------------------
 #
 # Author            : Parrot OS, then Lasercata
-# Last modification : 2023.12.31
-# Version           : v1.7.6
+# Last modification : 2024.04.28
+# Version           : v1.7.7
 #
 #-----------------------------------------------
 
@@ -248,6 +248,8 @@ fi
 if [ -f /usr/share/doc/fzf/examples/completion.bash ]; then
     source /usr/share/doc/fzf/examples/completion.bash
 fi
+
+eval "$(fzf --bash)"
 
 #------GPG
 #To be able to enter the password of my key to sign commits
