@@ -16,6 +16,7 @@ See each folder in [`config`](config) for more info.
 | [dunst](config/dunst)         | notification daemon                    |
 | [elinks](config/elinks)       | terminal web browser                   |
 | [greenclip](config/greenclip) | clipboard manager                      |
+| [grub](config/grub)           | multiboot boot loader                  |
 | [i3wm](config/i3wm)           | keyboard focused window manager        |
 | [kitty](config/kitty)         | terminal emulator                      |
 | [lf](config/lf)               | faster terminal file explorer          |
