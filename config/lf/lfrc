@@ -1,8 +1,8 @@
 #--------------------------------
 #
-# Last modification : 2023.12.31
+# Last modification : 2024.04.29
 # Author            : Lasercata
-# Version           : v1.1.1
+# Version           : v1.1.2
 #
 #--------------------------------
 
@@ -71,12 +71,12 @@ cmd toggle_preview %{{
 cmd extract ${{
     set -f
     case "$f" in
-        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
-        *.tar.gz|*.tgz) tar xzvf $f;;
-        *.tar.xz|*.txz) tar xJvf $f;;
-        *.zip) unzip $f;;
-        *.rar) unrar x $f;;
-        *.7z) 7z x $f;;
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf "$f";;
+        *.tar.gz|*.tgz) tar xzvf "$f";;
+        *.tar.xz|*.txz) tar xJvf "$f";;
+        *.zip) unzip "$f";;
+        *.rar) unrar x "$f";;
+        *.7z) 7z x "$f";;
     esac
 }}
 
