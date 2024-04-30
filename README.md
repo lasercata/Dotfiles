@@ -11,7 +11,7 @@ See each folder in [`config`](config) for more info.
 | Software                      | Description                            |
 | --------                      | -----------                            |
 | [Alacritty](config/alacritty) | terminal emulator                      |
-| [bash](config/bash)           |                                        |
+| [bash](config/bash)           | shell and command language             |
 | [cmus](config/cmus)           | terminal music player (vim-like keys)  |
 | [dunst](config/dunst)         | notification daemon                    |
 | [elinks](config/elinks)       | terminal web browser                   |
