@@ -1,0 +1,24 @@
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[include]
+    path = ~/.git-personnal.conf
+[includeIf "gitdir:~/git/ENSSAT/"]
+    path = ~/.git-enssat.conf
+[cola]
+    spellcheck = false
+[color]
+    ui = auto
+[commit]
+    gpgsign = true
+[core]
+    editor = nvim
+[diff]
+    tool = nvimdiff
+    guitool = nvimdiff
+[merge]
+    tool = nvimdiff
+[mergetool "nvimdiff"]
+    layout = LOCAL,MERGED,REMOTE

@@ -15,6 +15,7 @@ See each folder in [`config`](config) for more info.
 | [cmus](config/cmus)           | terminal music player (vim-like keys)  |
 | [dunst](config/dunst)         | notification daemon                    |
 | [elinks](config/elinks)       | terminal web browser                   |
+| [git](config/git)             | version control software               |
 | [greenclip](config/greenclip) | clipboard manager                      |
 | [grub](config/grub)           | multiboot boot loader                  |
 | [i3wm](config/i3wm)           | keyboard focused window manager        |
@@ -35,9 +36,9 @@ See each folder in [`config`](config) for more info.
 | [zathura](config/zathura)     | pdf reader with vim-like keys          |
 
 ### Other useful softwares :
-| Software | Description                                                                                       |
-| -------- | -----------                                                                                       |
-| calcurse | terminal calendar, with vim-like keys                                                             |
-| w3m      | another terminal web browser                                                                      |
-| fim      | simple image viewer, works in tty (with framebuffer), with vim-like keys                          |
-| mpv      | video player, works in tty                                                                        |
+| Software | Description                                                              |
+| -------- | -----------                                                              |
+| calcurse | terminal calendar, with vim-like keys                                    |
+| w3m      | another terminal web browser                                             |
+| fim      | simple image viewer, works in tty (with framebuffer), with vim-like keys |
+| mpv      | video player, works in tty                                               |
