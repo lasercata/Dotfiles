@@ -1,8 +1,8 @@
 #-----------------------------------------------
 #
 # Author            : Parrot OS, then Lasercata
-# Last modification : 2024.04.28
-# Version           : v1.7.7
+# Last modification : 2024.04.30
+# Version           : v1.7.8
 #
 #-----------------------------------------------
 
@@ -270,3 +270,12 @@ export GTK_THEME=Adwaita:dark
 
 # export NVM_DIR="/home/lasercata/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+
+#------ssh
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
