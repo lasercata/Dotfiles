@@ -3,9 +3,9 @@
 
 #---------------------------------
 #
-# Last modification : 2023.12.31
+# Last modification : 2024.05.21
 # Author            : https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/info-hackspeed, then lasercata
-# Version           : v2.1.0
+# Version           : v2.1.1
 #
 #---------------------------------
 
@@ -23,10 +23,13 @@ KEYBOARD_LIST=$(
         grep -v "Virtual" |
         grep -v "Button" |
         grep -v "hotkeys" |
+        grep -v "Intel HID events" |
+        grep -v "Clevo" |
         grep "keyboard"
 )
 
 # echo "$KEYBOARD_LIST"
+# echo "$KEYBOARD_LIST" | grep -v "AT Translated" | grep -v "ZSA"
 
 # If there is at least an other keyboard than the laptop one or the ZSA, choose the first one.
 if [[ -n $(echo "$KEYBOARD_LIST" | grep -v "AT Translated" | grep -v "ZSA") ]]; then
@@ -38,7 +41,7 @@ if [[ -n $(echo "$KEYBOARD_LIST" | grep -v "AT Translated" | grep -v "ZSA") ]]; 
             awk -F = '{print $2}' |
             head -n 1
     )
-elif [[ -n $(echo "$KEYBOARD_LIST" | grep ZSA) ]]; then
+elif [[ -n $(echo "$KEYBOARD_LIST" | grep "ZSA") ]]; then
     KEYBOARD_ID=$(
         echo "$KEYBOARD_LIST" |
             grep "ZSA" |
@@ -49,6 +52,8 @@ elif [[ -n $(echo "$KEYBOARD_LIST" | grep ZSA) ]]; then
 else
     KEYBOARD_ID="AT Translated Set 2 keyboard"
 fi
+
+# echo $KEYBOARD_ID
 
 # if [[ -n $(xinput list --short | grep ZSA) ]]; then
 #     KEYBOARD_ID=$(
