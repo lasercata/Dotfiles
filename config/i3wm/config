@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2024.04.22
+# Last modification : 2024.05.29
 # Author            : Lasercata
-# Version           : v1.9.12
+# Version           : v1.9.13
 #
 #--------------------------------
 
@@ -348,6 +348,7 @@ assign [class="Firefox"] workspace $ws3
 assign [class="Chromium"] workspace $ws3
 
 assign [class="Signal"] workspace $ws9
+assign [class="WhatSie"] workspace $ws9
 assign [class="Discord"] workspace $ws9
 
 for_window [title="VeraCrypt"] floating disable
