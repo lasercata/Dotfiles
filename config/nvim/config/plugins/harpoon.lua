@@ -79,3 +79,27 @@ vim.keymap.set(
     '<cmd>lua require("harpoon.ui").nav_file(4)<CR>',
     {desc = 'Go to harpoon file 4'}
 )
+vim.keymap.set(
+    'n',
+    '<leader>jr',
+    '<cmd>lua require("harpoon.ui").nav_file(5)<CR>',
+    {desc = 'Go to harpoon file 5'}
+)
+vim.keymap.set(
+    'n',
+    '<leader>je',
+    '<cmd>lua require("harpoon.ui").nav_file(6)<CR>',
+    {desc = 'Go to harpoon file 6'}
+)
+vim.keymap.set(
+    'n',
+    '<leader>jz',
+    '<cmd>lua require("harpoon.ui").nav_file(7)<CR>',
+    {desc = 'Go to harpoon file 7'}
+)
+vim.keymap.set(
+    'n',
+    '<leader>ja',
+    '<cmd>lua require("harpoon.ui").nav_file(8)<CR>',
+    {desc = 'Go to harpoon file 8'}
+)
