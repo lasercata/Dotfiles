@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2024.03.14
-" Version       :   v1.3.1
+" Last update   :   2024.06.01
+" Version       :   v1.3.2
 "
 "----------------------------------------
 
@@ -16,8 +16,9 @@ set expandtab              " tabs are space
 set autoindent
 set copyindent             " copy indent from the previous line
 
-set breakindent            "Add indentation to wrapped lines.
-set breakindentopt=shift:1 "Wrapped lines will have one more space.
+set breakindent            " Add indentation to wrapped lines.
+set breakindentopt=shift:1 " Wrapped lines will have one more space.
+set linebreak              " Wrap on word (not in the middle of a word)
 
 "---For OCaml
 autocmd FileType ocaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 textwidth=79
@@ -29,10 +30,10 @@ syntax enable             "Enable syntax highlighting
 
 "------Appearance
 set background=dark
-set nu             "Line numbers
-set relativenumber "Relative line number to current position
-set ruler          "Show things at bottom right
-set list           "Needed for the plugin 'indent_blankline'
+set nu             " Line numbers
+set relativenumber " Relative line number to current position
+set ruler          " Show things at bottom right
+set list           " Needed for the plugin 'indent_blankline'
 set listchars=trail:-
 set mouse=r
 set scrolloff=3
