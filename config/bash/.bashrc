@@ -1,8 +1,8 @@
 #-----------------------------------------------
 #
 # Author            : Parrot OS, then Lasercata
-# Last modification : 2024.04.30
-# Version           : v1.7.8
+# Last modification : 2024.06.02
+# Version           : v1.7.9
 #
 #-----------------------------------------------
 
@@ -126,11 +126,13 @@ esac
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 
 convertsecs() {
-    h=$(bc <<< "${1}/3600")
-    m=$(bc <<< "(${1}%3600)/60")
-    s=$(bc <<< "${1}%60")
-    printf "%02d:%02d:%06.3f\n" "$h" "$m" "$s" |
-    sed 's/\(00:\)*//' ;
+    d=$(bc <<< "${1} / 86400")
+    h=$(bc <<< "(${1} % 86400) / 3600")
+    m=$(bc <<< "(${1} % 3600) / 60")
+    s=$(bc <<< "${1} % 60")
+    printf "%dd %02d:%02d:%06.3f\n" "$d" "$h" "$m" "$s" |
+        sed 's/0d //' |
+        sed 's/\(00:\)*//' ;
 }
 
 #Used https://unix.stackexchange.com/questions/485798/show-time-elapsed-since-i-started-last-command-in-prompt.
