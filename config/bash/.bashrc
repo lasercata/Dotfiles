@@ -2,7 +2,7 @@
 #
 # Author            : Parrot OS, then Lasercata
 # Last modification : 2024.06.02
-# Version           : v1.7.9
+# Version           : v1.7.10
 #
 #-----------------------------------------------
 
@@ -131,7 +131,7 @@ convertsecs() {
     m=$(bc <<< "(${1} % 3600) / 60")
     s=$(bc <<< "${1} % 60")
     printf "%dd %02d:%02d:%06.3f\n" "$d" "$h" "$m" "$s" |
-        sed 's/0d //' |
+        sed 's/^0d //' |
         sed 's/\(00:\)*//' ;
 }
 
