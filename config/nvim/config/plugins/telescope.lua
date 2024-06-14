@@ -15,9 +15,16 @@ vim.keymap.set(
 
 vim.keymap.set(
     'n',
+    '<leader>:',
+    '<cmd>Telescope live_grep<cr>',
+    {desc = 'Find in cwd (telescope)'}
+)
+
+vim.keymap.set(
+    'n',
     '<leader>/',
-    '<cmd>Telescope current_buffer_fuzzy_find<cr>',
-    {desc = 'Fuzzy find (telescope)'}
+    '<cmd>Telescope live_grep grep_open_files=true<cr>',
+    {desc = 'Find in openned buffers (telescope)'}
 )
 
 vim.keymap.set(
