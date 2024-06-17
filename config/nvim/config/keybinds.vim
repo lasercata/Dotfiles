@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2024.01.08
-" Version       :   v1.3.1
+" Last update   :   2024.06.17
+" Version       :   v1.3.2
 "
 "----------------------------------------
 
@@ -93,6 +93,10 @@ nnoremap <leader>n <cmd>set invrelativenumber<CR>
 
 "---Make
 nnoremap <F5> <cmd>make<CR>
+
+"---xxd
+nnoremap <leader>x <cmd>%!xxd<cr><cmd>set ft=xxd<cr>
+nnoremap <leader>X <cmd>%!xxd -r<cr>
 
 "---LSP
 lua << EOF
