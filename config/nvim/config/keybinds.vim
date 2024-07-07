@@ -37,6 +37,7 @@ vnoremap [ <ESC>`>a]<ESC>`<i[<ESC>
 vnoremap { <ESC>`<i{<ESC>`>la}<ESC>%
 vnoremap <leader>" <ESC>`<i"<ESC>`>la"<ESC>
 vnoremap <leader>' <ESC>`<i'<ESC>`>la'<ESC>
+vnoremap <leader>` <ESC>`<i`<ESC>`>la`<ESC>
 
 "---Space around a char
 nnoremap <space><space> i <esc>la <esc>
