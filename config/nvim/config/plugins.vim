@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2024.02.05
-" Version       :   v2.2.1
+" Last update   :   2024.07.11
+" Version       :   v2.2.2
 "
 "----------------------------------------
 
@@ -50,6 +50,9 @@ call plug#begin('~/.config/nvim/plugged')
 
     "-nvim-treesitter, better syntax highlighting
     " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+    "-Cypher syntax highlighting
+    Plug 'memgraph/cypher.vim'
 
 
     "---Utilities
