@@ -4,14 +4,15 @@
 #--------------------------------
 #
 # Author            : Lasercata
-# Last modification : 2024.02.26
-# Version           : v1.0.0
+# Last modification : 2024.07.12
+# Version           : v1.0.1
 #
 #--------------------------------
 
 ##-Imports
 from os import popen
 from subprocess import PIPE, Popen
+import re
 
 #TODO: use signals + polybar tail mode ?
 
@@ -254,6 +255,14 @@ class Player:
 
         else:
             track_str = 'unknown'
+
+        # Remove file extension and youtube id
+        to_remove_expr = [re.compile(r'\[[a-zA-Z0-9_-]{11}\]\....$'), re.compile(r'\(320 kbps\)\....$'), re.compile(r'\....$')]
+        to_remove_str = [e.findall(track_str) for e in to_remove_expr]
+
+        for o in to_remove_str:
+            if len(o) > 0:
+                track_str = track_str.replace(o[-1], '')
 
         #---Icon
         play_icon = ('󰏤', '󰐊')[status.lower() == 'playing']
