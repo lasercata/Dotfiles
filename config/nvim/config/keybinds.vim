@@ -90,7 +90,22 @@ nnoremap <leader>i >>4l
 nnoremap <leader>I <<4h
 
 "---Toggle relative line
-nnoremap <leader>n <cmd>set invrelativenumber<CR>
+" nnoremap <leader>n <cmd>set invrelativenumber<CR>
+
+"---Quickfix window
+function! ToggleQuickFix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen
+    else
+        cclose
+    endif
+endfunction
+
+nnoremap <leader>n <cmd>cn<cr>
+nnoremap <leader>p <cmd>cp<cr>
+
+" nnoremap <leader>c <cmd>ccl<cr>
+nnoremap <silent> <leader>q <cmd>call ToggleQuickFix()<cr>
 
 "---Make
 nnoremap <F5> <cmd>make<CR>
