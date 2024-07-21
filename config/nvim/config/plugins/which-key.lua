@@ -1,11 +1,11 @@
 --=== Setup
-require('which-key').setup(
-    {
-        window = {
-            winblend = 20
-        }
-    }
-)
+-- require('which-key').setup(
+--     {
+--         win = {
+--             winblend = 20
+--         }
+--     }
+-- )
 
 --=== Bindings
 vim.keymap.set(

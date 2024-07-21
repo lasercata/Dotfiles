@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2024.07.18
-" Version       :   v1.3.3
+" Last update   :   2024.07.21
+" Version       :   v1.3.4
 "
 "----------------------------------------
 
@@ -10,7 +10,8 @@
 "---Leader keys
 let mapleader = " "
 nmap <space> <nop>
-let maplocalleader = ","
+let maplocalleader = " "
+" let maplocalleader = ","
 
 "---Escape from insert mode
 inoremap jk <esc>
