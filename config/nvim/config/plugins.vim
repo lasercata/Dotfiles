@@ -81,6 +81,9 @@ call plug#begin('~/.config/nvim/plugged')
     "-Float terminal
     Plug 'numToStr/FTerm.nvim'
 
+    "-Edit registers in a floating window
+    Plug 'https://github.com/Axlefublr/edister.nvim'
+
     " "-Kitty runner
     " Plug 'jghauser/kitty-runner.nvim'
 

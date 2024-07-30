@@ -125,6 +125,6 @@ vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = 'Go to implementa
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = 'Go to references' })
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Go to declaration' })
 -- vim.keymap.set('n', '<space>K', vim.lsp.buf.signature_help, bufopts)
-vim.keymap.set('n', '<leader>gt', vim.lsp.buf.type_definition, { desc = 'Go to type definition' })
+vim.keymap.set('n', '<leader>t', vim.lsp.buf.type_definition, { desc = 'Go to type definition' })
 vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, { desc = 'Rename' })
 EOF
