@@ -258,34 +258,34 @@ set $ws20 "20"
 set $ws21 "21"
 set $ws22 "22"
 
-#For two monitors, use odd for the main one, and even for the other.
-#If there is only one monitor, all workspaces are accessible.
-set $primary_mon eDP1 eDP-1
-set $secondary_mon DP1 DP-1 HDMI-1 HDMI-2 HDMI1 HDMI2 VIRTUAL1 VGA-1
-
-workspace $ws1 output $primary_mon
-workspace $ws3 output $primary_mon
-workspace $ws5 output $primary_mon
-workspace $ws7 output $primary_mon
-workspace $ws9 output $primary_mon
-workspace $ws11 output $primary_mon
-workspace $ws13 output $primary_mon
-workspace $ws15 output $primary_mon
-workspace $ws17 output $primary_mon
-workspace $ws19 output $primary_mon
-workspace $ws21 output $primary_mon
-
-workspace $ws2 output $secondary_mon
-workspace $ws4 output $secondary_mon
-workspace $ws6 output $secondary_mon
-workspace $ws8 output $secondary_mon
-workspace $ws10 output $secondary_mon
-workspace $ws12 output $secondary_mon
-workspace $ws14 output $secondary_mon
-workspace $ws16 output $secondary_mon
-workspace $ws18 output $secondary_mon
-workspace $ws20 output $secondary_mon
-workspace $ws22 output $secondary_mon
+# #For two monitors, use odd for the main one, and even for the other.
+# #If there is only one monitor, all workspaces are accessible.
+# set $primary_mon eDP1 eDP-1
+# set $secondary_mon DP1 DP-1 HDMI-1 HDMI-2 HDMI1 HDMI2 VIRTUAL1 VGA-1
+#
+# workspace $ws1 output $primary_mon
+# workspace $ws3 output $primary_mon
+# workspace $ws5 output $primary_mon
+# workspace $ws7 output $primary_mon
+# workspace $ws9 output $primary_mon
+# workspace $ws11 output $primary_mon
+# workspace $ws13 output $primary_mon
+# workspace $ws15 output $primary_mon
+# workspace $ws17 output $primary_mon
+# workspace $ws19 output $primary_mon
+# workspace $ws21 output $primary_mon
+#
+# workspace $ws2 output $secondary_mon
+# workspace $ws4 output $secondary_mon
+# workspace $ws6 output $secondary_mon
+# workspace $ws8 output $secondary_mon
+# workspace $ws10 output $secondary_mon
+# workspace $ws12 output $secondary_mon
+# workspace $ws14 output $secondary_mon
+# workspace $ws16 output $secondary_mon
+# workspace $ws18 output $secondary_mon
+# workspace $ws20 output $secondary_mon
+# workspace $ws22 output $secondary_mon
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
