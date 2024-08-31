@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2024.05.29
+# Last modification : 2024.08.31
 # Author            : Lasercata
-# Version           : v1.9.13
+# Version           : v1.9.14
 #
 #--------------------------------
 
@@ -137,7 +137,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# focus right output
+# focus next output
 bindsym $mod+Tab focus output right
 
 #---Move focused window
@@ -154,6 +154,11 @@ bindsym $mod+Shift+Right move right
 
 # Move workspace through outputs
 bindsym $mod+Shift+Tab move workspace to output right
+
+# Move workspace to a specific screen (TODO: this is not general, works only with three screens with the correct names ...)
+bindsym $mod+CTRL+1 move workspace to output DP-1
+bindsym $mod+CTRL+2 move workspace to output eDP-1
+bindsym $mod+CTRL+3 move workspace to output HDMI-1
 
 #---Change split direction
 # split in horizontal orientation
