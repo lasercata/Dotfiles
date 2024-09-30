@@ -1,0 +1,1 @@
+if changing layout with `setxkbmap fc` before an other keyboard is plugged, then when plugging the keyboard, this one will still have the previous layout.
