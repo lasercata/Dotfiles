@@ -346,7 +346,7 @@ bindsym $mod+Shift+F12 move container to workspace $ws22
 #------Window rules
 # {{{
 assign [class="korganizer"] workspace $ws2
-assign [class="thunderbird"] workspace $ws2
+assign [class="thunderbird"] workspace $ws12
 
 assign [class="Vivaldi"] workspace $ws3
 assign [class="Firefox"] workspace $ws3
