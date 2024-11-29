@@ -1,8 +1,8 @@
 -------------------------------------------
 -- 
 --  Author        :   Lasercata
---  Last update   :   2024.01.17
---  Version       :   v1.0.4
+--  Last update   :   2024.11.29
+--  Version       :   v1.0.5
 -- 
 -------------------------------------------
 
@@ -110,6 +110,19 @@ require('lspconfig')['tsserver'].setup {
 --========= java
 require('lspconfig')['jdtls'].setup {
   capabilities = capabilities
+}
+
+--========= sql
+require('lspconfig')['sqlls'].setup {
+  capabilities = capabilities
+}
+
+--========= asm
+require('lspconfig')['asm_lsp'].setup {
+  capabilities = capabilities,
+  assembler = 'nasm',
+  instruction_set = 'arm',
+  filetypes = {'asm', 'nasm'}
 }
 
 --=========lsp_signature.nvim

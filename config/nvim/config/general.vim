@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2024.06.01
-" Version       :   v1.3.2
+" Last update   :   2024.11.30
+" Version       :   v1.3.3
 "
 "----------------------------------------
 
@@ -74,3 +74,10 @@ autocmd FileType javascript setlocal foldnestmax=1 foldmethod=indent
 
 "---Java
 autocmd FileType java setlocal foldnestmax=2 foldmethod=indent foldlevel=1
+
+
+"------Assembly syntax
+augroup asm_syntax
+    autocmd!
+    autocmd BufReadPost *.s let b:asmsyntax = 'nasm'
+augroup END
