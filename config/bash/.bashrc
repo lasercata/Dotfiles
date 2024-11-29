@@ -1,8 +1,8 @@
 #-----------------------------------------------
 #
 # Author            : Parrot OS, then Lasercata
-# Last modification : 2024.06.02
-# Version           : v1.7.10
+# Last modification : 2024.11.30
+# Version           : v1.7.11
 #
 #-----------------------------------------------
 
@@ -18,7 +18,7 @@ esac
 
 
 #------Path
-export PATH=/usr/local/texlive/2023/bin/x86_64-linux:~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH
+export PATH=/usr/local/texlive/2023/bin/x86_64-linux:~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:~/.cargo/bin:$PATH
 
 
 #------History
