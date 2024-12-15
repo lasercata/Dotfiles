@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2024.07.21
-" Version       :   v1.3.4
+" Last update   :   2024.12.15
+" Version       :   v1.3.5
 "
 "----------------------------------------
 
@@ -102,11 +102,14 @@ function! ToggleQuickFix()
     endif
 endfunction
 
+nnoremap <silent> <leader>q <cmd>call ToggleQuickFix()<cr>
 nnoremap <leader>n <cmd>cn<cr>
 nnoremap <leader>p <cmd>cp<cr>
 
-" nnoremap <leader>c <cmd>ccl<cr>
-nnoremap <silent> <leader>q <cmd>call ToggleQuickFix()<cr>
+nnoremap <leader>cc <cmd>call ToggleQuickFix()<cr>
+nnoremap <leader>cn <cmd>cn<cr>
+nnoremap <leader>cp <cmd>cp<cr>
+nnoremap <leader>ce <cmd>lua vim.diagnostic.setqflist()<cr>
 
 "---Make
 nnoremap <F5> <cmd>make<CR>
