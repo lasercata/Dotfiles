@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.12.23
+# Last modification : 2024.12.17
 # Author            : Lasercata
-# Version           : v1.0.0
+# Version           : v1.0.1
 #
 #--------------------------------
 
@@ -263,6 +263,11 @@ case "${MIME_TYPE}" in
     # application/pdf) pdftotext "$1" -;;
     *opendocument*) odt2txt "$1";;
     image/* | video/* | font/* | application/pdf) show_image ;;
-    text/*) bat --color always -p "$1";;
+    text/*)
+        case "$1" in
+            *.md) CLICOLOR_FORCE=1 COLORTERM=truecolor glow -s dark "$1";;
+            *) bat --color always -p "$1";;
+        esac;;
+    # text/*) bat --color always -p "$1";;
     *) fallback ;;
 esac
