@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2024.08.31
+# Last modification : 2024.12.18
 # Author            : Lasercata
-# Version           : v1.9.14
+# Version           : v1.9.15
 #
 #--------------------------------
 
@@ -93,6 +93,7 @@ exec_always --no-startup-id picom
 # {{{
 #---Main key (windows key)
 set $mod Mod4
+set $alt Mod1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -140,6 +141,12 @@ bindsym $mod+Right focus right
 # focus next output
 bindsym $mod+Tab focus output right
 
+# change focus by monitor
+bindsym $mod+$alt+h focus output left
+bindsym $mod+$alt+j focus output down
+bindsym $mod+$alt+k focus output up
+bindsym $mod+$alt+l focus output right
+
 #---Move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
@@ -151,6 +158,12 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# Move window by monitor
+bindsym $mod+$alt+Shift+h move output left
+bindsym $mod+$alt+Shift+j move output down
+bindsym $mod+$alt+Shift+k move output up
+bindsym $mod+$alt+Shift+l move output right
 
 # Move workspace through outputs
 bindsym $mod+Shift+Tab move workspace to output right
@@ -446,7 +459,7 @@ bindsym $mod+t mode "move" focus floating
 #------Clipboard manager (greenclip: https://github.com/erebe/greenclip)
 #{{{
 exec_always --no-startup-id "greenclip daemon"
-bindsym Control+Mod1+c exec rofi -theme Monokai -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+bindsym Control+$alt+c exec rofi -theme Monokai -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 # }}}
 
 #------Hide mouse cursor when typing (xbanish)
