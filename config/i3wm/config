@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2024.12.18
+# Last modification : 2024.12.22
 # Author            : Lasercata
-# Version           : v1.9.15
+# Version           : v1.9.16
 #
 #--------------------------------
 
@@ -20,6 +20,10 @@ exec_always --no-startup-id "bluetooth off"
 
 #---Mute the microphone (actually just set volume to 0)
 exec_always --no-startup-id "pactl set-source-volume 0 0%"
+
+#---Numlock
+# activate the num lock. Need to download package `numlockx`.
+exec_always --no-startup-id numlockx on
 
 #---Set the keyboard layout to azerty (variant azerty, not the default latin9)
 #To list all the available variants : `localectl list-x11-keymap-variants fr`
@@ -159,7 +163,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Move window by monitor
+# Move focused window by monitor
 bindsym $mod+$alt+Shift+h move output left
 bindsym $mod+$alt+Shift+j move output down
 bindsym $mod+$alt+Shift+k move output up
@@ -168,10 +172,16 @@ bindsym $mod+$alt+Shift+l move output right
 # Move workspace through outputs
 bindsym $mod+Shift+Tab move workspace to output right
 
-# Move workspace to a specific screen (TODO: this is not general, works only with three screens with the correct names ...)
-bindsym $mod+CTRL+1 move workspace to output DP-1
-bindsym $mod+CTRL+2 move workspace to output eDP-1
-bindsym $mod+CTRL+3 move workspace to output HDMI-1
+# Move workspace
+bindsym $mod+CTRL+h move workspace to output left
+bindsym $mod+CTRL+j move workspace to output down
+bindsym $mod+CTRL+k move workspace to output up
+bindsym $mod+CTRL+l move workspace to output right
+
+# # Move workspace to a specific screen (TODO: this is not general, works only with three screens with the correct names ...)
+# bindsym $mod+CTRL+1 move workspace to output DP-1
+# bindsym $mod+CTRL+2 move workspace to output eDP-1
+# bindsym $mod+CTRL+3 move workspace to output HDMI-1
 
 #---Change split direction
 # split in horizontal orientation
@@ -198,7 +208,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+shift+a focus child
 
 #---Reload the configuration file
 bindsym $mod+Shift+c reload
@@ -230,10 +240,6 @@ bindsym $mod+p exec --no-startup-id "playerctl play-pause"
 #-Touchpad
 bindsym XF86TouchpadToggle exec --no-startup-id ~/.config/i3/scripts/toggle_touchpad_libinput.sh
 bindsym $mod+u exec --no-startup-id ~/.config/i3/scripts/toggle_touchpad_libinput.sh
-
-#---Numlock
-# activate the num lock. Need to download package `numlockx`.
-exec_always --no-startup-id numlockx on
 
 #---Lock screen
 #-Define locker app
@@ -384,16 +390,16 @@ mode "resize" {
     # Pressing right will grow the window’s width.
     # Pressing up will shrink the window’s height.
     # Pressing down will grow the window’s height.
-    bindsym h resize shrink width 3 px or 3 ppt
-    bindsym j resize grow height 3 px or 3 ppt
-    bindsym k resize shrink height 3 px or 3 ppt
-    bindsym l resize grow width 3 px or 3 ppt
+    bindsym h resize shrink width 1 px or 1 ppt
+    bindsym j resize grow height 1 px or 1 ppt
+    bindsym k resize shrink height 1 px or 1 ppt
+    bindsym l resize grow width 1 px or 1 ppt
 
     #---same bindings, but for the arrow keys
-    bindsym Left resize shrink width 3 px or 3 ppt
-    bindsym Down resize grow height 3 px or 3 ppt
-    bindsym Up resize shrink height 3 px or 3 ppt
-    bindsym Right resize grow width 3 px or 3 ppt
+    bindsym Left resize shrink width 1 px or 1 ppt
+    bindsym Down resize grow height 1 px or 1 ppt
+    bindsym Up resize shrink height 1 px or 1 ppt
+    bindsym Right resize grow width 1 px or 1 ppt
 
     #---win+ctrl+[hjkl] resize by 10px
     bindsym CTRL+h resize shrink width 10 px or 10 ppt
@@ -419,14 +425,14 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#---Just win+ctrl+[hjkl] to resize faster.
-bindsym $mod+CTRL+h resize shrink width 3 px or 3 ppt
-bindsym $mod+CTRL+j resize grow height 3 px or 3 ppt
-bindsym $mod+CTRL+k resize shrink height 3 px or 3 ppt
-bindsym $mod+CTRL+l resize grow width 3 px or 3 ppt
+#---Just win+ctrl+shift+[hjkl] to resize faster.
+bindsym $mod+CTRL+Shift+h resize shrink width 3 px or 3 ppt
+bindsym $mod+CTRL+Shift+j resize grow height 3 px or 3 ppt
+bindsym $mod+CTRL+Shift+k resize shrink height 3 px or 3 ppt
+bindsym $mod+CTRL+Shift+l resize grow width 3 px or 3 ppt
 #}}}
 
-#------Move floating windows mode
+#------Move windows mode
 # {{{
 # Note: it is already possible to move windows with $mod+Shift+[hjkl] ...
 mode "move" {
