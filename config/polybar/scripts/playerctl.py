@@ -4,8 +4,8 @@
 #--------------------------------
 #
 # Author            : Lasercata
-# Last modification : 2024.07.12
-# Version           : v1.0.1
+# Last modification : 2025.01.01
+# Version           : v1.0.2
 #
 #--------------------------------
 
@@ -205,7 +205,7 @@ class Player:
         - with_colors : if True, also add colors.
         '''
 
-        if d['position'] == '?':
+        if d['position'] == '?' or 'length' not in d:
             return '[?/?]'
 
         if with_color:
@@ -221,7 +221,7 @@ class Player:
         - d : the dict containing the informations.
         '''
 
-        if d['position'] == '?':
+        if d['position'] == '?' or 'length' not in d:
             return '?%'
 
         return str(round(100 * d['position'] / d['length'])) + '%'
