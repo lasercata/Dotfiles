@@ -26,10 +26,14 @@ Here is a representation of the layout :
 
 For more information, read [this unix stackexchange answer](https://unix.stackexchange.com/a/709459).
 
+For more details on the use without sudo, see [this](https://askubuntu.com/questions/875163/is-it-possible-to-use-a-custom-keyboard-layout-without-sudo-access-if-so-how) and [that](https://askubuntu.com/questions/876005/what-file-is-the-setxkbmap-option-rules-meant-to-take-and-how-can-i-add-keyboa/896297#896297) questions.
+
+
 ## Configuration location
-The file `fc` should be located at `/usr/share/X11/xkb/symbols/fc`.
+The file `fc` (which stands for *french custom*) should be located at `/usr/share/X11/xkb/symbols/fc` (for a global installation).
 
 ## Setup
+### With sudo
 It is advised to create a symbolic link :
 ```
 sudo ln -s /absolute/path/to/config/keyboard_layout/fc /usr/share/X11/xkb/symbols/fc
@@ -38,6 +42,19 @@ sudo ln -s /absolute/path/to/config/keyboard_layout/fc /usr/share/X11/xkb/symbol
 Then to set this layout, run
 ```
 setxkbmap fc
+```
+
+To make it permanent, change the `XKBLAYOUT` field in the [`config/xorg/00-keyboard.conf`](../xorg/00-keyboard.conf) file to `fc` (instead of `fr`).
+
+### Without sudo (for one user)
+Add the folder `xkb` to your home config folder :
+```
+ln -s full/path/to/dotfiles/config/keyboard_layout/xkb/ ~/.config/xkb
+```
+
+And then to use the layout, run
+```
+setxkbmap -I ~/.config/xkb/ fc
 ```
 
 ## Files
