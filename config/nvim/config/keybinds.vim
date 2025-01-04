@@ -90,6 +90,9 @@ vnoremap <leader>I <gv4h
 nnoremap <leader>i >>4l
 nnoremap <leader>I <<4h
 
+"---Remove search highlight
+nnoremap <esc> <cmd>noh<cr>
+
 "---Toggle relative line
 " nnoremap <leader>n <cmd>set invrelativenumber<CR>
 
