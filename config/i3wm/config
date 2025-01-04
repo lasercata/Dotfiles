@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2024.12.22
+# Last modification : 2025.01.04
 # Author            : Lasercata
-# Version           : v1.9.16
+# Version           : v1.9.17
 #
 #--------------------------------
 
@@ -16,10 +16,10 @@
 #------Startup
 #{{{
 #---Turn Bluetooth off
-exec_always --no-startup-id "bluetooth off"
+exec --no-startup-id "bluetooth off"
 
 #---Mute the microphone (actually just set volume to 0)
-exec_always --no-startup-id "pactl set-source-volume 0 0%"
+exec --no-startup-id "pactl set-source-volume 0 0%"
 
 #---Numlock
 # activate the num lock. Need to download package `numlockx`.
@@ -32,7 +32,11 @@ exec_always --no-startup-id numlockx on
 #---Remap caps lock to esc
 # exec_always --no-startup-id "setxkbmap -option caps:escape"
 
-# Done in the file /etc/default/keyboard
+# Done in the file `/etc/default/keyboard` or in `/etc/X11/xorg.conf.d/00-keyboard.conf`.
+# See `dotfiles/config/xorg` and `dotfiles/config/keyboard_layout` for more info.
+
+#---Change the keyboard layout
+exec_always --no-startup-id ~/.config/i3/scripts/set_kb_layout.sh
 
 #---Battery script launch
 exec_always --no-startup-id ~/.config/i3/scripts/launcher.sh ~/.config/i3/scripts/battery_messages.sh
