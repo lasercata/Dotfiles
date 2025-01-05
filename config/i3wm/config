@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2025.01.04
+# Last modification : 2025.01.05
 # Author            : Lasercata
-# Version           : v1.9.17
+# Version           : v1.9.18
 #
 #--------------------------------
 
@@ -97,11 +97,17 @@ default_floating_border pixel 2
 exec_always --no-startup-id picom
 # }}}
 
+#------Settings
+# {{{
+workspace_auto_back_and_forth yes
+# }}}
+
 #------Bindings
 # {{{
 #---Main key (windows key)
 set $mod Mod4
 set $alt Mod1
+set $altgr Mod5
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -154,6 +160,11 @@ bindsym $mod+$alt+h focus output left
 bindsym $mod+$alt+j focus output down
 bindsym $mod+$alt+k focus output up
 bindsym $mod+$alt+l focus output right
+# Also with altgr
+bindsym $mod+$altgr+h focus output left
+bindsym $mod+$altgr+j focus output down
+bindsym $mod+$altgr+k focus output up
+bindsym $mod+$altgr+l focus output right
 
 #---Move focused window
 bindsym $mod+Shift+h move left
@@ -172,6 +183,11 @@ bindsym $mod+$alt+Shift+h move output left
 bindsym $mod+$alt+Shift+j move output down
 bindsym $mod+$alt+Shift+k move output up
 bindsym $mod+$alt+Shift+l move output right
+# Also with altgr
+bindsym $mod+$altgr+Shift+h move output left
+bindsym $mod+$altgr+Shift+j move output down
+bindsym $mod+$altgr+Shift+k move output up
+bindsym $mod+$altgr+Shift+l move output right
 
 # Move workspace through outputs
 bindsym $mod+Shift+Tab move workspace to output right
@@ -196,6 +212,7 @@ bindsym $mod+v split v
 
 #---Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle global
 
 #---Change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
