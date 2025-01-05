@@ -4,8 +4,8 @@
 #--------------------------------
 #
 # Author            : Lasercata
-# Last modification : 2025.01.01
-# Version           : v1.0.2
+# Last modification : 2025.01.05
+# Version           : v1.0.3
 #
 #--------------------------------
 
@@ -244,7 +244,7 @@ class Player:
 
         #------Making the full string
         #---Track
-        if 'artist' in mt_d.keys() and mt_d['artist'] != '' and 'title' in mt_d.keys():
+        if 'artist' in mt_d.keys() and mt_d['artist'] != '' and 'title' in mt_d.keys() and mt_d['artist'] not in mt_d['title']:
             track_str = mt_d['artist'] + ' - ' + mt_d['title']
 
         elif 'title' in mt_d.keys():
@@ -257,7 +257,7 @@ class Player:
             track_str = 'unknown'
 
         # Remove file extension and youtube id
-        to_remove_expr = [re.compile(r'\[[a-zA-Z0-9_-]{11}\]\....$'), re.compile(r'\(320 kbps\)\....$'), re.compile(r'\....$')]
+        to_remove_expr = [re.compile(r'\[[a-zA-Z0-9_\-]{11}\]\....$'), re.compile(r' \[[a-zA-Z0-9_\-]{11}\]$'), re.compile(r'\(320 kbps\)\....$'), re.compile(r'\....$')]
         to_remove_str = [e.findall(track_str) for e in to_remove_expr]
 
         for o in to_remove_str:
@@ -353,7 +353,7 @@ def get_cmus_trackname():
         cmus-remote -Q |
             grep file |
             awk -F "/" '{print $NF}' |
-            sed "s/\[.*\]\....$//" |
+            sed "s/\[[a-zA-Z0-9_\-]\]\....$//" |
             sed "s/\....$//"
     ''').read().strip('\n')
 
@@ -435,7 +435,7 @@ def print_all_players(max_len, min_len=10, remove_cmus=True):
     for k, p in enumerate(players):
         print(p, end='')
 
-        if k != len(players) - 1:
+        if k != len(players) - 1: # Prints the separation between players
             # print(' %{F#ff4500}|%{F-} ', end='') # orange
             # print(' %{F#66efeb}|%{F-} ', end='') #cyan-1
             # print(' %{F#7ff3ef}|%{F-} ', end='') #cyan-2
