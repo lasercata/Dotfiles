@@ -109,10 +109,10 @@ nnoremap <silent> <leader>q <cmd>call ToggleQuickFix()<cr>
 nnoremap <leader>n <cmd>cn<cr>
 nnoremap <leader>p <cmd>cp<cr>
 
-nnoremap <leader>cc <cmd>call ToggleQuickFix()<cr>
-nnoremap <leader>cn <cmd>cn<cr>
-nnoremap <leader>cp <cmd>cp<cr>
-nnoremap <leader>ce <cmd>lua vim.diagnostic.setqflist()<cr>
+" nnoremap <leader>cc <cmd>call ToggleQuickFix()<cr>
+" nnoremap <leader>cn <cmd>cn<cr>
+" nnoremap <leader>cp <cmd>cp<cr>
+" nnoremap <leader>ce <cmd>lua vim.diagnostic.setqflist()<cr>
 
 "---Make
 nnoremap <F5> <cmd>make<CR>
@@ -133,4 +133,9 @@ vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Go to declaration' 
 -- vim.keymap.set('n', '<space>K', vim.lsp.buf.signature_help, bufopts)
 vim.keymap.set('n', '<leader>t', vim.lsp.buf.type_definition, { desc = 'Go to type definition' })
 vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, { desc = 'Rename' })
+
+vim.keymap.set('n', '<leader>cc', vim.diagnostic.open_float, { desc = 'Show diagnostic in a floating window' })
+vim.keymap.set('n', '<leader>cq', vim.diagnostic.setqflist, { desc = 'Put all diagnostics in the quick fix' })
+vim.keymap.set('n', '<leader>cn', vim.diagnostic.goto_next, { desc = 'goto the next diagnostic' })
+vim.keymap.set('n', '<leader>cp', vim.diagnostic.goto_prev, { desc = 'goto the prev diagnostic' })
 EOF
