@@ -1,14 +1,14 @@
 --=== Bindings
 vim.keymap.set(
     'n',
-    '<leader>F',
+    '<leader>f',
     '<cmd>Telescope find_files<cr>',
     {desc = 'Open telescope for files'}
 )
 
 vim.keymap.set(
     'n',
-    '<leader>f',
+    '<leader>F',
 '<cmd>Telescope oldfiles<cr>',
     {desc = 'Open telescope for recent files'}
 )
