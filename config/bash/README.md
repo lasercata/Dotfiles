@@ -12,3 +12,11 @@ It should be located in the home directory, at `~/.bash_aliases`.
 This file is used to configure the vim mode for the terminal (it changes the cursor shape accordingly to the vim mode, as well as the indicator in front of the line, and adds some motion like `i(`, ...).
 
 It should be located at `~/.inputrc`.
+
+
+## xinitrc
+See https://wiki.archlinux.org/title/Xinit#xinitrc.
+
+Should be at `~/.xinitrc`
+
+It is not used in my current config. Same with `.xsession` : not used.
