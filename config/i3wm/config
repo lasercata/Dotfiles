@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2025.01.05
+# Last modification : 2025.02.01
 # Author            : Lasercata
-# Version           : v1.9.18
+# Version           : v1.9.19
 #
 #--------------------------------
 
@@ -333,29 +333,29 @@ set $ws22 "22"
 # workspace $ws22 output $secondary_mon
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+1 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws1
+bindsym $mod+2 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws2
+bindsym $mod+3 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws3
+bindsym $mod+4 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws4
+bindsym $mod+5 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws5
+bindsym $mod+6 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws6
+bindsym $mod+7 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws7
+bindsym $mod+8 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws8
+bindsym $mod+9 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws9
+bindsym $mod+0 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws10
 
-bindsym $mod+F1 workspace $ws11
-bindsym $mod+F2 workspace $ws12
-bindsym $mod+F3 workspace $ws13
-bindsym $mod+F4 workspace $ws14
-bindsym $mod+F5 workspace $ws15
-bindsym $mod+F6 workspace $ws16
-bindsym $mod+F7 workspace $ws17
-bindsym $mod+F8 workspace $ws18
-bindsym $mod+F9 workspace $ws19
-bindsym $mod+F10 workspace $ws20
-bindsym $mod+F11 workspace $ws21
-bindsym $mod+F12 workspace $ws22
+bindsym $mod+F1 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws11
+bindsym $mod+F2 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws12
+bindsym $mod+F3 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws13
+bindsym $mod+F4 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws14
+bindsym $mod+F5 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws15
+bindsym $mod+F6 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws16
+bindsym $mod+F7 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws17
+bindsym $mod+F8 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws18
+bindsym $mod+F9 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws19
+bindsym $mod+F10 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws20
+bindsym $mod+F11 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws21
+bindsym $mod+F12 exec bash ~/.config/i3/scripts/toggle_workspace.sh $ws22
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
