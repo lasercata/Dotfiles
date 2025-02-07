@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2025.01.22
-" Version       :   v1.3.6
+" Last update   :   2025.02.07
+" Version       :   v1.3.7
 "
 "----------------------------------------
 
@@ -62,6 +62,9 @@ tnoremap <C-h> <C-\><C-n><C-w>h
 "---Change buffer faster
 nnoremap <C-n> <cmd>bn<CR>
 nnoremap <C-p> <cmd>bp<CR>
+
+" Jump to last used buffer
+nnoremap <leader>jo <cmd>b#<cr>
 
 "---Change tab faster
 nnoremap <M-n> gt
