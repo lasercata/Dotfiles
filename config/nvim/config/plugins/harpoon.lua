@@ -1,14 +1,9 @@
+--=== Bindings
 vim.keymap.set(
     'n',
     '<leader>m',
     '<cmd>lua require("harpoon.mark").add_file()<cr>',
     {desc = 'Mark current file for harpoon'}
-)
-vim.keymap.set(
-    'n',
-    '<leader>h',
-    '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>',
-    {desc = 'Toggle harpoon menu'}
 )
 vim.keymap.set(
     'n',

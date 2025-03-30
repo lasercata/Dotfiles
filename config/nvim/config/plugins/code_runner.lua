@@ -1,7 +1,7 @@
 --=== Bindings
 vim.keymap.set(
     'n',
-    '<leader>r',
+    '<leader>h',
     '<cmd>RunCode<cr>',
     {desc = 'Run the current file'}
 )

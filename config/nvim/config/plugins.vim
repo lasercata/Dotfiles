@@ -96,6 +96,9 @@ call plug#begin('~/.config/nvim/plugged')
     "-Which-key : show possible key bindings of the command you started typing
     Plug 'folke/which-key.nvim'
 
+    "-Gitsigns.nvim
+    Plug 'lewis6991/gitsigns.nvim'
+
     "-code runner
     Plug 'CRAG666/code_runner.nvim'
 
