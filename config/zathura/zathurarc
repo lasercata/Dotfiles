@@ -1,4 +1,4 @@
 set default-bg "rgba(0, 0, 0, .7)"
 
-map <PageUp> scroll full-down
-map <PageDown> scroll full-up
+map <PageUp> navigate next
+map <PageDown> navigate previous
