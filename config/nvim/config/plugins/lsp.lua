@@ -1,8 +1,8 @@
 -------------------------------------------
 -- 
 --  Author        :   Lasercata
---  Last update   :   2024.11.29
---  Version       :   v1.0.5
+--  Last update   :   2025.03.31
+--  Version       :   v1.0.6
 -- 
 -------------------------------------------
 
@@ -125,12 +125,17 @@ require('lspconfig')['asm_lsp'].setup {
   filetypes = {'asm', 'nasm'}
 }
 
+--========= prolog
+require('lspconfig')['prolog_ls'].setup {
+  capabilities = capabilities
+}
+
 --=========lsp_signature.nvim
 require 'lsp_signature'.setup()
 
 
 --========= Other
--- this is for diagnositcs signs on the line number column
+-- this is for diagnostics signs on the line number column
 -- use this to beautify the plain E W signs to more fun ones
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " } 
 for type, icon in pairs(signs) do
