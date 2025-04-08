@@ -110,7 +110,7 @@ call plug#begin('~/.config/nvim/plugged')
     " Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': 'v2.20.8' }
     " Plug 'lukas-reineke/indent-blankline.nvim'
     " Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'release', 'do': ':UpdateRemotePlugins', 'main': 'ibl', 'for': { 'vim', 'lua' } }
-    Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'release', 'do': ':UpdateRemotePlugins', 'main': 'ibl' }
+    Plug 'lukas-reineke/indent-blankline.nvim', { 'main': 'ibl' }
 
     "-Folds for python
     " Plug 'tmhedberg/SimpylFold'
