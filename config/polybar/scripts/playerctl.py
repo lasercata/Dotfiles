@@ -197,23 +197,6 @@ class Player:
 
         return d
 
-    def _get_long_pos_from_d(self, d, with_color=True):
-        '''
-        Return a string showing the position in the format [pos/duration].
-
-        - d           : the dict containing the informations ;
-        - with_colors : if True, also add colors.
-        '''
-
-        if d['position'] == '?' or 'length' not in d:
-            return '[?/?]'
-
-        if with_color:
-            return accent_col + '[' + accent_col_2 + time_to_str(d['position']) + accent_col + f'/{time_to_str(d["length"])}]'
-            # return accent_col + '[' + accent_col_2 + time_to_str(d['position']) + accent_col + f'/' + accent_col_2 + time_to_str(d['length']) + accent_col + ']'
-
-        return f'[{time_to_str(d["position"])}/{time_to_str(d["length"])}]'
-
     def _get_short_pos_from_d(self, d):
         '''
         Return the percentage of the position in the song.
@@ -225,6 +208,43 @@ class Player:
             return '?%'
 
         return str(round(100 * d['position'] / d['length'])) + '%'
+
+    def _get_long_pos_from_d(self, d, with_color=True):
+        '''
+        Return a string showing the position in the format `[pos/duration] x%`.
+
+        - d           : the dict containing the informations ;
+        - with_colors : if True, also add colors.
+        '''
+
+        if d['position'] == '?' or 'length' not in d:
+            return '[?/?]'
+
+        percent = self._get_short_pos_from_d(d)
+
+        if with_color:
+            return accent_col_2 + f'{percent} ' + accent_col + '[' + accent_col_2 + time_to_str(d['position']) + accent_col + f'/{time_to_str(d["length"])}]'
+            # return accent_col + '[' + accent_col_2 + time_to_str(d['position']) + accent_col + f'/' + accent_col_2 + time_to_str(d['length']) + accent_col + ']'
+
+        return f'[{time_to_str(d["position"])}/{time_to_str(d["length"])}] {percent}'
+
+    def _get_mixed_pos_from_d(self, d, with_color=True):
+        '''
+        Return a string showing the position in the format [pos%|duration].
+
+        - d           : the dict containing the informations ;
+        - with_colors : if True, also add colors.
+        '''
+
+        if d['position'] == '?' or 'length' not in d:
+            return '[?|?]'
+
+        percent = self._get_short_pos_from_d(d)
+
+        if with_color:
+            return accent_col + '[' + accent_col_2 + percent + accent_col + f'|{time_to_str(d["length"])}]'
+
+        return f'[{percent}|{time_to_str(d["length"])}]'
 
     def __str__(self):
         '''
@@ -268,13 +288,18 @@ class Player:
         play_icon = ('󰏤', '󰐊')[status.lower() == 'playing']
 
         #---Position
+        mixed_str = self._get_mixed_pos_from_d(mt_d, with_color=False)
+        mixed_str_col = self._get_mixed_pos_from_d(mt_d, with_color=True)
+
         pos_str = self._get_long_pos_from_d(mt_d, with_color=False)
         pos_str_col = self._get_long_pos_from_d(mt_d, with_color=True)
+
         percent_str = self._get_short_pos_from_d(mt_d)
 
         #---Calculate the optimal length
         partial_len = len(play_icon + ' ' + ' ' + pos_str)
-        partial_len2 = len(play_icon + ' ' + ' ' + percent_str)
+        # partial_len2 = len(play_icon + ' ' + ' ' + percent_str)
+        partial_len3 = len(play_icon + ' ' + ' ' + mixed_str)
 
         # The beginning of the string (color for the icon, icon, color for the text.)
         playing_str = accent_col + play_icon + (fg_paused, fg)[status.lower() == 'playing']
@@ -286,12 +311,14 @@ class Player:
         if len(track_str) + partial_len <= self.max_len:
             return bt_beg + ul + playing_str + ' ' + track_str + ' ' + pos_str_col + bt_end
 
-        elif len(track_str) + partial_len2 <= self.max_len:
-            return bt_beg + ul + playing_str + ' ' + track_str + ' ' + accent_col + percent_str + bt_end
+        elif len(track_str) + partial_len3 <= self.max_len:
+            # return bt_beg + ul + playing_str + ' ' + track_str + ' ' + accent_col + percent_str + bt_end
+            return bt_beg + ul + playing_str + ' ' + track_str + ' ' + accent_col + mixed_str_col + bt_end
 
         else:
-            l = self.max_len - partial_len2 - 1
-            return bt_beg + ul + playing_str + ' ' + track_str[:l] + '~ ' + accent_col + percent_str + bt_end
+            l = self.max_len - partial_len3 - 1
+            # return bt_beg + ul + playing_str + ' ' + track_str[:l] + '~ ' + accent_col + percent_str + bt_end
+            return bt_beg + ul + playing_str + ' ' + track_str[:l] + '~ ' + accent_col + mixed_str_col + bt_end
 
 
     def play(self):
