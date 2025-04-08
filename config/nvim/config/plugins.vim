@@ -73,7 +73,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'preservim/tagbar'
 
     "-Telescope : a fuzzy finder
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
+    " Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
+    Plug 'nvim-telescope/telescope.nvim'
 
     "-harpoon
     Plug 'ThePrimeagen/harpoon'
@@ -106,8 +107,10 @@ call plug#begin('~/.config/nvim/plugged')
     " Plug 'trimclain/builder.nvim'
 
     "-Indentation guides (lines)
-    Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': 'v2.20.8' }
+    " Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': 'v2.20.8' }
     " Plug 'lukas-reineke/indent-blankline.nvim'
+    " Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'release', 'do': ':UpdateRemotePlugins', 'main': 'ibl', 'for': { 'vim', 'lua' } }
+    Plug 'lukas-reineke/indent-blankline.nvim', { 'branch': 'release', 'do': ':UpdateRemotePlugins', 'main': 'ibl' }
 
     "-Folds for python
     " Plug 'tmhedberg/SimpylFold'
