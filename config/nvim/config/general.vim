@@ -75,6 +75,10 @@ autocmd FileType javascript setlocal foldnestmax=1 foldmethod=indent
 "---Java
 autocmd FileType java setlocal foldnestmax=2 foldmethod=indent foldlevel=1
 
+"---Markdown
+let g:markdown_folding = 1
+autocmd FileType markdown setlocal foldlevel=1
+
 
 "------Assembly syntax
 augroup asm_syntax
