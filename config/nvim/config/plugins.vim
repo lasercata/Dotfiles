@@ -103,6 +103,9 @@ call plug#begin('~/.config/nvim/plugged')
     "-code runner
     Plug 'CRAG666/code_runner.nvim'
 
+    "-Jupyter
+    Plug 'goerz/jupytext.nvim'
+
     "-Build
     " Plug 'trimclain/builder.nvim'
 
