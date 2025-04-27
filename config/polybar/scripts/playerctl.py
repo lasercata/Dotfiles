@@ -403,7 +403,7 @@ def list_players():
     return l
 
 
-def print_all_players(max_len, min_len=10, remove_cmus=True):
+def print_all_players(max_len, min_len=17, remove_cmus=True):
     '''
     Print all the players' info.
 
