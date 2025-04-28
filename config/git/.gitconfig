@@ -22,3 +22,5 @@
     tool = nvimdiff
 [mergetool "nvimdiff"]
     layout = LOCAL,MERGED,REMOTE
+[alias]
+    ck = checkout
