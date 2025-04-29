@@ -1,8 +1,10 @@
+#vim:foldmethod=marker
+
 #-----------------------------------------------
 #
 # Author            : Parrot OS, then Lasercata
-# Last modification : 2024.11.30
-# Version           : v1.7.11
+# Last modification : 2025.04.29
+# Version           : v1.2.0
 #
 #-----------------------------------------------
 
@@ -17,11 +19,11 @@ case $- in
 esac
 
 
-#------Path
+#------Path {{{1
 export PATH=/usr/local/texlive/2023/bin/x86_64-linux:~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:~/.cargo/bin:$PATH
+# }}}1
 
-
-#------History
+#------History {{{1
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -41,9 +43,9 @@ export HISTIGNORE="history:ls:ll"
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 export HISTFILESIZE=20000
 export HISTSIZE=10000
+# }}}1
 
-
-#------Other
+#------Other {{{1
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -59,10 +61,10 @@ shopt -s globstar
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
+# }}}1
 
-
-#------Colors / prompt
-#---colors
+#------Colors / prompt {{{1
+#---colors {{{2
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -75,15 +77,32 @@ force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 
+# unset color_prompt force_color_prompt
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+
+    alias ip='ip -color=auto'
+fi
+# }}}2
+
+#---Prompt {{{2
 if [ "$color_prompt" = yes ]; then
     PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n"
     #\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]
@@ -96,17 +115,17 @@ fi
 
 # Set 'man' colors
 if [ "$color_prompt" = yes ]; then
-	man() {
-	env \
-	LESS_TERMCAP_mb=$'\e[01;31m' \
-	LESS_TERMCAP_md=$'\e[01;31m' \
-	LESS_TERMCAP_me=$'\e[0m' \
-	LESS_TERMCAP_se=$'\e[0m' \
-	LESS_TERMCAP_so=$'\e[01;44;33m' \
-	LESS_TERMCAP_ue=$'\e[0m' \
-	LESS_TERMCAP_us=$'\e[01;32m' \
-	man "$@"
-	}
+    man() {
+        env \
+            LESS_TERMCAP_mb=$'\e[01;31m' \
+            LESS_TERMCAP_md=$'\e[01;31m' \
+            LESS_TERMCAP_me=$'\e[0m' \
+            LESS_TERMCAP_se=$'\e[0m' \
+            LESS_TERMCAP_so=$'\e[01;44;33m' \
+            LESS_TERMCAP_ue=$'\e[0m' \
+            LESS_TERMCAP_us=$'\e[01;32m' \
+            man "$@"
+        }
 fi
 
 # If this is an xterm set the title to user@host:dir
@@ -122,7 +141,7 @@ xterm*|rxvt*)
 esac
 
 #---add functions to time commands
-#This file is from the repo https://github.com/rcaloras/bash-preexec.
+# This file is from the repo https://github.com/rcaloras/bash-preexec.
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 
 convertsecs() {
@@ -135,7 +154,7 @@ convertsecs() {
         sed 's/\(00:\)*//' ;
 }
 
-#Used https://unix.stackexchange.com/questions/485798/show-time-elapsed-since-i-started-last-command-in-prompt.
+# Used https://unix.stackexchange.com/questions/485798/show-time-elapsed-since-i-started-last-command-in-prompt.
 first_command=true
 preexec() {
     cmd_start="$SECONDS"
@@ -181,49 +200,34 @@ precmd() {
         fi
     fi
 }
+# }}}2
+# }}}1
 
-# unset color_prompt force_color_prompt
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-
-    alias ip='ip -color=auto'
-fi
-
-
-#------Aliases
+#------Aliases {{{1
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+# }}}1
 
-
-#------Bindings
+#------Bindings {{{1
 # f is an alias for lf + cd to last dir.
 bind '"\C-f":"f\C-m"'
+# }}}1
 
-
-#------Completion
+#------Completion {{{1
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
+# }}}1
 
-
-#------Vi mode
+#------Vi mode {{{1
 set -o vi
 EDITOR=nvim #The editor used for visual mode (when hitting v in normal mode in command line, open the line in an editor)
 export EDITOR
@@ -233,16 +237,17 @@ export EDITOR
 
 TERMINAL=kitty
 export TERMINAL
+# }}}1
 
-
-#------Cap locks
+#------Cap locks {{{1
 # Disable the cap locks key
 #setxkbmap -option ctrl:nocaps
 # To re enable it :
 #setxkbmap -option
 # Done in system settings.
+# }}}1
 
-#------fzf bindings and autocompletion
+#------fzf bindings and autocompletion {{{1
 if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
     source /usr/share/doc/fzf/examples/key-bindings.bash
 fi
@@ -252,18 +257,21 @@ if [ -f /usr/share/doc/fzf/examples/completion.bash ]; then
 fi
 
 eval "$(fzf --bash)"
+# }}}1
 
-#------GPG
+#------GPG {{{1
 #To be able to enter the password of my key to sign commits
 GPG_TTY=$(tty)
 export GPG_TTY
+# }}}1
 
-#------Integrate KDE apps in i3
+#------Integrate KDE apps in i3 {{{1
 export QT_QPA_PLATFORMTHEME="qt5ct"
 #
 # export QT_STYLE_OVERRIDE="Breeze Dark"
+# }}}1
 
-#------Gnome dark mode ?
+#------Gnome dark mode ? {{{1
 export GTK_THEME=Adwaita:dark
 # export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 # export QT_STYLE_OVERRIDE=adwaita-dark
@@ -272,12 +280,13 @@ export GTK_THEME=Adwaita:dark
 
 # export NVM_DIR="/home/lasercata/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# }}}1
 
-
-#------ssh
+#------ssh {{{1
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
 fi
 if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
+# }}}1
