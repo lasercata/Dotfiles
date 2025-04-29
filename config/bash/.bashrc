@@ -167,6 +167,11 @@ preexec() {
 }
 # }}}3
 
+# Set the git ps1 variable
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+source /usr/share/git/completion/git-prompt.sh
+
 # precmd {{{3
 precmd() {
     [ -n "$COMP_LINE" ] && return  # do nothing if completing
@@ -208,10 +213,10 @@ precmd() {
     time_="${col}\t"
     prompt_user_host="$(if [[ ${EUID} == 0 ]]; then echo "${red}root${yellow}@${blue_bold}\h"; else echo "${white_2}\u${yellow}@${blue_bold}\h"; fi)"
     prompt_path="${green}\w${red}"
-    prompt_git_branch="\$([[ \$git_branch ]] && echo \"${link}${blue_bold}${git_branch}${red}\")"
+    # prompt_git_branch="\$([[ \$git_branch ]] && echo \"${link}${blue_bold}${git_branch}${red}\")"
+    prompt_git_branch="\$([[ \$git_branch ]] && echo \"${link}${blue_bold}$(__git_ps1 ' (%s)' | sed 's/ (//' | sed 's/)//')${red}\")"
 
-    # prompt_color_base="${red}${corner_1}${dash}[${prompt_error}${prompt_user_host}${link}${prompt_path}${prompt_git_branch}]\n"
-    prompt_color_base="${red}${corner_1}${dash}[${prompt_error}${id_}${link}${time_}${link}${prompt_path}${prompt_git_branch}] ${white}\n"
+    prompt_color_base="${red}${corner_1}${dash}[${prompt_error}${id_}${link}${time_}${link}${prompt_path}${prompt_git_branch}]\n"
 
     if $normal_ps; then #In this case, the terminal has just be launched, so no command has been executed, or the command finished rapidly.
         if [ "$color_prompt" = yes ]; then
