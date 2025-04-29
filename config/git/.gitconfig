@@ -24,3 +24,4 @@
     layout = LOCAL,MERGED,REMOTE
 [alias]
     ck = checkout
+    b = branch
