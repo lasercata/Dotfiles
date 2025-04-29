@@ -1,4 +1,4 @@
-#vim:foldmethod=marker
+# vim:foldmethod=marker
 
 #-----------------------------------------------
 #
@@ -100,18 +100,6 @@ if [ -x /usr/bin/dircolors ]; then
 
     alias ip='ip -color=auto'
 fi
-# }}}2
-
-#---Prompt {{{2
-if [ "$color_prompt" = yes ]; then
-    PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n"
-    #\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]
-    #Changed this in order to have a (mostly) nice prompt with mode indicator (vi mode)
-    #See .inputrc
-else
-    PS1='┌──[\u@\h]─[\w]\n'
-    #└──╼ \$ 
-fi
 
 # Set 'man' colors
 if [ "$color_prompt" = yes ]; then
@@ -127,23 +115,36 @@ if [ "$color_prompt" = yes ]; then
             man "$@"
         }
 fi
+# }}}2
+
+#---Prompt {{{2
+# if [ "$color_prompt" = yes ]; then
+#     PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n"
+#     #\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]
+#     #Changed this in order to have a (mostly) nice prompt with mode indicator (vi mode)
+#     #See .inputrc
+# else
+#     PS1='┌──[\u@\h]─[\w]\n'
+#     #└──╼ \$ 
+# fi
 
 # If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n"
-    #\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]
-    #Changed this in order to have a (mostly) nice prompt with mode indicator (vi mode)
-    #See .inputrc
-    ;;
-*)
-    ;;
-esac
+# case "$TERM" in
+# xterm*|rxvt*)
+#     PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n"
+#     #\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]
+#     #Changed this in order to have a (mostly) nice prompt with mode indicator (vi mode)
+#     #See .inputrc
+#     ;;
+# *)
+#     ;;
+# esac
 
 #---add functions to time commands
 # This file is from the repo https://github.com/rcaloras/bash-preexec.
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 
+# convertsecs() {{{3
 convertsecs() {
     d=$(bc <<< "${1} / 86400")
     h=$(bc <<< "(${1} % 86400) / 3600")
@@ -153,19 +154,24 @@ convertsecs() {
         sed 's/^0d //' |
         sed 's/\(00:\)*//' ;
 }
+# }}}3
 
 # Used https://unix.stackexchange.com/questions/485798/show-time-elapsed-since-i-started-last-command-in-prompt.
 first_command=true
+# preexec() {{{3
 preexec() {
     cmd_start="$SECONDS"
     start=$(date +%s.%N)
 
     first_command=false
 }
+# }}}3
 
+# precmd {{{3
 precmd() {
     [ -n "$COMP_LINE" ] && return  # do nothing if completing
 
+    #---Calculate time elapsed (and compare it to 1s)
     if $first_command; then
         normal_ps=true
     else
@@ -180,12 +186,36 @@ precmd() {
         fi
     fi
 
+    #---Set the prompt
+    corner_1="┌" #\342\224\214
+    dash="─" #"\342\224\200"
+    cross="✗" #"\342\234\227"
+
+    red="\[\033[0;31m\]"
+    white="\[\033[0;37m\]"
+    white_2="\[\033[0;39m\]"
+    green="\[\033[0;32m\]"
+    yellow="\[\033[01;33m\]"
+    blue_bold="\[\033[01;96m\]"
+    col="\[\033[0;33m\]"
+
+    link="$red]$dash["
+
+    git_branch="$(git branch --show-current 2> /dev/null)"
+
+    prompt_error="\$([[ \$? != 0 ]] && echo \"${white}${cross}${link}\")"
+    id_="${blue_bold}\l"
+    time_="${col}\t"
+    prompt_user_host="$(if [[ ${EUID} == 0 ]]; then echo "${red}root${yellow}@${blue_bold}\h"; else echo "${white_2}\u${yellow}@${blue_bold}\h"; fi)"
+    prompt_path="${green}\w${red}"
+    prompt_git_branch="\$([[ \$git_branch ]] && echo \"${link}${blue_bold}${git_branch}${red}\")"
+
+    # prompt_color_base="${red}${corner_1}${dash}[${prompt_error}${prompt_user_host}${link}${prompt_path}${prompt_git_branch}]\n"
+    prompt_color_base="${red}${corner_1}${dash}[${prompt_error}${id_}${link}${time_}${link}${prompt_path}${prompt_git_branch}] ${white}\n"
+
     if $normal_ps; then #In this case, the terminal has just be launched, so no command has been executed, or the command finished rapidly.
         if [ "$color_prompt" = yes ]; then
-            PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n"
-            #\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]
-            #Changed this in order to have a (mostly) nice prompt with mode indicator (vi mode)
-            #See .inputrc
+            PS1=$prompt_color_base
         else
             PS1='┌──[\u@\h]─[\w]\n'
             #└──╼ \$ 
@@ -193,13 +223,13 @@ precmd() {
 
     else
         if [ "$color_prompt" = yes ]; then
-            PS1="\n\033[0;3mLast command took $(convertsecs $elapsed)s.\n\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n"
-            # PS1="\n\033[0;3mLast command took $(printf "%.3f" $elapsed)s.\n\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n"
+            PS1="\n\033[0;3mLast command took $(convertsecs $elapsed)s.\n$prompt_color_base"
         else
             PS1='Last command took $(convertsecs $elapsed)s.\n┌──[\u@\h]─[\w]\n'
         fi
     fi
 }
+# }}}3
 # }}}2
 # }}}1
 
