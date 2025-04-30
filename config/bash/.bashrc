@@ -214,7 +214,7 @@ precmd() {
     prompt_user_host="$(if [[ ${EUID} == 0 ]]; then echo "${red}root${yellow}@${blue_bold}\h"; else echo "${white_2}\u${yellow}@${blue_bold}\h"; fi)"
     prompt_path="${green}\w${red}"
     # prompt_git_branch="\$([[ \$git_branch ]] && echo \"${link}${blue_bold}${git_branch}${red}\")"
-    prompt_git_branch="\$([[ \$git_branch ]] && echo \"${link}${blue_bold}$(__git_ps1 ' (%s)' | sed 's/ (//' | sed 's/)//')${red}\")"
+    prompt_git_branch="\$([[ \$git_branch ]] && echo \"${link}${blue_bold}$(__git_ps1 ' (%s)' | sed 's/^ (//' | sed 's/)$//')${red}\")"
 
     prompt_color_base="${red}${corner_1}${dash}[${prompt_error}${id_}${link}${time_}${link}${prompt_path}${prompt_git_branch}]\n"
 

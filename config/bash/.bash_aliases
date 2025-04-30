@@ -30,9 +30,10 @@ alias v='nvim'
 alias fd="fzf --preview 'bat--color=always --style=numbers --line-range=:500 {}'"
 
 alias gits="git status"
+alias gitss="git status -s"
 alias gitd="git diff --word-diff"
-alias gitl="git log --oneline --all"
-alias gitlg="git log --oneline --graph --all"
+# alias gitl="git log --oneline --all"
+alias gitl="git log --oneline --graph --all"
 alias gitc="git commit -m"
 
 alias q="exit"
