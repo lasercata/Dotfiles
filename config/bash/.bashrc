@@ -98,6 +98,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 
+    alias diff='diff --color=auto'
+    alias d='colordiff'
+
     alias ip='ip -color=auto'
 fi
 
