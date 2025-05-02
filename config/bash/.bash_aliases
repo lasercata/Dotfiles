@@ -32,9 +32,11 @@ alias fd="fzf --preview 'bat--color=always --style=numbers --line-range=:500 {}'
 alias gits="git status"
 alias gitss="git status -s"
 alias gitd="git diff --word-diff"
-# alias gitl="git log --oneline --all"
-alias gitl="git log --oneline --graph --all"
 alias gitc="git commit -m"
+# alias gitl="git log --oneline --all"
+# alias gitl="git log --oneline --graph --all"
+# alias gitl="git log --graph --all --decorate --format=format:'%C(yellow)%h%C(reset)%C(auto)%d%C(reset) %C(white)%<(70)%s%C(reset) - %C(cyan)%an%C(reset) %C(magenta)(%ar)%C(reset)'"
+alias gitl="git log --graph --all --decorate --format=format:'%C(yellow)%h%C(reset)%C(auto)%d%C(reset) - %C(cyan)%an%C(reset) %C(magenta)(%ar)%C(reset) %C(white)%s%C(reset)'"
 
 alias q="exit"
 alias qq="exit"
