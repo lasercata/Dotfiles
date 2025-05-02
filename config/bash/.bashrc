@@ -4,7 +4,7 @@
 #
 # Author            : Parrot OS, then Lasercata
 # Last modification : 2025.04.29
-# Version           : v1.2.0
+# Version           : v1.8.0
 #
 #-----------------------------------------------
 
