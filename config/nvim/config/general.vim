@@ -79,6 +79,9 @@ autocmd FileType java setlocal foldnestmax=2 foldmethod=indent foldlevel=1
 let g:markdown_folding = 1
 autocmd FileType markdown setlocal foldlevel=1
 
+"---SQL
+autocmd FileType sql setlocal foldmethod=indent foldnestmax=2
+
 
 "------Assembly syntax
 augroup asm_syntax
