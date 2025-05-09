@@ -15,29 +15,27 @@ get_i3_workspace_id() {
 }
 
 save_visible_workspaces() {
-        get_i3_workspace_id visible > $TMP_FILE_LOCATION_VISIBLE
+    get_i3_workspace_id visible > $TMP_FILE_LOCATION_VISIBLE
 }
 
 save_active_workspace() {
-        get_i3_workspace_id focused > $TMP_FILE_LOCATION_FOCUSED
+    get_i3_workspace_id focused > $TMP_FILE_LOCATION_FOCUSED
 }
 
-if [[ ! -f $TMP_FILE_LOCATION_VISIBLE ]] || [[ ! -f $TMP_FILE_LOCATION_FOCUSED ]]
-then
-    for f in $TMP_FILE_LOCATION_VISIBLE $TMP_FILE_LOCATION_FOCUSED
-    do
+if [[ ! -f $TMP_FILE_LOCATION_VISIBLE ]] || [[ ! -f $TMP_FILE_LOCATION_FOCUSED ]]; then
+    for f in $TMP_FILE_LOCATION_VISIBLE $TMP_FILE_LOCATION_FOCUSED; do
         get_i3_workspace_id focused > $f
     done
 fi
 
-if [[ $(get_i3_workspace_id focused) == "$workspace_to_toggle" ]]
-then
+if [[ $(get_i3_workspace_id focused) == "$workspace_to_toggle" ]]; then
         currently_visible_workspaces=$(get_i3_workspace_id visible)
-        intermediate_workspace=$(grep -v "$currently_visible_workspaces" $TMP_FILE_LOCATION_VISIBLE)
-        if [[ "$intermediate_workspace" != $(cat $TMP_FILE_LOCATION_FOCUSED) ]]
-        then
-                i3-msg workspace number $intermediate_workspace
+        intermediate_workspace=$(grep -w -v "$currently_visible_workspaces" "$TMP_FILE_LOCATION_VISIBLE") # the -w flag is needed (e.g for workspaces 3 and 13 ...)
+
+        if [[ "$intermediate_workspace" != $(cat $TMP_FILE_LOCATION_FOCUSED) ]]; then
+            i3-msg workspace number $intermediate_workspace
         fi
+
         i3-msg workspace number "$(cat $TMP_FILE_LOCATION_FOCUSED)"
 else
         save_visible_workspaces
