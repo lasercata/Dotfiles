@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2025.02.07
-" Version       :   v1.3.7
+" Last update   :   2025.05.11
+" Version       :   v1.3.8
 "
 "----------------------------------------
 
@@ -39,6 +39,8 @@ vnoremap { <ESC>`<i{<ESC>`>la}<ESC>%
 vnoremap <leader>" <ESC>`<i"<ESC>`>la"<ESC>
 vnoremap <leader>' <ESC>`<i'<ESC>`>la'<ESC>
 vnoremap <leader>` <ESC>`<i`<ESC>`>la`<ESC>
+vnoremap <leader>* <ESC>`<i*<ESC>`>la*<ESC>
+vnoremap <leader>µ <ESC>`<i**<ESC>`>lla**<ESC>
 
 "---Space around a char
 nnoremap <space><space> i <esc>la <esc>
