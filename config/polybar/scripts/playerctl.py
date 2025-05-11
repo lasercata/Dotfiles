@@ -277,12 +277,14 @@ class Player:
             track_str = 'unknown'
 
         # Remove file extension and youtube id
-        to_remove_expr = [re.compile(r'\[[a-zA-Z0-9_\-]{11}\]\....$'), re.compile(r' \[[a-zA-Z0-9_\-]{11}\]$'), re.compile(r'\(320 kbps\)\....$'), re.compile(r'\....$')]
+        to_remove_expr = [re.compile(r'\[[a-zA-Z0-9_\-]{11}\]\....$'), re.compile(r'\[[a-zA-Z0-9_\-]{11}\]$'), re.compile(r'\(320 kbps\)\....$'), re.compile(r'\....$')]
         to_remove_str = [e.findall(track_str) for e in to_remove_expr]
 
         for o in to_remove_str:
             if len(o) > 0:
                 track_str = track_str.replace(o[-1], '')
+
+        track_str.strip(' ')
 
         #---Icon
         play_icon = ('󰏤', '󰐊')[status.lower() == 'playing']
