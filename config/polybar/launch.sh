@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Launch a bar for every connected screen.
+# It puts the main_bar on the main screen, and the second_bar on all the other connected screens.
+
 killall -q polybar
 
 main_mon=$(xrandr --query | grep " primary" | cut -d' ' -f1)
@@ -19,4 +22,3 @@ else
     polybar --reload main_bar &
 fi
 
-# polybar parrot
