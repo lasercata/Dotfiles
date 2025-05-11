@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2023.05.16
+# Last modification : 2025.05.11
 # Author            : Lasercata
-# Version           : v1.0.2
+# Version           : v1.0.3
 #
 #--------------------------------
 
@@ -14,10 +14,11 @@ from os import popen
 
 ##-Ini
 default_len = 16
+default_interface = 'wlp0s20f3'
 
 
 ##-Get infos
-def get_str(interface='wlp0s20f3'):
+def get_str(interface=default_interface):
     '''Return the string of informations.'''
 
     return popen(f'/usr/sbin/iwconfig {interface}').read().split('\n')
@@ -66,7 +67,7 @@ def pretty_string(d, max_len=default_len):
     name = d['ESSID']
 
     if len(name) > max_len:
-        name = name[:max_len - 3] + '...'
+        name = name[:max_len - 1] + '~'
 
     label = '%{F#d4d7ff}' + name #fg-1
 
