@@ -41,6 +41,7 @@ vnoremap <leader>' <ESC>`<i'<ESC>`>la'<ESC>
 vnoremap <leader>` <ESC>`<i`<ESC>`>la`<ESC>
 vnoremap <leader>* <ESC>`<i*<ESC>`>la*<ESC>
 vnoremap <leader>µ <ESC>`<i**<ESC>`>lla**<ESC>
+vnoremap <leader>< <ESC>`<i<<ESC>`>la><ESC>
 
 "---Space around a char
 nnoremap <space><space> i <esc>la <esc>
