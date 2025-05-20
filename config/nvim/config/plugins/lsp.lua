@@ -131,6 +131,11 @@ require('lspconfig')['prolog_ls'].setup {
   capabilities = capabilities
 }
 
+--========= racket
+require('lspconfig')['racket_langserver'].setup {
+  capabilities = capabilities
+}
+
 --=========lsp_signature.nvim
 require 'lsp_signature'.setup()
 

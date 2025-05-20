@@ -119,3 +119,13 @@ To install the lsp server, run (in `swipl`).
 ```
 pack_install(lsp_server).
 ```
+
+### Racket
+Uses [`racket-langserver`](https://github.com/jeapostrophe/racket-langserver).
+
+It can be install with `raco`:
+```
+raco pkg install racket-langserver
+```
+
+The command `raco` comes with the `racket` package.
