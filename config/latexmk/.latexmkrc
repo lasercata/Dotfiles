@@ -14,3 +14,4 @@ push @generated_exts, "synctex.gz(busy)";
 push @generated_exts, "run.xml";
 push @generated_exts, "loa";
 push @generated_exts, "tns";
+push @generated_exts, "lol";
