@@ -23,6 +23,9 @@ set linebreak              " Wrap on word (not in the middle of a word)
 "---For OCaml
 autocmd FileType ocaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 textwidth=79
 
+"---For Racket
+autocmd FileType racket setlocal tabstop=2 softtabstop=2 shiftwidth=2
+
 "------Syntax
 filetype plugin indent on "Enable file type detection, indent for the detected file type, and use the plugin for it.
 syntax enable             "Enable syntax highlighting
