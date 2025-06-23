@@ -58,9 +58,13 @@ def write_docstring_args(args, snip):
 		return
 
 	snip.rv += '\n' + snip.mkline('', indent='')
+	snip += 'In:'
 
 	for arg in args:
-		snip += f"- {arg} : TODO"
+		snip += f'    - {arg}: TODO'
+	
+	snip += 'Out:'
+	snip += '    TODO'
 
 
 def write_init_body(args, parents, snip):
