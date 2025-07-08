@@ -32,6 +32,7 @@ alias fd="fzf --preview 'bat--color=always --style=numbers --line-range=:500 {}'
 alias gits="git status"
 alias gitss="git status -s"
 alias gitd="git diff --word-diff"
+alias gitdd="git diff"
 alias gitc="git commit -m"
 alias gitls='(echo "current branch: $(git branch --show-current)"; git ls-files | tree -a -C --fromfile) | bat'
 # alias gitls="tree -C --gitignore | bat"
