@@ -94,7 +94,7 @@ default_floating_border pixel 2
 
 #---Transparency
 # Using picom. See ~/.config/picom.conf for configuration.
-exec_always --no-startup-id picom
+exec_always --no-startup-id picom --backend xrender
 # }}}
 
 #------Settings
