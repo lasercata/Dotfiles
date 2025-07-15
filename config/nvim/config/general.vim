@@ -85,6 +85,9 @@ autocmd FileType markdown setlocal foldlevel=1
 "---SQL
 autocmd FileType sql setlocal foldmethod=indent foldnestmax=2
 
+"---VueJS
+autocmd FileType vue setlocal foldmethod=indent foldnestmax=1
+
 
 "------Assembly syntax
 augroup asm_syntax
