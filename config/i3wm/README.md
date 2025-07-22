@@ -56,8 +56,10 @@ Modifier : `mod` = meta (windows key).
 | Kill window | `mod+shift+q` |
 | Reload config | `mod+shift+c` |
 | Restart in place | `mod+shift+r` |
+| Hot plug screens (+ reload polybar) | `mod+shift+s` |
 | Exit i3 | `mod+shift+e` |
 | Play / pause media | `mod+p` |
 | Toggle touchpad | `mod+u` |
 | Lock | `mod+o` |
 | Suspend (sleep) | `mod+shift+o` |
+| Change wallpaper (random) | `mod+shift+w` |

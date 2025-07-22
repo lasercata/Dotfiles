@@ -44,6 +44,9 @@ exec_always --no-startup-id ~/.config/i3/scripts/launcher.sh ~/.config/i3/script
 #---Status bar (polybar)
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
+# Keybind to reload polybar + screens
+bindsym $mod+Shift+s exec ~/.config/polybar/launch.sh
+
 # bar {
 #     i3bar_command i3bar --transparency
 #     status_command i3status
@@ -70,8 +73,14 @@ exec --no-startup-id "archupdate-indicator.py"
 font pango:Hack 10
 
 #---Wallpaper
-#To change the wallpaper, change the content of the file ~/.wallpaper_filename.txt to the file name of the desired wallpaper.
-exec_always --no-startup-id feh --bg-scale $(cat ~/.wallpapers/wallpaper_filename.txt)
+# (old) To change the wallpaper, change the content of the file ~/.wallpaper_filename.txt to the file name of the desired wallpaper.
+# exec_always --no-startup-id feh --bg-scale $(cat ~/.wallpapers/wallpaper_filename.txt)
+
+# Now choosing a random wallpaper
+exec_always --no-startup-id ~/.config/i3/scripts/set_random_wallpaper.sh
+
+# Keybind to change wallpaper
+bindsym $mod+Shift+w exec ~/.config/i3/scripts/set_random_wallpaper.sh
 
 #---Windows colors
 # class                 border  backgr. text    indicator child_border
