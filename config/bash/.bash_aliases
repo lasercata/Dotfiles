@@ -10,6 +10,9 @@
 alias _='sudo'
 alias _i='sudo -i'
 
+# Please: rerun as root
+alias pls='sudo $(fc -ln -1)'
+
 alias ll='ls -lh'
 alias la='ls -lha'
 alias l='ls -CF'
