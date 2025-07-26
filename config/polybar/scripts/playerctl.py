@@ -4,8 +4,8 @@
 #--------------------------------
 #
 # Author            : Lasercata
-# Last modification : 2025.01.05
-# Version           : v1.0.3
+# Last modification : 2025.07.26
+# Version           : v1.0.4
 #
 #--------------------------------
 
@@ -28,7 +28,8 @@ ul = '%{u#ff4500}%{+u}'
 accent_col = '%{F#ff4500}'
 accent_col_2 = '%{F#91f5f3}' # cyan-3
 
-default_len = 56
+DEFAULT_MAX_LEN = 56
+DEFAULT_MIN_LEN = 21 # This ensures to have at least 3 characters printed for songs of more than one hour.
 
 
 ##-Useful functions
@@ -58,7 +59,7 @@ def time_to_str(n):
 
 ##-Main
 class Player:
-    def __init__(self, player=None, max_len=default_len):
+    def __init__(self, player=None, max_len=DEFAULT_MAX_LEN):
         '''
         Initiate the class Player
 
@@ -405,7 +406,7 @@ def list_players():
     return l
 
 
-def print_all_players(max_len, min_len=17, remove_cmus=True):
+def print_all_players(max_len, min_len=DEFAULT_MIN_LEN, remove_cmus=True):
     '''
     Print all the players' info.
 
@@ -479,14 +480,14 @@ if __name__ == '__main__':
     from sys import argv
 
     if len(argv) == 1:
-        max_len = default_len
+        max_len = DEFAULT_MAX_LEN
 
     else:
         try:
             max_len = int(argv[1])
 
         except ValueError:
-            max_len = default_len
+            max_len = DEFAULT_MAX_LEN
 
     # Printing all players
     print_all_players(max_len, remove_cmus=False)
