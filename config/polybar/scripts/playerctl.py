@@ -17,8 +17,6 @@ import re
 #TODO: use signals + polybar tail mode ?
 
 ##-Ini
-# ext_lst = ['.mp3', '.wav', '.m4a', '.wma']
-
 fg = '%{F#d4d7ff}'
 fg_paused = '%{F#77ffffff}'
 
@@ -28,9 +26,9 @@ ul = '%{u#ff4500}%{+u}'
 accent_col = '%{F#ff4500}'
 accent_col_2 = '%{F#91f5f3}' # cyan-3
 
-DEFAULT_MAX_LEN = 56
-DEFAULT_MIN_LEN_STR = 3
-DEFAULT_MIN_LEN = 12 + DEFAULT_MIN_LEN_STR # This ensures to have at least 3 characters printed for songs of more than one hour.
+DEFAULT_MAX_LEN = 56 # Default maximum length for the whole string (with all the players), ignoring the invisible characters.
+DEFAULT_MIN_LEN_STR = 3 # Default minimum length for the title of a player (not including the position / duration nor the play/pause button).
+DEFAULT_MIN_LEN = len('󰏤 ' + '~ [xx%|xxm]') + DEFAULT_MIN_LEN_STR # Minimum length for a player, including position / duration + play/pause button.
 
 
 ##-Useful functions
@@ -409,7 +407,7 @@ def get_cmus_trackname():
     ''').read().strip('\n')
 
 
-def list_players():
+def list_players() -> list[str]:
     '''Return the list of all available players'''
 
     l, _ = Popen('playerctl -l', shell=True, stdout=PIPE, stderr=PIPE).communicate()
@@ -427,15 +425,15 @@ def list_players():
     return l
 
 
-def print_all_players(max_len, min_len=DEFAULT_MIN_LEN, remove_cmus=True):
+def print_all_players(max_len: int, remove_cmus: bool = True):
     '''
     Print all the players' info.
 
-    - max_len     : the maximum length for all players ;
-    - min_len     : the minimum length allowed for a single player ;
-    - remove_cmus : if true, ignore cmus.
+    - max_len: the maximum length for the printed string (only visible characters) ;
+    - remove_cmus: if true, ignore cmus.
     '''
 
+    #---List and create the players
     l = list_players()
 
     if remove_cmus and 'cmus' in l:
@@ -443,13 +441,18 @@ def print_all_players(max_len, min_len=DEFAULT_MIN_LEN, remove_cmus=True):
 
     players = [Player(p) for p in l]
 
-    #---Removing stopped players from the list
+    #---Remove stopped players from the list + count players currently playing
+    nb_playing = 0
     k = 0
     while k < len(players):
         if players[k].is_stopped():
             players.pop(k)
 
         else:
+            # Count playing players
+            if players[k].is_playing():
+                nb_playing += 1
+
             k += 1
 
     #---If all players are stopped, do not show anything.
@@ -458,21 +461,20 @@ def print_all_players(max_len, min_len=DEFAULT_MIN_LEN, remove_cmus=True):
         return
 
     #---Setting the length limit
-    # Counting the number of playing players
-    nb_playing = 0
-    for p in players:
-        if p.is_playing():
-            nb_playing += 1
-
     # Calculating the length for playing players
+    # Long length: the length for the playing players.
+    # Short length: the length for the paused players.
+
+    short_len = DEFAULT_MIN_LEN
+
     if nb_playing == 0:
         long_len = max_len / len(players)
     else:
-        long_len = int((max_len - min_len * (len(players) - nb_playing)) / nb_playing)
+        long_len = int((max_len - short_len * (len(players) - nb_playing)) / nb_playing)
 
         if long_len < 0:
             long_len = max_len / len(players)
-            min_len = long_len
+            short_len = long_len
 
     # Setting the lengths
     for p in players:
@@ -480,18 +482,14 @@ def print_all_players(max_len, min_len=DEFAULT_MIN_LEN, remove_cmus=True):
             p.set_max_len(long_len)
         
         else:
-            p.set_max_len(min_len)
+            p.set_max_len(short_len)
 
     #---Printing players' informations
     for k, p in enumerate(players):
         print(p, end='')
 
         if k != len(players) - 1: # Prints the separation between players
-            # print(' %{F#ff4500}|%{F-} ', end='') # orange
-            # print(' %{F#66efeb}|%{F-} ', end='') #cyan-1
-            # print(' %{F#7ff3ef}|%{F-} ', end='') #cyan-2
             print(' ' + accent_col_2 + '|%{F-} ', end='') #cyan-3
-            # print(' %{F#aaaaaa}|%{F-} ', end='') # grey
 
     print()
 
@@ -511,4 +509,4 @@ if __name__ == '__main__':
             max_len = DEFAULT_MAX_LEN
 
     # Printing all players
-    print_all_players(max_len, remove_cmus=False) #TODO: set the min value depending on the max value ...
+    print_all_players(max_len, remove_cmus=False)
