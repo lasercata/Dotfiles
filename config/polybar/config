@@ -18,9 +18,9 @@
 
 ;---------------------------------------------
 ;
-; Last modification : 2024.02.26
+; Last modification : 2025.07.26
 ; Author            : Polybar, then Lasercata
-; Version           : v3.0.6
+; Version           : v3.0.7
 ;
 ; This is used in i3 (window manager)
 ; Inspired from https://github.com/Vallen217/dotfiles/tree/master/.config/polybar for v2.0.0.
@@ -64,13 +64,8 @@ module-margin-right = 0
 
 font-0 = Hack Nerd Font:size=10
 font-1 = Hack Nerd Font:size=12
-;font-1 = fixed:pixelsize=10;1
-; font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
-; font-1 = siji:pixelsize=11;1
-; font-3 = FontAwesome:size=10
 
-; modules-left = i3 slash space info-hackspeed space slash space cmus
-modules-left = i3 slash space info-hackspeed space slash space playerctl
+modules-left = i3 slash space playerctl
 modules-center = memory space slash space filesystem space slash space cpu space slash space system-fan-speed
 modules-right = alsa space slash space network space slash eth-tethering slash eth slash bluetooth slash space battery space slash brightnessctl space slash space date space slash space time space
 
@@ -80,13 +75,9 @@ tray-padding = 2
 ; tray-foreground = #fff
 ; tray-transparent = true
 
-;wm-restack = bspwm
 ; wm-restack = i3
 
 override-redirect = false
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -120,13 +111,8 @@ module-margin-right = 0
 
 font-0 = Hack Nerd Font:size=10
 font-1 = Hack Nerd Font:size=12
-;font-1 = fixed:pixelsize=10;1
-; font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
-; font-1 = siji:pixelsize=11;1
-; font-3 = FontAwesome:size=10
 
-; modules-left = i3 slash space info-hackspeed space slash space cmus-short
-modules-left = i3 slash space info-hackspeed space slash space playerctl-short
+modules-left = i3 slash space playerctl-short
 modules-center = memory space slash space filesystem space slash space cpu space slash space system-fan-speed
 modules-right = alsa space slash space network-short space slash eth-tethering slash eth slash bluetooth slash space battery space slash brightnessctl space slash space date space slash space time space
 
@@ -136,13 +122,9 @@ modules-right = alsa space slash space network-short space slash eth-tethering s
 ; tray-foreground = #fff
 ; tray-transparent = true
 
-;wm-restack = bspwm
 ; wm-restack = i3
 
 override-redirect = false
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
