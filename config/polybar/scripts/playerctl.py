@@ -29,30 +29,48 @@ accent_col = '%{F#ff4500}'
 accent_col_2 = '%{F#91f5f3}' # cyan-3
 
 DEFAULT_MAX_LEN = 56
-DEFAULT_MIN_LEN = 21 # This ensures to have at least 3 characters printed for songs of more than one hour.
+DEFAULT_MIN_LEN_STR = 3
+DEFAULT_MIN_LEN = 12 + DEFAULT_MIN_LEN_STR # This ensures to have at least 3 characters printed for songs of more than one hour.
 
 
 ##-Useful functions
-def time_to_str(n):
+def time_to_str(n: int, lazy: bool = False) -> str:
     '''
     Return n in a nice format.
 
-    - n : a duration, in seconds.
+    - n: a duration, in seconds ;
+    - lazy: if True, will round the output.
     '''
 
     if n == '?':
-        return n
+        return '?'
 
     if n < 3600:
         s = n % 60
         m = n // 60
 
+        if lazy:
+            if s > 30: # Round minutes
+                m += 1
+
+            if m > 0:
+                return f'{m}m'
+
+            else:
+                return f'{s}s'
+
         return format(m, '02') + ':' + format(s, '02')
 
-    else: #Do you have a song that last more than a day !?!?
+    else:
         s = n % 60
         m = (n // 60) % 60
         h = n // 3600
+
+        if lazy:
+            if m > 30: # Round hours
+                h += 1
+
+            return f'{h}h'
 
         return format(h, '02') + ':' + format(m, '02') + ':' + format(s, '02')
 
@@ -78,12 +96,12 @@ class Player:
 
         self.status = None
 
-    def set_max_len(self, max_len):
-        '''Setter for max_len.'''
+    def set_max_len(self, max_len: float | int):
+        '''Setter for `self.max_len`.'''
     
         self.max_len = int(max_len)
 
-    def _get_status(self):
+    def _get_status(self) -> str:
         '''
         Call playerctl to get the status for the current player.
 
@@ -95,22 +113,22 @@ class Player:
 
         return self.status
 
-    def is_stopped(self):
+    def is_stopped(self) -> bool:
         '''Returns True if and only if the current player is stopped.'''
     
         return self._get_status().lower() == 'stopped'
 
-    def is_playing(self):
+    def is_playing(self) -> bool:
         '''Returns True if and only if the current player is playing.'''
     
         return self._get_status().lower() == 'playing'
 
-    def is_paused(self):
+    def is_paused(self) -> bool:
         '''Returns True if and only if the current player is paused.'''
     
         return self._get_status().lower() == 'paused'
 
-    def _get_metadata(self, add_pos=True):
+    def _get_metadata(self, add_pos: bool = True) -> list[str]:
         '''
         Call playerctl to get metadata and return it.
         If add_pos is true, it will call it another time to get the position.
@@ -131,9 +149,9 @@ class Player:
 
         return mt
 
-    def _get_pos_long(self):
+    def _get_pos_long(self) -> str:
         '''
-        Returns the position and the duration in a string, at the format [position/duration]
+        Returns the position and the duration in a string, at the format '[position/duration]'
         Not used in order to reduce the number of calls to playerctl.
         '''
 
@@ -229,12 +247,13 @@ class Player:
 
         return f'[{time_to_str(d["position"])}/{time_to_str(d["length"])}] {percent}'
 
-    def _get_mixed_pos_from_d(self, d, with_color=True):
+    def _get_mixed_pos_from_d(self, d, with_color: bool = True, lazy: bool = False):
         '''
         Return a string showing the position in the format [pos%|duration].
 
-        - d           : the dict containing the informations ;
-        - with_colors : if True, also add colors.
+        - d: the dict containing the informations ;
+        - with_colors: if True, also add colors ;
+        - lazy: if True, round the duration.
         '''
 
         if d['position'] == '?' or 'length' not in d:
@@ -243,11 +262,11 @@ class Player:
         percent = self._get_short_pos_from_d(d)
 
         if with_color:
-            return accent_col + '[' + accent_col_2 + percent + accent_col + f'|{time_to_str(d["length"])}]'
+            return accent_col + '[' + accent_col_2 + percent + accent_col + f'|{time_to_str(d["length"], lazy)}]'
 
-        return f'[{percent}|{time_to_str(d["length"])}]'
+        return f'[{percent}|{time_to_str(d["length"], lazy)}]'
 
-    def __str__(self):
+    def __str__(self) -> str:
         '''
         Get status and meta data and return accordingly a string.
 
@@ -291,17 +310,18 @@ class Player:
         play_icon = ('󰏤', '󰐊')[status.lower() == 'playing']
 
         #---Position
-        mixed_str = self._get_mixed_pos_from_d(mt_d, with_color=False)
-        mixed_str_col = self._get_mixed_pos_from_d(mt_d, with_color=True)
+        lazy_duration = self.is_paused()
+
+        mixed_str = self._get_mixed_pos_from_d(mt_d, with_color=False, lazy=lazy_duration)
+        mixed_str_col = self._get_mixed_pos_from_d(mt_d, with_color=True, lazy=lazy_duration)
 
         pos_str = self._get_long_pos_from_d(mt_d, with_color=False)
         pos_str_col = self._get_long_pos_from_d(mt_d, with_color=True)
 
-        percent_str = self._get_short_pos_from_d(mt_d)
+        # percent_str = self._get_short_pos_from_d(mt_d)
 
         #---Calculate the optimal length
         partial_len = len(play_icon + ' ' + ' ' + pos_str)
-        # partial_len2 = len(play_icon + ' ' + ' ' + percent_str)
         partial_len3 = len(play_icon + ' ' + ' ' + mixed_str)
 
         # The beginning of the string (color for the icon, icon, color for the text.)
@@ -319,7 +339,8 @@ class Player:
             return bt_beg + ul + playing_str + ' ' + track_str + ' ' + accent_col + mixed_str_col + bt_end
 
         else:
-            l = self.max_len - partial_len3 - 1
+            l = max(self.max_len - partial_len3 - 1, DEFAULT_MIN_LEN_STR) # This may cause the widget to be a bit larger than allowed
+
             # return bt_beg + ul + playing_str + ' ' + track_str[:l] + '~ ' + accent_col + percent_str + bt_end
             return bt_beg + ul + playing_str + ' ' + track_str[:l] + '~ ' + accent_col + mixed_str_col + bt_end
 
@@ -490,4 +511,4 @@ if __name__ == '__main__':
             max_len = DEFAULT_MAX_LEN
 
     # Printing all players
-    print_all_players(max_len, remove_cmus=False)
+    print_all_players(max_len, remove_cmus=False) #TODO: set the min value depending on the max value ...
