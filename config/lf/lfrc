@@ -123,7 +123,9 @@ map DD trash
 map Du trash-restore
 
 # Previewer
-map i $~/.config/lf/previewer.sh "$f" | bat --paging=always
+map i $~/.config/lf/previewer.sh "$f" | bat --paging=always --file-name "$f" --color never
+# The --file-name is used to display the file name in the header.
+# The --color never is used to prevent bat to try to add color, as it is already passed through bat once (with the previewer.sh).
 
 # Reload files
 map <f-5> :reload
