@@ -1,6 +1,6 @@
 # Dotfiles
 
-This repository contain my personal configuration files for the some softwares that I use. Most are text-based (only run in terminal) and have vim-like key bindings.
+This repository contain my personal configuration files for some of the softwares I use. Most are text-based (i.e run in a terminal) and have vim-like key bindings.
 
 See each folder in [`config`](config) for more info.
 
