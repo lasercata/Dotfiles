@@ -7,4 +7,4 @@
 wallpaper_fn=$(ls ~/.wallpapers/favourites/ | shuf -n 1)
 
 #---Display it
-feh --bg-scale ~/.wallpapers/favourites/"$wallpaper_fn"
+feh --bg-fill ~/.wallpapers/favourites/"$wallpaper_fn"
