@@ -136,6 +136,18 @@ require('lspconfig')['racket_langserver'].setup {
   capabilities = capabilities
 }
 
+--========= arduino
+require('lspconfig')['arduino_language_server'].setup {
+  cmd = {
+    'arduino-language-server',
+    '-clangd', '/usr/bin/clangd',
+    '-cli', '/usr/bin/arduino-cli',
+    '-cli-config', '~/.arduinoIDE/arduino-cli.yaml',
+    '-fqbn', 'arduino:avr:uno',
+  },
+  capabilities = capabilities
+}
+
 --=========lsp_signature.nvim
 require 'lsp_signature'.setup()
 
