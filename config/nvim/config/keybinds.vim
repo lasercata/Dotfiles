@@ -123,6 +123,10 @@ nnoremap <leader>p <cmd>cp<cr>
 "---Make
 nnoremap <F5> <cmd>make<CR>
 
+"---Arduino
+nnoremap <leader>ac <cmd>!arduino-cli compile --fqbn arduino:avr:uno %<CR>
+nnoremap <leader>au <cmd>!arduino-cli upload --fqbn arduino:avr:uno -p /dev/ttyACM0 %<CR>
+
 "---xxd
 nnoremap <leader>x <cmd>%!xxd<cr><cmd>set ft=xxd<cr>
 nnoremap <leader>X <cmd>%!xxd -r<cr>

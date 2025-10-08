@@ -48,3 +48,16 @@ vim.keymap.set({'n', 't'}, '<A-b>',
     end,
     {desc = 'Toggle btop'}
 )
+
+--===Arduino serial monitor
+local arduino_serial_mon = fterm:new({
+    ft = 'fterm_arduino_serial_mon',
+    cmd = "arduino-cli monitor -p /dev/ttyACM0 -c baudrate=9600"
+})
+
+vim.keymap.set({'n', 't'}, '<A-a>',
+    function()
+        arduino_serial_mon:toggle()
+    end,
+    {desc = 'Toggle arduino serial monitor'}
+)
