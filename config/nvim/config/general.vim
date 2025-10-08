@@ -69,6 +69,9 @@ autocmd FileType python setlocal foldnestmax=2 foldmethod=indent
 "---C
 autocmd FileType c setlocal foldnestmax=1 foldmethod=indent
 
+"---Arduino
+autocmd FileType arduino setlocal foldnestmax=1 foldmethod=indent
+
 "---LaTeX
 autocmd FileType tex setlocal foldnestmax=3 foldmethod=indent foldlevelstart=1 foldlevel=1
 
