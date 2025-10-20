@@ -35,7 +35,7 @@ case "${MIME_TYPE}" in
     inode/directory) dir_display "$FILE_PATH" | bat --paging=always --file-name "$FILE_PATH" --color never ;;
 
     # For anything else, pipe the previewer into bat
-    *) ~/.config/lf/previewer.sh "$FILE_PATH" | bat --paging=always --file-name "$FILE_PATH" --color never ;;
+    *) ~/.config/lf/previewer.sh "$FILE_PATH" | bat --pager='less -R +g' --paging=always --file-name "$FILE_PATH" --color never ;;
 
     # The --file-name is used to display the file name in the header.
     # The --color never is used to prevent bat to try to add color, as it is already passed through bat once (with the previewer.sh).
