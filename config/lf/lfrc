@@ -113,7 +113,7 @@ map X &"$f"
 map xt extract
 
 # Show metadata
-map xm $exiftool "$f" | bat --paging=always
+map xm $exiftool "$f" | bat --paging=always --pager='less -R +g'
 
 # Show execution results
 map S !true
