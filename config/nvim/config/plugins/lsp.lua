@@ -148,6 +148,11 @@ require('lspconfig')['arduino_language_server'].setup {
   capabilities = capabilities
 }
 
+--========= racket
+require('lspconfig')['rust_analyzer'].setup {
+  capabilities = capabilities
+}
+
 --=========lsp_signature.nvim
 require 'lsp_signature'.setup()
 

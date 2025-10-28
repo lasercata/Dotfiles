@@ -129,3 +129,8 @@ raco pkg install racket-langserver
 ```
 
 The command `raco` comes with the `racket` package.
+
+### Rust-analyzer
+Uses [`rust-analyzer`](https://github.com/rust-lang/rust-analyzer)
+
+It can be installed through pacman (`extra/rust-analyzer`).
