@@ -7,6 +7,8 @@
     path = ~/.git-personnal.conf
 [includeIf "gitdir:~/git/ENSSAT/"]
     path = ~/.git-enssat.conf
+[includeIf "gitdir:~/git/codeberg/"]
+    path = ~/.git-codeberg.conf
 [cola]
     spellcheck = false
 [color]
