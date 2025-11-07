@@ -10,6 +10,9 @@ Custom mappings:
 | ------ | -------- |
 | Toggle opacity | `ctrl+shift+o` |
 
+There is also a custom `kitty_lf.conf` file that is used to launch kitty with `lf`, that cd on exit and run bash.
+See the keybind in the i3 [config file](../i3wm/config)
+
 ## Configuration location
 The configuration folder is located at `~/.config/kitty/`.
 

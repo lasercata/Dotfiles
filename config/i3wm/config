@@ -126,7 +126,8 @@ floating_modifier $mod
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec alacritty
 
-bindsym $mod+i exec alacritty --config-file ~/.config/alacritty/alacritty_lf.yml
+# bindsym $mod+i exec alacritty --config-file ~/.config/alacritty/alacritty_lf.toml
+bindsym $mod+i exec kitty -c ~/.config/kitty/kitty_lf.conf
 
 #---Start cmus in tmux
 bindsym $mod+c exec kitty -e ~/.config/i3/scripts/launch_cmus_in_tmux.sh
