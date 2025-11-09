@@ -55,12 +55,6 @@ set smartcase  "Overwrite ignorecase if there is an uppercase character in the s
 setlocal spell
 set spelllang=en_gb,fr,it
 
-" Correct the closer error behind cursor in insert mode.
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
-
-" Toggle spell in normal mode
-nnoremap <C-s> <cmd>set invspell<CR>
-
 
 "------Folds
 "---Python

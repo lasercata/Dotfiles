@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2025.05.11
-" Version       :   v1.3.8
+" Last update   :   2025.11.09
+" Version       :   v1.3.9
 "
 "----------------------------------------
 
@@ -42,6 +42,17 @@ vnoremap <leader>` <ESC>`<i`<ESC>`>la`<ESC>
 vnoremap <leader>* <ESC>`<i*<ESC>`>la*<ESC>
 vnoremap <leader>µ <ESC>`<i**<ESC>`>lla**<ESC>
 vnoremap <leader>< <ESC>`<i<<ESC>`>la><ESC>
+
+"---Spelling
+" Correct the closer error behind cursor in insert mode.
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+" Toggle spell in normal mode
+nnoremap <C-s> <cmd>set invspell<CR>
+
+" next (j) and previous (k) spelling mistakes
+nnoremap <leader>sj ]s
+nnoremap <leader>sk [s
 
 "---Space around a char
 nnoremap <space><space> i <esc>la <esc>
