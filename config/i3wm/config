@@ -281,6 +281,7 @@ set $locker ~/.config/i3/scripts/locker.sh
 #---Bind keys to lock
 bindsym $mod+o exec --no-startup-id $locker
 bindsym $mod+Shift+o exec --no-startup-id $locker && systemctl hibernate
+bindsym $mod+CTRL+Shift+o exec --no-startup-id $locker && systemctl suspend
 
 #---Auto lock the screen
 # Launch the lock screen after 10 minutes
