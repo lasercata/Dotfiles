@@ -60,6 +60,6 @@ Modifier : `mod` = meta (windows key).
 | Exit i3 | `mod+shift+e` |
 | Play / pause media | `mod+p` |
 | Toggle touchpad | `mod+u` |
-| Lock | `mod+o` |
-| Suspend (sleep) | `mod+shift+o` |
+| Lock screen | `mod+o` |
+| Hibernate (suspend to disk) | `mod+shift+o` |
 | Change wallpaper (random) | `mod+shift+w` |

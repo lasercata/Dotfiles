@@ -271,18 +271,27 @@ bindsym $mod+p exec --no-startup-id "playerctl play-pause"
 #-Touchpad
 bindsym XF86TouchpadToggle exec --no-startup-id ~/.config/i3/scripts/toggle_touchpad_libinput.sh
 bindsym $mod+u exec --no-startup-id ~/.config/i3/scripts/toggle_touchpad_libinput.sh
+# }}}
 
-#---Lock screen
-#-Define locker app
+#------Lock screen and hibernation
+# {{{
+#---Define locker app
 set $locker ~/.config/i3/scripts/locker.sh
 
-#-Bind keys to lock
+#---Bind keys to lock
 bindsym $mod+o exec --no-startup-id $locker
-bindsym $mod+Shift+o exec --no-startup-id $locker && systemctl suspend
+bindsym $mod+Shift+o exec --no-startup-id $locker && systemctl hibernate
 
-#-Auto lock the screen
-exec_always --no-startup-id "xautolock -detectsleep -time 10 -locker \"$locker\""
-# exec_always --no-startup-id xss-lock -l $locker
+#---Auto lock the screen
+# Launch the lock screen after 10 minutes
+exec_always --no-startup-id "xautolock -detectsleep -time 1 -locker \"$locker\" -notify 30 -notifier \"notify-send -u normal -t 10000 'Locking soon' 'Locking screen in 30 seconds'\""
+
+# Hibernate after 20 minutes
+exec_always --no-startup-id "xautolock -detectsleep -time 2 -locker \"systemctl hibernate\" -notify 60 -notifier \"notify-send -u critical -t 30000 'Hibernating soon' 'Hibernating 60 seconds'\""
+
+# Note: with the second xautolock, you can disable the default X11 saver that turns screen off after 10 minutes (600s).
+# Get status: `xset q`
+# To edit: edit the line about `timeout` in the file `~/.xscreensaver`, and then run `xscreensaver-command --restart`.
 # }}}
 
 #------Workspaces
