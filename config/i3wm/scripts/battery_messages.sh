@@ -36,7 +36,7 @@ function check_power {
         fi
 
         if (( $percentage <= $CRITICAL )); then
-            notify-send "Critical battery !" "Current battery level : $percentage%\nThe computer will fall asleep." &
+            notify-send -u critical "Critical battery !" "Current battery level : $percentage%\nThe computer will fall asleep." &
             play $SOUND
             echo "Critical battery ! Current battery level : $percentage%"
 
@@ -46,22 +46,22 @@ function check_power {
             systemctl suspend #lock screen and fell asleep
 
         elif (( $percentage <= $DANGER )); then
-            notify-send "Low battery !" "Current battery level : $percentage%" &
+            notify-send -u critical "Low battery !" "Current battery level : $percentage%" &
             play $SOUND
             echo "Low battery ! Current battery level : $percentage%"
 
         elif (( $percentage <= $WARN )); then
-            notify-send "Low battery" "Current battery level : $percentage%" &
+            notify-send -u critical "Low battery" "Current battery level : $percentage%" &
             play $SOUND
             echo "Low battery ! Current battery level : $percentage%"
 
         elif (( $percentage <= $WARN_HIGH && $percentage >= ($WARN_HIGH - 3) )); then
-            notify-send "Half battery" "Current battery level : $percentage%" &
+            notify-send -u normal "Half battery" "Current battery level : $percentage%" &
             play $SOUND
             echo "Half battery. Current battery level : $percentage%"
 
         elif (( $percentage <= $HIGH_BUT_DISCHARGING && $percentage >= ($HIGH_BUT_DISCHARGING - 3) )); then
-            notify-send "Battery discharging" "The battery is currently discharging.\nCurrent battery level : $percentage%"
+            notify-send -u low "Battery discharging" "The battery is currently discharging.\nCurrent battery level : $percentage%"
 
         fi
 
