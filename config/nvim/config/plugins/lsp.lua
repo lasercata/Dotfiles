@@ -110,7 +110,16 @@ require('lspconfig')['ts_ls'].setup {
 
 --========= java
 require('lspconfig')['jdtls'].setup {
-  capabilities = capabilities
+  capabilities = capabilities,
+  cmd = {
+      'jdtls',
+      '-XX:+UseParallelGC',
+      '-XX:GCTimeRatio=4',
+      '-XX:AdaptiveSizePolicyWeight=90',
+      '-Dsun.zip.disableMemoryMapping=true',
+      '-Xmx1G',
+      '-Xms100m'
+  }
 }
 
 --========= sql
