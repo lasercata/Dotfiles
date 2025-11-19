@@ -4,6 +4,20 @@
 This is the main configuration file. It should be located in the home directory, at `~/.bashrc`.
 This file uses the file `.bash-preexec.sh` from [https://github.com/rcaloras/bash-preexec](https://github.com/rcaloras/bash-preexec) in order to show the time elapsed for a command execution.
 
+To set bash by default, run
+```
+chsh -s /bin/bash
+```
+
+### Files
+- `~/.bashrc`: bash config
+- `~/.bash-preexec.sh`: show elapsed time
+- `~/.bash_profile`: source bash config on login
+
+### Dependencies:
+- `fzf` (for the `ctrl-r`): arch=`extra/fzf`, debian=`fzf`
+- `bc` (to calculate elapsed time): arch=`extra/bc`, debian=`bc`
+
 ## bash_aliases
 This file contain the definition of some handy aliases. It is sourced by `.bashrc`.
 It should be located in the home directory, at `~/.bash_aliases`.
