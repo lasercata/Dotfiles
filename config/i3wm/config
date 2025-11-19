@@ -285,7 +285,7 @@ bindsym $mod+CTRL+Shift+o exec --no-startup-id $locker && systemctl suspend
 
 #---Auto lock the screen
 # Launch the lock screen after 10 minutes
-exec_always --no-startup-id "xautolock -detectsleep -time 10 -locker \"$locker\" -notify 10 -notifier \"notify-send -u critical -t 9500 'Locking soon' 'Locking screen in 10 seconds'\""
+exec_always --no-startup-id "xautolock -detectsleep -time 10 -locker \"$locker\" -notify 30 -notifier \"notify-send -u critical -t 29500 'Locking soon' 'Locking screen in 30 seconds'\""
 
 # Hibernate after 12 minutes
 exec_always --no-startup-id "xautolock -detectsleep -time 12 -locker \"systemctl hibernate\" -notify 30 -notifier \"notify-send -u critical -t 20000 'Hibernating soon' 'Hibernating 30 seconds'\""
