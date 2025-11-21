@@ -8,6 +8,7 @@
 
 --========= Set up nvim-cmp.
 -- From the readme.
+local lspconfig = require'lspconfig'
 local cmp = require'cmp'
 
 cmp.setup({
@@ -68,48 +69,56 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- require'lspconfig'.pylsp.setup{}
 -- require'lspconfig'.pyright.setup{}
 
-require('lspconfig')['pyright'].setup {
+vim.lsp.config('pyright', {
   capabilities = capabilities
-}
+})
+vim.lsp.enable('pyright')
 
 --========= C
-require('lspconfig')['clangd'].setup {
+vim.lsp.config('clangd', {
   capabilities = capabilities
-}
+})
+vim.lsp.enable('clangd')
 
 --========= OCaml
-require('lspconfig')['ocamllsp'].setup {
+vim.lsp.config('ocamllsp', {
   capabilities = capabilities
-}
+})
+vim.lsp.enable('ocamllsp')
 
 --========= Bash
-require('lspconfig')['bashls'].setup {
+vim.lsp.config('bashls', {
   capabilities = capabilities
-}
+})
+vim.lsp.enable('bashls')
 
 --========= LaTeX
-require('lspconfig')['texlab'].setup {
+vim.lsp.config('texlab', {
   capabilities = capabilities
-}
+})
+vim.lsp.enable('texlab')
 
 --========= cmake
-require('lspconfig')['cmake'].setup {
+vim.lsp.config('cmake', {
   capabilities = capabilities
-}
+})
+vim.lsp.enable('cmake')
 
 --========= HTML
-require('lspconfig')['html'].setup {
+vim.lsp.config('html', {
   capabilities = capabilities
-}
+})
+vim.lsp.enable('html')
 
 --========= javascript
--- require('lspconfig')['tsserver'].setup {
-require('lspconfig')['ts_ls'].setup {
+-- vim.lsp.config('tsserver', {
+vim.lsp.config('ts_ls', {
   capabilities = capabilities
-}
+})
+vim.lsp.enable('ts_ls')
 
 --========= java
-require('lspconfig')['jdtls'].setup {
+vim.lsp.config('jdtls', {
   capabilities = capabilities,
   cmd = {
       'jdtls',
@@ -120,33 +129,38 @@ require('lspconfig')['jdtls'].setup {
       '-Xmx1G',
       '-Xms100m'
   }
-}
+})
+vim.lsp.enable('jdtls')
 
 --========= sql
-require('lspconfig')['sqlls'].setup {
+vim.lsp.config('sqlls', {
   capabilities = capabilities
-}
+})
+vim.lsp.enable('sqlls')
 
 --========= asm
-require('lspconfig')['asm_lsp'].setup {
+vim.lsp.config('asm_lsp', {
   capabilities = capabilities,
   assembler = 'nasm',
   instruction_set = 'arm',
   filetypes = {'asm', 'nasm'}
-}
+})
+vim.lsp.enable('asm_lsp')
 
 --========= prolog
-require('lspconfig')['prolog_ls'].setup {
+vim.lsp.config('prolog_ls', {
   capabilities = capabilities
-}
+})
+vim.lsp.enable('prolog_ls')
 
 --========= racket
-require('lspconfig')['racket_langserver'].setup {
+vim.lsp.config('racket_langserver', {
   capabilities = capabilities
-}
+})
+vim.lsp.enable('racket_langserver')
 
 --========= arduino
-require('lspconfig')['arduino_language_server'].setup {
+vim.lsp.config('arduino_language_server', {
   cmd = {
     'arduino-language-server',
     '-clangd', '/usr/bin/clangd',
@@ -155,12 +169,14 @@ require('lspconfig')['arduino_language_server'].setup {
     '-fqbn', 'arduino:avr:uno',
   },
   capabilities = capabilities
-}
+})
+vim.lsp.enable('arduino_language_server')
 
 --========= racket
-require('lspconfig')['rust_analyzer'].setup {
+vim.lsp.config('rust_analyzer', {
   capabilities = capabilities
-}
+})
+vim.lsp.enable('rust_analyzer')
 
 --=========lsp_signature.nvim
 require 'lsp_signature'.setup()
