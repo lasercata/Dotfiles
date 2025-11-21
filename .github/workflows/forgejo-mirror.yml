@@ -1,5 +1,5 @@
-# Sync repo to the Codeberg mirror
-name: Mirror Sync (GitHub -> Codeberg)
+# Sync repo to the Forgejo mirror
+name: Mirror Sync (GitHub -> Forgejo)
 on:
   push:
     branches:
@@ -13,10 +13,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: "Sync repo to Codeberg"
+      - name: "Sync repo to Forgejo"
         uses: cynicsketch/mirror-action@master
         with:
-          REMOTE: 'ssh://git@codeberg.org/lasercata/Dotfiles.git'
-          GIT_SSH_PRIVATE_KEY: ${{ secrets.GIT_SSH_PRIVATE_KEY_CODEBERG }}
+          REMOTE: 'ssh://git@git.lasercata.com/lasercata/Dotfiles.git'
+          GIT_SSH_PRIVATE_KEY: ${{ secrets.GIT_SSH_PRIVATE_KEY_FORGEJO }}
           GIT_SSH_KNOWN_HOSTS: ${{ secrets.GIT_SSH_KNOWN_HOSTS }} # Get it by running `ssh-keyscan codeberg.org lasercata.com
           # GIT_SSH_NO_VERIFY_HOST: "true"
