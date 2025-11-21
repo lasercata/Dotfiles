@@ -6,7 +6,7 @@ on:
       - '**'
 
 jobs:
-  codeberg:
+  forgejo:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
@@ -19,4 +19,4 @@ jobs:
           REMOTE: 'ssh://git@git.lasercata.com/lasercata/Dotfiles.git'
           GIT_SSH_PRIVATE_KEY: ${{ secrets.GIT_SSH_PRIVATE_KEY_FORGEJO }}
           GIT_SSH_KNOWN_HOSTS: ${{ secrets.GIT_SSH_KNOWN_HOSTS }} # Get it by running `ssh-keyscan codeberg.org lasercata.com
-          # GIT_SSH_NO_VERIFY_HOST: "true"
+          GIT_SSH_NO_VERIFY_HOST: "true"
