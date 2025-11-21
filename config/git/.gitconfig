@@ -5,6 +5,8 @@
     required = true
 [include]
     path = ~/.git-github.conf
+[includeIf "gitdir:~/git/forgejo/"]
+    path = ~/.git-forgejo.conf
 [includeIf "gitdir:~/git/codeberg/"]
     path = ~/.git-codeberg.conf
 [includeIf "gitdir:~/git/ENSSAT/"]
