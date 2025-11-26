@@ -1,4 +1,12 @@
+#---Background transparency
 set default-bg "rgba(0, 0, 0, .7)"
 
+#---Swap pgup and pgdown
 map <PageUp> navigate next
 map <PageDown> navigate previous
+
+#---Precise horizontal movement with alt-h/l.
+# Already exists by default for vertical movement (alt-j/k)
+# Trick to write colon (:) needed for non qwerty layout: use 'o' that send ':open ' and delete 'open ': 'o<C-w>'.
+map <A-h> feedkeys "o<C-w>set scroll-hstep 10<Return>ho<BackSpace><BackSpace><BackSpace><BackSpace><BackSpace><BackSpace><BackSpace>set scroll-hstep 40<Return>"
+map <A-l> feedkeys "o<C-w>set scroll-hstep 10<Return>lo<BackSpace><BackSpace><BackSpace><BackSpace><BackSpace><BackSpace><BackSpace>set scroll-hstep 40<Return>"
