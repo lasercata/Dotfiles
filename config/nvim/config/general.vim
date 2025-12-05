@@ -57,7 +57,7 @@ set spelllang=en_gb,fr,it
 
 
 "------Folds
-setlocal foldmethod=indent foldnestmax=1
+set foldmethod=indent foldnestmax=1
 
 "---Python
 autocmd FileType python setlocal foldnestmax=2 foldmethod=indent
