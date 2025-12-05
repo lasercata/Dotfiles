@@ -231,9 +231,9 @@ precmd() {
 
     else
         if [ "$color_prompt" = yes ]; then
-            PS1="\n\033[0;3mLast command took $(convertsecs $elapsed)s.\n$prompt_color_base"
+            PS1="\n\a\033[0;3mLast command took $(convertsecs $elapsed)s.\n$prompt_color_base"
         else
-            PS1='Last command took $(convertsecs $elapsed)s.\n┌──[\u@\h]─[\w]\n'
+            PS1='\aLast command took $(convertsecs $elapsed)s.\n┌──[\u@\h]─[\w]\n'
         fi
     fi
 }
