@@ -135,6 +135,10 @@ map <c-r> :source ~/.config/lf/lfrc
 # Edit config file and reload
 map C edit-config
 
+# Edit/view with hex editor
+map I $fileobj -R "$f"
+map E $fileobj "$f"
+
 # }}}
 
 # vim:ft=conf:foldmethod=marker
