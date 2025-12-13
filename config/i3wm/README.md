@@ -49,6 +49,7 @@ Modifier : `mod` = meta (windows key).
 | Open app launcher | `mod+m` |
 | Open terminal | `mod+enter` |
 | Window finder | `mod+d` |
+| Take screenshot | `mod+x` |
 
 ### Other
 | Action | Key bind |

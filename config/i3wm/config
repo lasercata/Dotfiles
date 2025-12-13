@@ -2,7 +2,7 @@
 
 #--------------------------------
 #
-# Last modification : 2025.02.01
+# Last modification : 2025.12.13
 # Author            : Lasercata
 # Version           : v1.9.19
 #
@@ -146,6 +146,9 @@ bindsym $mod+m exec "source ~/.config/i3/scripts/set_env_vars.sh; rofi -theme Mo
 bindsym $mod+Shift+m exec "source ~/.config/i3/scripts/set_env_vars.sh; rofi -theme Monokai -modi drun,run -show-icons -show run"
 
 # Use ctrl+tab to change mode
+
+#---Take screenshot
+bindsym $mod+x exec "flameshot gui"
 
 #---Window finder
 bindsym $mod+d exec "rofi -theme Monokai -show-icons -show window"
