@@ -62,6 +62,9 @@ set foldmethod=indent foldnestmax=1
 "---Python
 autocmd FileType python setlocal foldnestmax=2 foldmethod=indent
 
+"---Rust
+autocmd FileType rust setlocal foldmethod=indent foldnestmax=2
+
 " "---C
 " autocmd FileType c setlocal foldmethod=indent foldnestmax=1
 "
@@ -70,9 +73,6 @@ autocmd FileType python setlocal foldnestmax=2 foldmethod=indent
 "
 " "---Bash
 " autocmd FileType sh setlocal foldmethod=indent foldnestmax=1
-"
-" "---Rust
-" autocmd FileType rust setlocal foldmethod=indent foldnestmax=1
 "
 " "---JS
 " autocmd FileType javascript setlocal foldmethod=indent foldnestmax=1
