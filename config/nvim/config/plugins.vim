@@ -130,7 +130,7 @@ call plug#begin('~/.config/nvim/plugged')
     "-Tmuxline
     Plug 'edkolev/tmuxline.vim'
         let g:airline#extensions#tmuxline#enabled = 1
-        let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
+        let airline#extensions#tmuxline#snapshot_file = "~/.config/tmux/tmux-status.conf"
 
     "-Nightfly colorscheme
     Plug 'bluz71/vim-nightfly-colors', { 'as': 'nightfly' }

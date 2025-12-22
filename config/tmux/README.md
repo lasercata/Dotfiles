@@ -2,6 +2,10 @@
 [Tmux](https://github.com/tmux/tmux/wiki) is a terminal multiplexer.
 
 ## Configuration location
+**New location**:
+- All the files are in `~/.config/tmux/`.
+
+**Old location**:
 - Configuration file : `~/.tmux.conf` ;
 - Status bar configuration : `~/.tmux-status.conf` ;
 - Plugins are located at `~/.tmux/plugins`.
