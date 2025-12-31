@@ -3,8 +3,8 @@
 #-----------------------------------------------
 #
 # Author            : Parrot OS, then Lasercata
-# Last modification : 2025.04.29
-# Version           : v1.8.0
+# Last modification : 2025.12.31
+# Version           : v1.8.1
 #
 #-----------------------------------------------
 
@@ -303,28 +303,20 @@ GPG_TTY=$(tty)
 export GPG_TTY
 # }}}1
 
-#------Integrate KDE apps in i3 {{{1
-export QT_QPA_PLATFORMTHEME="qt5ct"
-#
-# export QT_STYLE_OVERRIDE="Breeze Dark"
-# }}}1
-
-#------Gnome dark mode ? {{{1
-export GTK_THEME=Adwaita:dark
-# export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
-# export QT_STYLE_OVERRIDE=adwaita-dark
-
-# source /home/lasercata/.bash_completions/please.sh
-
-# export NVM_DIR="/home/lasercata/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-# }}}1
-
 #------ssh {{{1
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
-fi
-if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
-    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-fi
+# if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+#     ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+# fi
+# if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
+#     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+# fi
+#
+# The above is not anymore needed as I use ssh-agent.socket systemd service (systemctl --user status ssh-agent.socket)
+
+# export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket   
 # }}}1
+
+#------Environment variables {{{1
+source ~/.config/i3/scripts/set_env_vars.sh
+# }}}1
+
