@@ -13,6 +13,16 @@ To be able to launch i3 as your window manager, paste the `*.desktop` files to `
 - `config` : the configuration file for i3wm.
 
 
+## Dependencies
+
+- `sox` to play sounds (in `battery_messages.sh` for example)
+- `numlockx`
+- `xorg-setxkbmap`
+- `udiskie`
+- `picom`
+- `i3lock`
+- `xautolock`
+
 ## Key binds
 Modifier : `mod` = meta (windows key).
 
