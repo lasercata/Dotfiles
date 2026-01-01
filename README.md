@@ -10,7 +10,7 @@ See each folder in [`config`](config) for more info.
 ### In this repository :
 | Software                           | Description                            |
 | --------                           | -----------                            |
-| [Alacritty](config/alacritty)      | terminal emulator                      |
+| [alacritty](config/alacritty)      | terminal emulator                      |
 | [bash](config/bash)                | shell and command language             |
 | [cmus](config/cmus)                | terminal music player (vim-like keys)  |
 | [dunst](config/dunst)              | notification daemon                    |
@@ -23,6 +23,8 @@ See each folder in [`config`](config) for more info.
 | [kitty](config/kitty)              | terminal emulator                      |
 | [latexmk](config/latexmk)          | LaTeX compiler configuration           |
 | [lf](config/lf)                    | faster terminal file explorer          |
+| [lightdm](config/lightdm)          | lightweight display manager            |
+| [logind](config/logind)            | responsible for the power key behaviour|
 | [neofetch](config/neofetch)        | display system information             |
 | [neovim](config/nvim)              | text editor                            |
 | [picom](config/picom)              | manages transparency in i3             |
