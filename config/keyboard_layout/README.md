@@ -57,5 +57,7 @@ And then to use the layout, run
 setxkbmap -I ~/.config/xkb/ fc
 ```
 
+Note: for some reason, it might still be needed to have `fc` in `/usr/share/X11/xkb/symbols/` for this to work...
+
 ## Files
 - `fc` : the definition of my custom layout.
