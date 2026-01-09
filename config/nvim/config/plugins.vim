@@ -64,6 +64,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-tree/nvim-tree.lua'
     Plug 'nvim-tree/nvim-web-devicons'
 
+    "-Oil.nvim (edit a folder like a buffer)
+    Plug 'stevearc/oil.nvim'
+
     "-Auto pair
     " Plug 'tmsvg/pear-tree'
     " Plug 'windwp/nvim-autopairs'
