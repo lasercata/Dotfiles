@@ -3,8 +3,8 @@
 #-----------------------------------------------
 #
 # Author            : Parrot OS, then Lasercata
-# Last modification : 2025.12.31
-# Version           : v1.8.1
+# Last modification : 2026.01.14
+# Version           : v1.8.2
 #
 #-----------------------------------------------
 
@@ -263,6 +263,20 @@ if ! shopt -oq posix; then
         . /etc/bash_completion
     fi
 fi
+
+#--pipx completions
+eval "$(register-python-argcomplete pipx)"
+
+#---fzf bindings and autocompletion
+if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
+    source /usr/share/doc/fzf/examples/key-bindings.bash
+fi
+
+if [ -f /usr/share/doc/fzf/examples/completion.bash ]; then
+    source /usr/share/doc/fzf/examples/completion.bash
+fi
+
+eval "$(fzf --bash)"
 # }}}1
 
 #------Vi mode {{{1
@@ -283,18 +297,6 @@ export TERMINAL
 # To re enable it :
 #setxkbmap -option
 # Done in system settings.
-# }}}1
-
-#------fzf bindings and autocompletion {{{1
-if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
-    source /usr/share/doc/fzf/examples/key-bindings.bash
-fi
-
-if [ -f /usr/share/doc/fzf/examples/completion.bash ]; then
-    source /usr/share/doc/fzf/examples/completion.bash
-fi
-
-eval "$(fzf --bash)"
 # }}}1
 
 #------GPG {{{1
