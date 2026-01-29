@@ -291,7 +291,7 @@ bindsym $mod+CTRL+Shift+o exec --no-startup-id $locker && systemctl suspend
 exec_always --no-startup-id "xautolock -detectsleep -time 10 -locker \"$locker\" -notify 30 -notifier \"notify-send -u critical -t 29500 'Locking soon' 'Locking screen in 30 seconds' & play /usr/share/sounds/Oxygen-Sys-App-Message.ogg\""
 
 # Hibernate after 12 minutes
-exec_always --no-startup-id "xautolock -detectsleep -time 12 -locker \"systemctl hibernate\" -notify 30 -notifier \"notify-send -u critical -t 20000 'Hibernating soon' 'Hibernating 30 seconds'\""
+exec_always --no-startup-id "xautolock -detectsleep -time 12 -locker \"systemctl hibernate\" -notify 30 -notifier \"notify-send -u critical -t 20000 'Hibernating soon' 'Hibernating in 30 seconds'\""
 
 # Note: with the second xautolock, you can disable the default X11 saver that turns screen off after 10 minutes (600s).
 # Get status: `xset q`
