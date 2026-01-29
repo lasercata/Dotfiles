@@ -282,7 +282,7 @@ class Player:
 
         #------Making the full string
         #---Track
-        if 'artist' in mt_d.keys() and mt_d['artist'] != '' and 'title' in mt_d.keys() and mt_d['artist'] not in mt_d['title'] and mt_d['artist'].replace(' ', '_') not in mt_d['title']:
+        if 'artist' in mt_d.keys() and mt_d['artist'] != '' and 'title' in mt_d.keys() and mt_d['artist'].lower() not in mt_d['title'].lower() and mt_d['artist'].replace(' ', '_').lower() not in mt_d['title'].lower():
             track_str = mt_d['artist'] + ' - ' + mt_d['title']
 
         elif 'title' in mt_d.keys():
