@@ -59,35 +59,26 @@ set spelllang=en_gb,fr,it
 "------Folds
 set foldmethod=indent foldnestmax=1
 
+" "---C, Arduino, Bash, JS, VueJS
+" autocmd FileType c arduino sh javascript vue setlocal foldmethod=indent foldnestmax=1
+
 "---Python
-autocmd FileType python setlocal foldnestmax=2 foldmethod=indent
+autocmd FileType python setlocal foldmethod=indent foldnestmax=2
 
 "---Rust
 autocmd FileType rust setlocal foldmethod=indent foldnestmax=2
-
-" "---C
-" autocmd FileType c setlocal foldmethod=indent foldnestmax=1
-"
-" "---Arduino
-" autocmd FileType arduino setlocal foldmethod=indent foldnestmax=1
-"
-" "---Bash
-" autocmd FileType sh setlocal foldmethod=indent foldnestmax=1
-"
-" "---JS
-" autocmd FileType javascript setlocal foldmethod=indent foldnestmax=1
-"
-" "---VueJS
-" autocmd FileType vue setlocal foldmethod=indent foldnestmax=1
-
-"---LaTeX
-autocmd FileType tex setlocal foldmethod=indent foldnestmax=3 foldlevel=1 foldlevelstart=1
 
 "---Java
 autocmd FileType java setlocal foldmethod=indent foldnestmax=2 foldlevel=1
 
 "---SQL
 autocmd FileType sql setlocal foldmethod=indent foldnestmax=2
+
+"---Yaml
+autocmd FileType yaml setlocal foldmethod=indent foldnestmax=2
+
+"---LaTeX
+autocmd FileType tex setlocal foldmethod=indent foldnestmax=3 foldlevel=1 foldlevelstart=1
 
 "---Markdown
 let g:markdown_folding = 1
