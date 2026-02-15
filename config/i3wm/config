@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2026.01.01
+# Last modification : 2026.02.15
 # Author            : Lasercata
-# Version           : v1.9.20
+# Version           : v1.9.21
 #
 #--------------------------------
 
@@ -411,9 +411,9 @@ bindsym $mod+Shift+F12 move container to workspace $ws22
 assign [class="korganizer"] workspace $ws2
 assign [class="thunderbird"] workspace $ws12
 
-assign [class="Vivaldi"] workspace $ws3
-assign [class="Firefox"] workspace $ws3
-assign [class="Chromium"] workspace $ws3
+assign [class="Floorp"] workspace $ws3
+# assign [class="Vivaldi"] workspace $ws3
+# assign [class="Chromium"] workspace $ws3
 
 assign [class="Signal"] workspace $ws9
 assign [class="WhatSie"] workspace $ws9
