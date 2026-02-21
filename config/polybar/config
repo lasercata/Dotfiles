@@ -65,9 +65,9 @@ module-margin-right = 0
 font-0 = Hack Nerd Font:size=10
 font-1 = Hack Nerd Font:size=12
 
-modules-left = i3 slash space playerctl
-modules-center = memory space slash space swap space slash space filesystem space slash space cpu space slash space system-fan-speed
-modules-right = alsa space slash space network space slash eth-tethering slash eth slash bluetooth slash space battery space slash brightnessctl space slash space date space slash space time space
+modules-left = i3 space playerctl
+modules-center = memory space swap space filesystem space temperature space cpu space system-fan-speed
+modules-right = alsa space network space eth-tethering eth space bluetooth space battery space brightnessctl space date space time space
 
 tray-position = right
 tray-padding = 2
@@ -112,9 +112,9 @@ module-margin-right = 0
 font-0 = Hack Nerd Font:size=10
 font-1 = Hack Nerd Font:size=12
 
-modules-left = i3 slash space playerctl-short
-modules-center = memory space slash space swap space slash space filesystem space slash space cpu space slash space system-fan-speed
-modules-right = alsa space slash space network-short space slash eth-tethering slash eth slash bluetooth slash space battery space slash brightnessctl space slash space date space slash space time space
+modules-left = i3 space playerctl-short
+modules-center = memory space swap space filesystem space temperature space cpu space system-fan-speed
+modules-right = alsa space network-short space eth-tethering eth space bluetooth space battery space brightnessctl space date space time space
 
 ; tray-position = right
 ; tray-padding = 2
