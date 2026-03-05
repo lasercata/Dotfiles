@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2025.05.11
+# Last modification : 2026.03.05
 # Author            : Lasercata
-# Version           : v1.0.3
+# Version           : v1.0.4
 #
 #--------------------------------
 
@@ -21,11 +21,11 @@ default_interface = 'wlp0s20f3'
 def get_str(interface=default_interface):
     '''Return the string of informations.'''
 
-    return popen(f'/usr/sbin/iwconfig {interface}').read().split('\n')
+    return popen(f'/usr/sbin/iwconfig {interface} 2> /dev/null').read().split('\n')
 
 
 def is_wifi_on():
-    return 'on' in popen('wifi').read()
+    return '= on' in popen('wifi').read()
 
 
 def get_infos(status_str):
