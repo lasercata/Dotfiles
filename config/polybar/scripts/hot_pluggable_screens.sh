@@ -13,6 +13,7 @@ done
 # E.g for monitors 1 2 3 4 5, with 1 the main, the placement will be 5 3 1 2 4 (right and then left, and loop).
 # Note 2026.01.30: switching the order (left then right, loop)
 # Note 2026.03.02: switching back the order
+# Note 2026.03.20: switching again the order
 left_mon=$main_mon
 right_mon=$main_mon
 i=0
@@ -20,11 +21,11 @@ i=0
 for m in $(xrandr --query | grep " connected" | cut -d' ' -f1); do
     if [[ $m != $main_mon ]]; then # Ignore the main monitor
         if [ $((i % 2)) -eq 0 ]; then # Add to right
-            xrandr --output $m --auto --right-of $right_mon
-            right_mon=$m
-        else # Add to left
             xrandr --output $m --auto --left-of $left_mon
             left_mon=$m
+        else # Add to right
+            xrandr --output $m --auto --right-of $right_mon
+            right_mon=$m
         fi
 
         ((i++))
