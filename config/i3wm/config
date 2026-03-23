@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2026.02.15
+# Last modification : 2026.03.23
 # Author            : Lasercata
-# Version           : v1.9.21
+# Version           : v1.9.22
 #
 #--------------------------------
 
@@ -251,7 +251,9 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "[ $(echo -e 'No\nYes' | dmenu -i -b -p 'Exit i3?') = 'Yes' ] && i3-msg exit"
+# bindsym $mod+Shift+e exec " echo -e 'no\nyes' | rofi -dmenu -p 'Exit i3?' | grep -q '^yes$' && i3-msg exit"
 
 #---Media controls
 #-Volume
