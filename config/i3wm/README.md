@@ -68,9 +68,10 @@ Modifier : `mod` = meta (windows key).
 | Reload config | `mod+shift+c` |
 | Restart in place | `mod+shift+r` |
 | Hot plug screens (+ reload polybar) | `mod+shift+s` |
-| Exit i3 | `mod+shift+e` |
 | Play / pause media | `mod+p` |
 | Toggle touchpad | `mod+u` |
 | Lock screen | `mod+o` |
 | Hibernate (suspend to disk) | `mod+shift+o` |
+| Switch user (lightDM menu) | `mod+shift+g` |
+| Exit i3 | `mod+shift+e` |
 | Change wallpaper (random) | `mod+shift+w` |

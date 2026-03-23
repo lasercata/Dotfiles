@@ -255,6 +255,12 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "[ $(echo -e 'No\nYes' | dmenu -i -b -p 'Exit i3?') = 'Yes' ] && i3-msg exit"
 # bindsym $mod+Shift+e exec " echo -e 'no\nyes' | rofi -dmenu -p 'Exit i3?' | grep -q '^yes$' && i3-msg exit"
 
+# Switch user without logging out
+bindsym $mod+Shift+g exec --no-startup-id $locker && dm-tool switch-to-greeter
+
+# Note: if currently in ttyN, it goes to tty(N+1).
+# So you can open an other session there, and just switch tty.
+
 #---Media controls
 #-Volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +1%
