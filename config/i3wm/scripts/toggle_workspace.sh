@@ -4,8 +4,10 @@
 
 workspace_to_toggle=$1
 
-TMP_FILE_LOCATION_VISIBLE=/tmp/i3_visible_tmp
-TMP_FILE_LOCATION_FOCUSED=/tmp/i3_focused_tmp
+# TMP_FILE_LOCATION_VISIBLE=/tmp/i3_visible_tmp
+# TMP_FILE_LOCATION_FOCUSED=/tmp/i3_focused_tmp
+TMP_FILE_LOCATION_VISIBLE=~/.local/state/i3/i3_visible_tmp
+TMP_FILE_LOCATION_FOCUSED=~/.local/state/i3/i3_focused_tmp
 
 get_i3_workspace_id() {
     field=$1
@@ -23,6 +25,8 @@ save_active_workspace() {
 }
 
 if [[ ! -f $TMP_FILE_LOCATION_VISIBLE ]] || [[ ! -f $TMP_FILE_LOCATION_FOCUSED ]]; then
+    mkdir -p ~/.local/state/i3/
+
     for f in $TMP_FILE_LOCATION_VISIBLE $TMP_FILE_LOCATION_FOCUSED; do
         get_i3_workspace_id focused > $f
     done
