@@ -295,11 +295,31 @@ bindsym $mod+Shift+o exec --no-startup-id $locker && systemctl hibernate
 bindsym $mod+CTRL+Shift+o exec --no-startup-id $locker && systemctl suspend
 
 #---Auto lock the screen
-# Launch the lock screen after 10 minutes
-exec_always --no-startup-id "xautolock -detectsleep -time 10 -locker \"$locker\" -notify 30 -notifier \"notify-send -u critical -t 29500 'Locking soon' 'Locking screen in 30 seconds' & play /usr/share/sounds/Oxygen-Sys-App-Message.ogg\""
+# Launch the lock screen after 10 minutes and hibernate after 12 minutes
+exec_always --no-startup-id xidlehook \
+    --detect-sleep \
+    `# Notification after 9m30, and lock after 10m (+30s)` \
+    --timer 570 "notify-send -u critical -t 29500 'Locking soon' 'Locking screen in 30 seconds' & play /usr/share/sounds/Oxygen-Sys-App-Message.ogg" "" \
+    --timer 30 "$locker" "" \
+    `# Notification and hibernate after 12m (+1m30 for notification, +30s for hibernate)` \
+    --timer 90 "notify-send -u critical -t 20000 'Hibernating soon' 'Hibernating in 30 seconds'" "" \
+    --timer 30 "systemctl hibernate -i" ""
 
-# Hibernate after 12 minutes
-exec_always --no-startup-id "xautolock -detectsleep -time 12 -locker \"systemctl hibernate\" -notify 30 -notifier \"notify-send -u critical -t 20000 'Hibernating soon' 'Hibernating in 30 seconds'\""
+# # Launch the lock screen after 10 minutes
+# exec_always --no-startup-id xautolock \
+#     -detectsleep \
+#     -time 10 \
+#     -locker "$locker" \
+#     -notify 30 \
+#     -notifier "notify-send -u critical -t 29500 'Locking soon' 'Locking screen in 30 seconds' & play /usr/share/sounds/Oxygen-Sys-App-Message.ogg"
+#
+# # Hibernate after 12 minutes
+# exec_always --no-startup-id xautolock \
+#     -detectsleep \
+#     -time 12 \
+#     -locker "systemctl hibernate" \
+#     -notify 30 \
+#     -notifier "notify-send -u critical -t 20000 'Hibernating soon' 'Hibernating in 30 seconds'"
 
 # Note: with the second xautolock, you can disable the default X11 saver that turns screen off after 10 minutes (600s).
 # Get status: `xset q`

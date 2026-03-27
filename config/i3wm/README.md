@@ -21,7 +21,7 @@ To be able to launch i3 as your window manager, paste the `*.desktop` files to `
 - `udiskie`
 - `picom`
 - `i3lock`
-- `xautolock`
+- `xidlehook` (previously using `xautolock`)
 
 ## Key binds
 Modifier : `mod` = meta (windows key).
