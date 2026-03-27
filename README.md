@@ -7,7 +7,9 @@ See each folder in [`config`](config) for more info.
 ![Screenshot](screenshots/Screenshot_2025-01-04_12h57_19s.png)
 
 ## Software list
-### In this repository :
+### In this repository
+Click on any software name in this table to read the detailed config readme:
+
 | Software                           | Description                            |
 | --------                           | -----------                            |
 | [alacritty](config/alacritty)      | terminal emulator                      |
@@ -16,6 +18,7 @@ See each folder in [`config`](config) for more info.
 | [dunst](config/dunst)              | notification daemon                    |
 | [elinks](config/elinks)            | terminal web browser                   |
 | [git](config/git)                  | version control software               |
+| [gpg](config/gnupg)                | cryptography (pin entry config)        |
 | [greenclip](config/greenclip)      | clipboard manager                      |
 | [grub](config/grub)                | multiboot boot loader                  |
 | [i3wm](config/i3wm)                | keyboard focused window manager        |
@@ -40,10 +43,12 @@ See each folder in [`config`](config) for more info.
 | [xorg](config/xorg)                | X11 hardware configurations            |
 | [zathura](config/zathura)          | pdf reader with vim-like keys          |
 
-### Other useful softwares :
+### Other useful softwares:
 | Software | Description                                                              |
 | -------- | -----------                                                              |
 | calcurse | terminal calendar, with vim-like keys                                    |
+| sc-im    | terminal spreadsheet                                                     |
 | w3m      | another terminal web browser                                             |
 | fim      | simple image viewer, works in tty (with framebuffer), with vim-like keys |
 | mpv      | video player, works in tty                                               |
+
