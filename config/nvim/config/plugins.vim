@@ -91,8 +91,14 @@ call plug#begin('~/.config/nvim/plugged')
     " "-Kitty runner
     " Plug 'jghauser/kitty-runner.nvim'
 
-    "-Comment.nvim : adding bindings to comment code
-    Plug 'numToStr/Comment.nvim'
+    "-Comments: adding bindings to comment code
+    "(now it is in default nvim, but not gb)
+    "Also, there was a bug in v0.12, and upstream does not seem to be
+    "maintained, so I switched to a fork from a PR.
+    "If it does not work this way, just go to the cloned repo and manually
+    "change the remote url and switch branch.
+    Plug 'faergeek/Comment.nvim', { 'branch': 'nvim-0.12-compatibility' }
+    " Plug 'numToStr/Comment.nvim'
 
     "-CheatSheet : use telescope to find vim info
     Plug 'sudormrfbin/cheatsheet.nvim'
