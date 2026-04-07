@@ -134,3 +134,8 @@ The command `raco` comes with the `racket` package.
 Uses [`rust-analyzer`](https://github.com/rust-lang/rust-analyzer)
 
 It can be installed through pacman (`extra/rust-analyzer`).
+
+### Gopls
+Uses [`gopls`](https://github.com/golang/tools/tree/master/gopls)
+
+There is an arch package (`extra/gopls`).

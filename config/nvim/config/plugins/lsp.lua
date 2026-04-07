@@ -172,11 +172,17 @@ vim.lsp.config('arduino_language_server', {
 })
 vim.lsp.enable('arduino_language_server')
 
---========= racket
+--========= rust
 vim.lsp.config('rust_analyzer', {
   capabilities = capabilities
 })
 vim.lsp.enable('rust_analyzer')
+
+--========= go
+vim.lsp.config('gopls', {
+  capabilities = capabilities
+})
+vim.lsp.enable('gopls')
 
 --=========lsp_signature.nvim
 require 'lsp_signature'.setup()
