@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2025.09.13
+# Last modification : 2026.04.07
 # Author            : Lasercata
-# Version           : v1.0.0
+# Version           : v1.0.1
 #
 #--------------------------------
 
@@ -32,12 +32,13 @@ case "${MIME_TYPE}" in
     image/* | video/* | font/* | application/pdf) ~/.config/lf/previewer.sh "$FILE_PATH" ;;
 
     # For folders, just use `ls`
-    inode/directory) dir_display "$FILE_PATH" | bat --paging=always --file-name "$FILE_PATH" --color never ;;
+    inode/directory) dir_display "$FILE_PATH" | bat --pager='less -R +g' --paging=always --file-name "$FILE_PATH" --color never ;;
 
     # For anything else, pipe the previewer into bat
     *) ~/.config/lf/previewer.sh "$FILE_PATH" | bat --pager='less -R +g' --paging=always --file-name "$FILE_PATH" --color never ;;
 
     # The --file-name is used to display the file name in the header.
     # The --color never is used to prevent bat to try to add color, as it is already passed through bat once (with the previewer.sh).
+    # The --pager='less -R +g' is used to scroll content to top
 esac
 
