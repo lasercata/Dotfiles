@@ -90,3 +90,14 @@ augroup asm_syntax
     autocmd!
     autocmd BufReadPost *.s let b:asmsyntax = 'nasm'
 augroup END
+
+
+"------log syntax highlighting
+lua << EOF
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = { "*.log", "*_log" },
+    callback = function()
+    vim.bo.filetype = "log"
+    end,
+})
+EOF
