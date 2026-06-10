@@ -184,8 +184,12 @@ vim.lsp.config('gopls', {
 })
 vim.lsp.enable('gopls')
 
---=========lsp_signature.nvim
-require 'lsp_signature'.setup()
+--=========ray-x/lsp_signature.nvim
+require 'lsp_signature'.setup({
+  hint_enable = false,
+  -- always_trigger = true,
+  toggle_key = '<C-M-k>'
+})
 
 
 --========= Other
