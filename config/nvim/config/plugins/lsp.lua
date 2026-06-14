@@ -188,7 +188,8 @@ vim.lsp.enable('gopls')
 require 'lsp_signature'.setup({
   hint_enable = false,
   -- always_trigger = true,
-  toggle_key = '<C-M-k>'
+  -- toggle_key = '<C-M-k>'
+  toggle_key = '<C-d>'
 })
 
 
