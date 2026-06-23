@@ -265,7 +265,9 @@ case "${MIME_TYPE}" in
     image/* | video/* | font/* | application/pdf) show_image ;;
     text/* | application/json | application/javascript)
         case "$1" in
-            *.md) CLICOLOR_FORCE=1 COLORTERM=truecolor glow -s dark "$1";;
+            # *.md) CLICOLOR_FORCE=1 COLORTERM=truecolor glow -s dark "$1";;
+            # *.md) leaf --inline ansi:$(( $(tput cols) - 9 )) "$1";;  # -9 for visualizer (bat line numbers)
+            *.md) leaf --inline ansi:$(( $(tput cols) - 2 )) "$1";;  # -2 for preview
             *) bat --color always -p "$1";;
         esac;;
     # text/*) bat --color always -p "$1";;

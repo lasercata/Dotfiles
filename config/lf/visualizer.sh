@@ -28,14 +28,19 @@ dir_display() {
 
 ##-Display
 case "${MIME_TYPE}" in
-    # For image, just use the previewer
+    # For image, use the previewer
     image/* | video/* | font/* | application/pdf) ~/.config/lf/previewer.sh "$FILE_PATH" ;;
 
-    # For folders, just use `ls`
+    # For folders, use `ls`
     inode/directory) dir_display "$FILE_PATH" | bat --pager='less -R +g' --paging=always --file-name "$FILE_PATH" --color never ;;
 
     # For anything else, pipe the previewer into bat
-    *) ~/.config/lf/previewer.sh "$FILE_PATH" | bat --pager='less -R +g' --paging=always --file-name "$FILE_PATH" --color never ;;
+    # Unless it is markdown (mime is often text/plain, so we test .md)
+    *)
+        case "$FILE_PATH" in
+            *.md) leaf "$FILE_PATH";;
+            *) ~/.config/lf/previewer.sh "$FILE_PATH" | bat --pager='less -R +g' --paging=always --file-name "$FILE_PATH" --color never ;;
+        esac;;
 
     # The --file-name is used to display the file name in the header.
     # The --color never is used to prevent bat to try to add color, as it is already passed through bat once (with the previewer.sh).
