@@ -2,9 +2,9 @@
 
 #--------------------------------
 #
-# Last modification : 2026.03.23
+# Last modification : 2026.06.29
 # Author            : Lasercata
-# Version           : v1.9.22
+# Version           : v1.9.23
 #
 #--------------------------------
 
@@ -149,6 +149,9 @@ bindsym $mod+Shift+m exec "source ~/.config/i3/scripts/set_env_vars.sh; rofi -th
 
 #---Take screenshot
 bindsym $mod+x exec "flameshot gui"
+
+#---Pick colour on screen
+bindsym $mod+Shift+x exec "xcolor -s"
 
 #---Window finder
 bindsym $mod+d exec "rofi -theme Monokai -show-icons -show window"

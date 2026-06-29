@@ -60,6 +60,7 @@ Modifier : `mod` = meta (windows key).
 | Open terminal | `mod+enter` |
 | Window finder | `mod+d` |
 | Take screenshot | `mod+x` |
+| Pick color | `mod+Shift+x` |
 
 ### Other
 | Action | Key bind |
