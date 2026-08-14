@@ -1,6 +1,6 @@
 #--------------------------------
 #
-# Last modification : 2025.09.13
+# Last modification : 2026.08.14
 # Author            : Lasercata
 # Version           : v1.1.3
 #
@@ -37,7 +37,8 @@ set tabstop 4
 set info size
 set icons true
 
-set rulerfmt "%a  |%p  |\033[7;31m %m \033[0m  |\033[7;33m %c \033[0m  |\033[7;35m %s \033[0m  |\033[7;34m %f \033[0m  |%i/%t, %d"
+# set rulerfmt "%a  |%p  |\033[7;31m %m \033[0m  |\033[7;33m %c \033[0m  |\033[7;35m %s \033[0m  |\033[7;34m %f \033[0m  |%i/%t, %d"
+set rulerfile ~/.config/lf/ruler.template
 
 # Refresh every second
 set period 1
@@ -94,7 +95,7 @@ cmd mkdir $mkdir -p $@
 # Toggle things
 map zi set icons!
 map zp toggle_preview
-map <backspace2> set hidden!
+map <backspace> set hidden!
 
 # "visual" mode
 map V invert-below
