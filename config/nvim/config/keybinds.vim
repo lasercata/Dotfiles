@@ -1,8 +1,8 @@
 "----------------------------------------
 "
 " Author        :   Lasercata
-" Last update   :   2025.11.09
-" Version       :   v1.3.9
+" Last update   :   2026.08.20
+" Version       :   v1.3.10
 "
 "----------------------------------------
 
@@ -42,6 +42,7 @@ vnoremap <leader>` <ESC>`<i`<ESC>`>la`<ESC>
 vnoremap <leader>* <ESC>`<i*<ESC>`>la*<ESC>
 vnoremap <leader>µ <ESC>`<i**<ESC>`>lla**<ESC>
 vnoremap <leader>< <ESC>`<i<<ESC>`>la><ESC>
+vnoremap <leader>$ <ESC>`<i$<ESC>`>la$<ESC>
 
 "---Spelling
 " Correct the closer error behind cursor in insert mode.
