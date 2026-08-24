@@ -6,5 +6,6 @@ For my LaTeX templates and examples, you can check [this repository](https://git
 ## Configuration location
 The configuration file is located at `~/.latexmkrc`.
 
-## File
-- `.latexmkrc` : here is used to add extensions of files to clean with latexmk -c (run with `<localleader>lc` from `nvim` with `vimtex`)
+## Files
+- `.latexmkrc`: here is used to add extensions of files to clean with latexmk -c (run with `<localleader>lc` from `nvim` with `vimtex`)
+- `glossary.latexmkrc`: rename to `.latexmk` to use. This one defines the needed things to compile with a glossary
