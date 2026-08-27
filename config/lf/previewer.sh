@@ -182,25 +182,49 @@ hold() {
 }
 
 draw() {
-    if [ "$PAGE_MODE" ]; then
+    if [ "$PAGE_MODE" ]; then  # Full page
         WIDTH=${lf_width:=$(tput cols)}
         HEIGHT=${lf_height:=$(tput lines)}
         X=0
         Y=0
-    fi
-    if [ -n "$TMUX" ]; then
-        WIDTH=$((WIDTH - 1))
-        HEIGHT=$((HEIGHT - 1))
-    fi
-    if [ "$PAGE_MODE" ]; then
+
+        if [ -n "$TMUX" ]; then
+            WIDTH=$((WIDTH - 1))
+            HEIGHT=$((HEIGHT - 1))
+        fi
+
         clear
-        kitty +kitten icat --stdin no --transfer-mode memory --place "${WIDTH}x${HEIGHT}@${X}x${Y}" "$1" </dev/null >/dev/tty
+        if [ -n "$TMUX" ]; then
+            # Clear any pending graphics FIRST
+            kitty +kitten icat --clear --stdin no --transfer-mode memory </dev/null >/dev/tty 2>/dev/null
+            sleep 0.2
+        fi
+
+        # Then draw
+        kitty +kitten icat --stdin no --transfer-mode memory --place "${WIDTH}x${HEIGHT}@${X}x${Y}" "$1" </dev/null >/dev/tty 2>&1
         hold
-        kitty +kitten icat --clear --stdin no --transfer-mode memory </dev/null >/dev/tty
-    else
-        # preview launched in preview mode
-        kitty +kitten icat --stdin no --transfer-mode memory --place "${WIDTH}x${HEIGHT}@${X}x${Y}" "$1" </dev/null >/dev/tty
-        exit 1 # needed for the preview to refresh
+
+        if [ -n "$TMUX" ]; then
+            sleep 0.1
+        fi
+
+        kitty +kitten icat --clear --stdin no --transfer-mode memory </dev/null >/dev/tty 2>/dev/null
+
+    else  # in side panel
+        if [ -n "$TMUX" ]; then
+            # Clear any pending graphics FIRST
+            kitty +kitten icat --clear --stdin no --transfer-mode memory </dev/null >/dev/tty 2>/dev/null
+            sleep 0.2
+        fi
+
+        # Then draw
+        kitty +kitten icat --stdin no --transfer-mode memory --place "${WIDTH}x${HEIGHT}@${X}x${Y}" "$1" </dev/null >/dev/tty 2>&1
+
+        if [ -n "$TMUX" ]; then
+            sleep 0.1
+        fi
+
+        exit 1
     fi
 }
 
