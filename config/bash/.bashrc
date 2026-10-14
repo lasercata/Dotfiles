@@ -280,6 +280,12 @@ fi
 eval "$(fzf --bash)"
 # }}}1
 
+# #------Aur-scanner integration with paru {{{1
+# if [ -f /usr/share/aur-scan/integration.bash ]; then
+#     source /usr/share/aur-scan/integration.bash
+# fi
+# # }}}1
+
 #------Vi mode {{{1
 set -o vi
 EDITOR=nvim #The editor used for visual mode (when hitting v in normal mode in command line, open the line in an editor)
