@@ -224,6 +224,9 @@ class Player:
         if d['position'] == '?' or 'length' not in d:
             return '?%'
 
+        if d['length'] == 0:
+            return '0%'
+
         return str(round(100 * d['position'] / d['length'])) + '%'
 
     def _get_long_pos_from_d(self, d, with_color=True):
