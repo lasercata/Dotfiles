@@ -10,7 +10,7 @@
 # ```
 
 echo
-echo "Scanning package..."
+echo "Scanning package at $(pwd) ..."
 
 /usr/bin/aur-scan scan --fail-on high . || (
     read -p "Issue(s) found. Please review. Continue with installation (y/N)? " answer
